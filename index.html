@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Villa Gaia | Luxury Estate - Leuca</title>
+    <title>Villa Gaia | Dimora di Prestigio - Leuca</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -19,38 +19,38 @@
             --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        html { 
-            scroll-behavior: smooth; 
+        html {
+            scroll-behavior: smooth;
             font-size: 16px;
         }
 
-        body { 
-            font-family: 'Inter', sans-serif; 
+        body {
+            font-family: 'Inter', sans-serif;
             background-color: var(--white);
             color: var(--charcoal);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 { 
-            font-family: 'Playfair Display', serif; 
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
             font-weight: 600;
             letter-spacing: -0.02em;
         }
 
         /* NAVIGATION - Luxury Style */
-        nav { 
-            position: fixed; 
-            top: 0; 
-            width: 100%; 
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
             background: transparent;
-            z-index: 1000; 
+            z-index: 1000;
             padding: 1.5rem 4%;
             transition: var(--transition);
             border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -63,73 +63,72 @@
             border-bottom: 1px solid rgba(201, 169, 98, 0.3);
         }
 
-        .nav-container { 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .logo { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 1.8rem; 
-            color: var(--white); 
-            font-weight: 700; 
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            font-weight: 700;
             text-decoration: none;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        .logo span { 
-            color: var(--gold); 
+        .logo span {
+            color: var(--gold);
             font-weight: 400;
             font-style: italic;
             text-transform: none;
         }
 
-        .nav-links { 
-            display: flex; 
-            gap: 3rem; 
-            list-style: none; 
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
         }
 
-        .nav-links a { 
-            text-decoration: none; 
-            color: rgba(255,255,255,0.9); 
-            font-weight: 400; 
-            font-size: 0.85rem; 
-            text-transform: uppercase; 
+        .nav-links a {
+            text-decoration: none;
+            color: rgba(255,255,255,0.9);
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-transform: uppercase;
             letter-spacing: 2px;
             position: relative;
             padding: 0.5rem 0;
             transition: var(--transition);
         }
 
-        .nav-links a::after { 
-            content: ''; 
-            position: absolute; 
-            bottom: 0; 
-            left: 0; 
-            width: 0; 
-            height: 1px; 
-            background: var(--gold); 
-            transition: var(--transition); 
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
         }
 
-        .nav-links a:hover { 
-            color: var(--gold); 
+        .nav-links a:hover {
+            color: var(--gold);
         }
 
-        .nav-links a:hover::after { 
-            width: 100%; 
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
-        /* HERO - Fullscreen Luxury */
+        /* HERO - Fullscreen Bright & Luxury */
         .hero { 
             height: 100vh; 
-            background: linear-gradient(rgba(10,10,10,0.3), rgba(10,10,10,0.6)), 
-                        url('./Leuca%20di%20notte.png') center/cover; 
+            background: url('./Leuca%20di%20notte.png') center/cover; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
@@ -137,8 +136,11 @@
             color: var(--white); 
             position: relative;
             overflow: hidden;
+            /* Aumenta luminosità e saturazione dell'immagine */
+            filter: brightness(1.25) contrast(1.05) saturate(1.2);
         }
 
+        /* Overlay leggero per preservare leggibilità testo ma lasciare passare la luce */
         .hero::before {
             content: '';
             position: absolute;
@@ -146,7 +148,25 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.8) 100%);
+            background: linear-gradient(to bottom, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.1) 30%,
+                rgba(10,10,10,0.1) 60%,
+                rgba(10,10,10,0.4) 100%);
+            z-index: 1;
+        }
+
+        /* Aggiunta di un effetto luce soffusa */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.15) 0%, transparent 60%);
+            z-index: 1;
+            pointer-events: none;
         }
 
         .hero-content { 
@@ -157,6 +177,8 @@
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 1s ease forwards;
+            /* Ombra più marcata per contrastare con sfondo luminoso */
+            text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 4px 40px rgba(0,0,0,0.3);
         }
 
         .hero-subtitle {
@@ -164,9 +186,10 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 4px;
-            color: var(--gold);
+            color: var(--gold-light); /* Tono oro più chiaro */
             margin-bottom: 1.5rem;
             display: block;
+            text-shadow: 0 1px 10px rgba(0,0,0,0.3);
         }
 
         .hero-content h1 { 
@@ -174,17 +197,20 @@
             margin-bottom: 1.5rem; 
             line-height: 1;
             font-weight: 600;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            /* Ombra più profonda per leggibilità su sfondo chiaro */
+            text-shadow: 0 4px 30px rgba(0,0,0,0.4), 0 2px 10px rgba(0,0,0,0.5);
+            color: #ffffff;
         }
 
         .hero-content p { 
-            font-size: 1.3rem; 
+            font-size: 1.4rem; 
             font-weight: 300; 
             letter-spacing: 1px;
-            opacity: 0.9;
+            color: rgba(255,255,255,0.95);
             margin-bottom: 2.5rem;
             font-family: 'Playfair Display', serif;
             font-style: italic;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.4);
         }
 
         .hero-cta {
@@ -232,23 +258,23 @@
             transform: translateY(-2px);
         }
 
-        .scroll-indicator { 
-            position: absolute; 
-            bottom: 40px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            color: var(--white); 
-            font-size: 1.5rem; 
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 1.5rem;
             opacity: 0.6;
             animation: bounce 2s infinite;
             cursor: pointer;
         }
 
         /* SECTIONS GENERAL */
-        section { 
-            padding: 8rem 5%; 
-            max-width: 1400px; 
-            margin: 0 auto; 
+        section {
+            padding: 8rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
             position: relative;
         }
 
@@ -275,9 +301,9 @@
             display: block;
         }
 
-        .section-title { 
+        .section-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
-            color: var(--charcoal); 
+            color: var(--charcoal);
             margin-bottom: 1.5rem;
             font-weight: 600;
             line-height: 1.1;
@@ -308,15 +334,15 @@
         }
 
         /* ABOUT LUXURY GRID */
-        .about { 
-            background: var(--white); 
+        .about {
+            background: var(--white);
         }
 
-        .about-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1.2fr; 
-            gap: 6rem; 
-            align-items: center; 
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 6rem;
+            align-items: center;
         }
 
         .about-text h3 {
@@ -355,16 +381,16 @@
             font-size: 1.2rem;
         }
 
-        .villa-photo-container { 
-            position: relative; 
+        .villa-photo-container {
+            position: relative;
             overflow: hidden;
             aspect-ratio: 4/5;
             box-shadow: 0 30px 60px rgba(0,0,0,0.2);
         }
 
-        .villa-photo-container img { 
-            width: 100%; 
-            height: 100%; 
+        .villa-photo-container img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             transition: transform 1.2s ease;
         }
@@ -373,14 +399,14 @@
             transform: scale(1.05);
         }
 
-        .villa-badge { 
-            position: absolute; 
-            bottom: 0; 
+        .villa-badge {
+            position: absolute;
+            bottom: 0;
             left: 0;
             right: 0;
             background: linear-gradient(to top, rgba(10,10,10,0.9), transparent);
-            color: var(--white); 
-            padding: 3rem 2rem 2rem; 
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
         }
@@ -430,21 +456,21 @@
             font-size: 1.5rem;
         }
 
-        .room-list { 
-            list-style: none; 
+        .room-list {
+            list-style: none;
         }
 
-        .room-list li { 
-            padding: 1rem 0; 
+        .room-list li {
+            padding: 1rem 0;
             border-bottom: 1px solid rgba(255,255,255,0.1);
-            display: flex; 
-            align-items: center; 
+            display: flex;
+            align-items: center;
             gap: 1rem;
             color: rgba(255,255,255,0.8);
             font-weight: 300;
         }
 
-        .room-list li i { 
+        .room-list li i {
             color: var(--gold);
             width: 20px;
         }
@@ -462,70 +488,70 @@
             border: 1px solid rgba(0,0,0,0.05);
         }
 
-        .calendar-header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 2rem;
             padding-bottom: 2rem;
             border-bottom: 1px solid var(--light-gray);
         }
 
-        .calendar-title { 
+        .calendar-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
             color: var(--charcoal);
         }
 
-        .calendar-btn { 
+        .calendar-btn {
             background: transparent;
             color: var(--charcoal);
             border: 1px solid var(--charcoal);
-            width: 50px; 
-            height: 50px; 
+            width: 50px;
+            height: 50px;
             border-radius: 0;
-            cursor: pointer; 
-            font-size: 1rem; 
+            cursor: pointer;
+            font-size: 1rem;
             transition: var(--transition);
         }
 
-        .calendar-btn:hover { 
+        .calendar-btn:hover {
             background: var(--charcoal);
             color: var(--white);
         }
 
-        .calendar-grid { 
-            display: grid; 
-            grid-template-columns: repeat(7, 1fr); 
-            gap: 1px; 
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
             background: var(--light-gray);
             border: 1px solid var(--light-gray);
         }
 
-        .calendar-day-header { 
+        .calendar-day-header {
             background: var(--charcoal);
-            color: var(--white); 
+            color: var(--white);
             padding: 1.2rem;
-            text-align: center; 
+            text-align: center;
             font-weight: 500;
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .calendar-day { 
-            background: var(--white); 
+        .calendar-day {
+            background: var(--white);
             min-height: 100px;
             padding: 1rem;
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            cursor: pointer; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
             transition: var(--transition);
             position: relative;
         }
 
-        .calendar-day:hover:not(.disabled):not(.closed) { 
+        .calendar-day:hover:not(.disabled):not(.closed) {
             background: var(--charcoal);
             color: var(--white);
             transform: scale(1.05);
@@ -538,31 +564,31 @@
             color: var(--white);
         }
 
-        .calendar-day-number { 
+        .calendar-day-number {
             font-weight: 500;
             font-size: 1rem;
             color: var(--charcoal);
         }
 
-        .calendar-day-price { 
-            font-size: 0.85rem; 
+        .calendar-day-price {
+            font-size: 0.85rem;
             color: var(--gold);
             font-weight: 600;
         }
 
-        .calendar-day.disabled { 
+        .calendar-day.disabled {
             background: #f0f0f0;
-            color: #ccc; 
-            cursor: not-allowed; 
+            color: #ccc;
+            cursor: not-allowed;
         }
 
-        .calendar-day.closed { 
+        .calendar-day.closed {
             background: #e0e0e0;
-            color: #999; 
-            cursor: not-allowed; 
+            color: #999;
+            cursor: not-allowed;
         }
 
-        .calendar-day.selected { 
+        .calendar-day.selected {
             background: var(--gold) !important;
             color: var(--black) !important;
         }
@@ -573,17 +599,17 @@
             font-weight: 600;
         }
 
-        .calendar-day.checkin { 
-            background: var(--charcoal) !important; 
+        .calendar-day.checkin {
+            background: var(--charcoal) !important;
             color: var(--white) !important;
         }
 
-        .calendar-day.checkout { 
-            background: var(--charcoal) !important; 
+        .calendar-day.checkout {
+            background: var(--charcoal) !important;
             color: var(--white) !important;
         }
 
-        .calendar-day.in-range { 
+        .calendar-day.in-range {
             background: rgba(201, 169, 98, 0.2);
         }
 
@@ -921,7 +947,7 @@
 
     <section class="hero" id="home">
         <div class="hero-content">
-            <span class="hero-subtitle">Luxury Estate — Leuca</span>
+            <span class="hero-subtitle">Rifugio Esclusivo — Leuca</span>
             <h1>Villa Gaia</h1>
             <p>Un'oasi di relax nel cuore del Salento</p>
             <div class="hero-cta">
@@ -1125,11 +1151,9 @@
                     <strong style="color: var(--gold);">24h gratuita</strong>
                     <p style="font-size: 0.9rem; margin-top: 0.5rem;">Disdici entro 24h dalla conferma senza penali</p>
                 </div>
-                <ul>
-                    <li>Check-in: 15:00 - 20:00</li>
-                    <li>Check-out: entro 10:00</li>
-                    <li>Late check-in: previo accordo</li>
-                </ul>
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; margin-top: 1rem; line-height: 1.6;">
+                    Oltre le 24h dalla conferma valgono le condizioni di cancellazione legate alla tariffa scelta.
+                </p>
             </div>
 
             <div class="terms-card">
@@ -1176,6 +1200,21 @@
                 <p style="margin-top: 1.5rem; color: var(--medium-gray);">
                     Via Terragreci, n. 31<br>73040 Leuca (LE)
                 </p>
+                
+                <!-- MAPPA GOOGLE MAPS -->
+                <div style="margin-top: 2rem; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    <iframe
+                        src="https://maps.google.com/maps?q=39.800964,18.351757&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                        width="100%"
+                        height="300"
+                        style="border:0;"
+                        allowfullscreen
+                        loading="lazy">
+                    </iframe>
+                    <a href="https://maps.google.com/?q=39.800964,18.351757" target="_blank" style="display: inline-block; margin-top: 1rem; color: var(--gold); text-decoration: none; font-size: 0.9rem; font-weight: 600;">
+                        <i class="fas fa-external-link-alt" style="margin-right: 0.3rem;"></i> Apri in Google Maps
+                    </a>
+                </div>
             </div>
 
             <div class="contact-form">
@@ -1183,22 +1222,22 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
                         <div class="form-group">
                             <label>Nome</label>
-                            <input type="text" required placeholder="Il tuo nome">
+                            <input type="text" required placeholder="Il tuo nome" style="width: 100%; padding: 0.8rem; border: none; border-bottom: 1px solid #ddd; font-family: inherit; font-size: 1rem;">
                         </div>
                         <div class="form-group">
                             <label>Cognome</label>
-                            <input type="text" required placeholder="Il tuo cognome">
+                            <input type="text" required placeholder="Il tuo cognome" style="width: 100%; padding: 0.8rem; border: none; border-bottom: 1px solid #ddd; font-family: inherit; font-size: 1rem;">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="margin-top: 1.5rem;">
                         <label>Email</label>
-                        <input type="email" required placeholder="email@example.com">
+                        <input type="email" required placeholder="email@example.com" style="width: 100%; padding: 0.8rem; border: none; border-bottom: 1px solid #ddd; font-family: inherit; font-size: 1rem;">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="margin-top: 1.5rem;">
                         <label>Messaggio</label>
-                        <textarea rows="4" placeholder="Scrivi la tua richiesta..."></textarea>
+                        <textarea rows="4" placeholder="Scrivi la tua richiesta..." style="width: 100%; padding: 0.8rem; border: none; border-bottom: 1px solid #ddd; font-family: inherit; font-size: 1rem; resize: vertical;"></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">
+                    <button type="submit" class="submit-btn" style="margin-top: 2rem; width: 100%; padding: 1.2rem; background: var(--charcoal); color: var(--white); border: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.3s;">
                         Invia Messaggio <i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i>
                     </button>
                 </form>
@@ -1210,7 +1249,7 @@
         <div class="footer-content">
             <div class="footer-logo">Villa <span>Gaia</span></div>
             <p style="color: rgba(255,255,255,0.6); max-width: 400px; margin: 0 auto; line-height: 1.8;">
-                Luxury Estate nel cuore del Salento<br>
+                Esclusiva esperienza di ospitalità nel cuore del Salento<br>
                 CIN: IT075019C200103077
             </p>
             <div class="social-links">
@@ -1342,6 +1381,7 @@
                 }
 
                 const clickHandler = (closed || isPast) ? '' : `onclick="selectDate(${year}, ${month}, ${day})"`;
+                
                 html += `<div class="${classes}" ${clickHandler}>${content}</div>`;
             }
 
@@ -1395,11 +1435,13 @@
 
         function updateGuests() {
             numGuests = parseInt(document.getElementById('numGuests').value);
+            
             if (numMinors > numGuests) {
                 numMinors = numGuests;
                 document.getElementById('numMinors').value = numMinors;
             }
             document.getElementById('numMinors').max = numGuests;
+
             if (checkinDate && checkoutDate) calculateTotal();
         }
 
@@ -1412,6 +1454,7 @@
             }
             numMinors = val;
             document.getElementById('numMinors').value = numMinors;
+            
             if (checkinDate && checkoutDate) calculateTotal();
         }
 
@@ -1420,6 +1463,7 @@
 
             const diffTime = Math.abs(checkoutDate - checkinDate);
             const nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
             if (nights <= 0) return;
 
             let totalAccommodation = 0;
