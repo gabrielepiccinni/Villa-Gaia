@@ -124,7 +124,8 @@ overflow: hidden;
 /* Aumenta luminosità e saturazione dell'immagine */
 filter: brightness(1.25) contrast(1.05) saturate(1.2);
 }
-/* Overlay più scuro per garantire leggibilità del testo */
+/* Overlay leggero per preservare leggibilità testo ma lasciare passare
+la luce */
 .hero::before {
 content: '';
 position: absolute;
@@ -133,9 +134,10 @@ left: 0;
 right: 0;
 bottom: 0;
 background: linear-gradient(to bottom,
-rgba(0,0,0,0.2) 0%,
-rgba(0,0,0,0.4) 50%,
-rgba(0,0,0,0.6) 100%);
+rgba(255,255,255,0) 0%,
+rgba(255,255,255,0.1) 30%,
+rgba(10,10,10,0.1) 60%,
+rgba(10,10,10,0.4) 100%);
 z-index: 1;
 }
 /* Aggiunta di un effetto luce soffusa */
@@ -146,7 +148,8 @@ top: -50%;
 left: -50%;
 right: -50%;
 bottom: -50%;
-background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.15) 0%, transparent 60%);
+background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.15)
+0%, transparent 60%);
 z-index: 1;
 pointer-events: none;
 }
@@ -159,7 +162,7 @@ opacity: 0;
 transform: translateY(30px);
 animation: fadeInUp 1s ease forwards;
 /* Ombra più marcata per contrastare con sfondo luminoso */
-text-shadow: 0 2px 10px rgba(0,0,0,0.8), 0 4px 20px rgba(0,0,0,0.9);
+text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 4px 40px rgba(0,0,0,0.3);
 }
 .hero-subtitle {
 font-family: 'Inter', sans-serif;
@@ -169,7 +172,7 @@ letter-spacing: 4px;
 color: var(--gold-light); /* Tono oro più chiaro */
 margin-bottom: 1.5rem;
 display: block;
-text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+text-shadow: 0 1px 10px rgba(0,0,0,0.3);
 }
 .hero-content h1 {
 font-size: clamp(3rem, 8vw, 6rem);
@@ -177,7 +180,7 @@ margin-bottom: 1.5rem;
 line-height: 1;
 font-weight: 600;
 /* Ombra più profonda per leggibilità su sfondo chiaro */
-text-shadow: 0 4px 20px rgba(0,0,0,0.9), 0 2px 10px rgba(0,0,0,0.9);
+text-shadow: 0 4px 30px rgba(0,0,0,0.4), 0 2px 10px rgba(0,0,0,0.5);
 color: #ffffff;
 }
 .hero-content p {
@@ -188,7 +191,7 @@ color: rgba(255,255,255,0.95);
 margin-bottom: 2.5rem;
 font-family: 'Playfair Display', serif;
 font-style: italic;
-text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+text-shadow: 0 2px 15px rgba(0,0,0,0.4);
 }
 .hero-cta {
 display: inline-flex;
@@ -303,7 +306,7 @@ background: var(--white);
 display: grid;
 grid-template-columns: 1fr 1.2fr;
 gap: 6rem;
-align-items: center;
+align-items: start;
 }
 .about-text h3 {
 font-size: 2.5rem;
@@ -805,7 +808,8 @@ transform: translateY(0);
 .gallery-grid { grid-template-columns: 1fr; }
 .gallery-item:nth-child(2) { grid-row: span 1; }
 .terms-grid { grid-template-columns: 1fr; }
-.selection-dates { flex-direction: column; gap: 2rem; text-align: center; }
+.selection-dates { flex-direction: column; gap: 2rem; text-align:
+center; }
 .feature-list { grid-template-columns: 1fr; }
 .calendar-day { min-height: 60px; padding: 0.5rem; }
 }
@@ -826,12 +830,12 @@ transform: translateY(0);
 </nav>
 <section class="hero" id="home">
 <div class="hero-content">
-<!-- MODIFICATO: Sostituito "Rifugio Esclusivo --- Leuca" con "Salento Experience" -->
-<span class="hero-subtitle">Salento Experience</span>
+<span class="hero-subtitle">Rifugio Esclusivo --- Leuca</span>
 <h1>Villa Gaia</h1>
 <p>Un'oasi di relax nel cuore del Salento</p>
 <div class="hero-cta">
-<a href="#tariffe" class="btn-primary">Verifica Disponibilità</a>
+<a href="#tariffe" class="btn-primary">Verifica
+Disponibilità</a>
 <a href="#villa" class="btn-secondary">Scopri la Villa</a>
 </div>
 </div>
@@ -839,6 +843,7 @@ transform: translateY(0);
 <i class="fas fa-chevron-down"></i>
 </div>
 </section>
+<!-- SEZIONE LA VILLA CON TESTO AGGIORNATO -->
 <section class="about" id="villa">
 <div class="section-header reveal">
 <span class="section-subtitle-lg">La Proprietà</span>
@@ -855,26 +860,30 @@ stabilimenti balneari e dal centro di Leuca</p>
 Giardino Terrazzato 210mq
 </div>
 </div>
+<!-- INIZIO TESTO AGGIORNATO -->
 <div class="about-text">
-<h3>Il valore del relax: un rifugio di pace e serenità</h3>
-<p>Villa Gaia è stata concepita come un autentico rifugio dove il
-tempo sembra scorrere più lentamente, lontano dai rumori e dalla
-frenesia quotidiana. La posizione strategica della proprietà garantisce
-la massima tranquillità, mantenendo una comoda vicinanza a tutti i
-servizi.</p>
-<p>Il giardino terrazzato di 210 mq costituisce il vero cuore
-dell'esperienza: uno spazio verde privato dove godere delle dolci
-serate salentine circondati dai profumi della macchia
-mediterranea.</p>
-<ul class="feature-list">
-<li><i class="fas fa-ruler-combined"></i> 130 mq interni</li>
-<li><i class="fas fa-tree"></i> 210 mq giardino esclusivo</li>
-<li><i class="fas fa-car"></i> 3 posti auto</li>
-<li><i class="fas fa-paw"></i> Pet friendly</li>
-<li><i class="fas fa-users"></i> Fino a 8 ospiti</li>
-<li><i class="fas fa-wifi"></i> Wi-Fi ad alta velocità</li>
-</ul>
+  <h3>Il valore del relax: un rifugio di pace e serenità</h3>
+
+  <p>Villa Gaia è situata in una tranquilla zona residenziale a soli 800 metri dagli stabilimenti balneari e dal centro di Leuca, rinomata località balneare che sorge nell'insenatura tra Punta Ristola e Punta Meliso, dove idealmente si incontrano il Mar Ionio e il Mar Adriatico.</p>
+
+  <p>La luminosa e accogliente villetta di 130 mq rappresenta un'ottima soluzione per chi desidera trascorrere vacanze all'insegna del relax e della privacy, grazie anche al suo giardino terrazzato di 210 mq di pertinenza esclusiva. Gli spazi esterni, curati e silenziosi, sono pensati per offrire momenti di benessere circondati dai profumi della macchia mediterranea e accompagnati dal suono del mare distante solo pochi minuti.</p>
+
+  <p>La filosofia di Villa Gaia è quella del comfort senza eccessi, dove ogni dettaglio — dalla luce naturale che avvolge gli ambienti, al design essenziale e rilassante — contribuisce a creare un'atmosfera di equilibrio. È la scelta ideale per chi vuole "staccare", rallentare i ritmi e riscoprire l'autenticità del Salento più intimo.</p>
+
+  <p>Leuca, chiamata anche "De Finibus Terrae", è la punta più meridionale del Salento e un luogo simbolico in cui si fondono natura, storia e spiritualità. Nelle vicinanze si trovano splendide località costiere come Santa Maria di Leuca, Torre Vado, Pescoluse (nota come "le Maldive del Salento") e San Gregorio, con spiagge sabbiose e acque cristalline sul versante ionico, ma anche le suggestive scogliere e calette del litorale adriatico, ideali per immersioni e tramonti spettacolari.</p>
+
+  <p>Da Leuca è inoltre facile raggiungere alcuni tra i borghi più affascinanti del Salento, come Specchia e Presicce — entrambi inseriti tra i "Borghi più belli d'Italia" — o visitare le antiche masserie, gli uliveti secolari e le stradine panoramiche che attraversano la campagna salentina fino a Otranto e Gallipoli. Un territorio ricco di tradizioni, gastronomia e cultura da vivere con lentezza e autenticità.</p>
+
+  <ul class="feature-list">
+    <li><i class="fas fa-ruler-combined"></i> 130 mq interni</li>
+    <li><i class="fas fa-tree"></i> 210 mq giardino esclusivo</li>
+    <li><i class="fas fa-car"></i> 3 posti auto</li>
+    <li><i class="fas fa-paw"></i> Pet friendly</li>
+    <li><i class="fas fa-users"></i> Fino a 8 ospiti</li>
+    <li><i class="fas fa-wifi"></i> Wi-Fi ad alta velocità</li>
+  </ul>
 </div>
+<!-- FINE TESTO AGGIORNATO -->
 </div>
 </section>
 <section class="dark-section" id="spazi">
@@ -1117,7 +1126,7 @@ gabrielepiccinni@gmail.com
 <p style="margin-top: 1.5rem; color: var(--medium-gray);">
 Via Terragreci, n. 31<br>73040 Leuca (LE)
 </p>
-<!-- MAPPA GOOGLE MAPS con coordinate corrette -->
+<!-- MAPPA GOOGLE MAPS -->
 <div style="margin-top: 2rem; border-radius: 10px; overflow: hidden;
 box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
 <iframe
