@@ -1,0 +1,1487 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Gaia | Luxury Estate - Leuca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --charcoal: #1a1a1a;
+            --dark-gray: #2d2d2d;
+            --medium-gray: #666;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+            --gold: #c9a962;
+            --gold-light: #e0c78a;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        html { 
+            scroll-behavior: smooth; 
+            font-size: 16px;
+        }
+
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--white);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* NAVIGATION - Luxury Style */
+        nav { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            background: transparent;
+            z-index: 1000; 
+            padding: 1.5rem 4%;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 4%;
+            border-bottom: 1px solid rgba(201, 169, 98, 0.3);
+        }
+
+        .nav-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        .logo { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.8rem; 
+            color: var(--white); 
+            font-weight: 700; 
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .logo span { 
+            color: var(--gold); 
+            font-weight: 400;
+            font-style: italic;
+            text-transform: none;
+        }
+
+        .nav-links { 
+            display: flex; 
+            gap: 3rem; 
+            list-style: none; 
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: rgba(255,255,255,0.9); 
+            font-weight: 400; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 0; 
+            height: 1px; 
+            background: var(--gold); 
+            transition: var(--transition); 
+        }
+
+        .nav-links a:hover { 
+            color: var(--gold); 
+        }
+
+        .nav-links a:hover::after { 
+            width: 100%; 
+        }
+
+        /* HERO - Fullscreen Luxury */
+        .hero { 
+            height: 100vh; 
+            background: linear-gradient(rgba(10,10,10,0.3), rgba(10,10,10,0.6)), 
+                        url('./Leuca%20di%20notte.png') center/cover; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: var(--white); 
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(10,10,10,0.8) 100%);
+        }
+
+        .hero-content { 
+            position: relative;
+            z-index: 2; 
+            max-width: 900px;
+            padding: 0 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero-content h1 { 
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1.5rem; 
+            line-height: 1;
+            font-weight: 600;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p { 
+            font-size: 1.3rem; 
+            font-weight: 300; 
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--gold);
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 169, 98, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--black);
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .scroll-indicator { 
+            position: absolute; 
+            bottom: 40px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            color: var(--white); 
+            font-size: 1.5rem; 
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        /* SECTIONS GENERAL */
+        section { 
+            padding: 8rem 5%; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-subtitle-lg {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title { 
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--charcoal); 
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            line-height: 1.1;
+        }
+
+        .section-header p {
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* DARK SECTIONS */
+        .dark-section {
+            background: var(--charcoal);
+            color: var(--white);
+            max-width: 100%;
+            padding: 8rem 5%;
+        }
+
+        .dark-section .section-title {
+            color: var(--white);
+        }
+
+        .dark-section .section-header p {
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ABOUT LUXURY GRID */
+        .about { 
+            background: var(--white); 
+        }
+
+        .about-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1.2fr; 
+            gap: 6rem; 
+            align-items: center; 
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+            line-height: 1.2;
+        }
+
+        .about-text p {
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .feature-list {
+            margin-top: 3rem;
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.95rem;
+            color: var(--charcoal);
+        }
+
+        .feature-list i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+
+        .villa-photo-container { 
+            position: relative; 
+            overflow: hidden;
+            aspect-ratio: 4/5;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+        }
+
+        .villa-photo-container img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+            transition: transform 1.2s ease;
+        }
+
+        .villa-photo-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .villa-badge { 
+            position: absolute; 
+            bottom: 0; 
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10,10,10,0.9), transparent);
+            color: var(--white); 
+            padding: 3rem 2rem 2rem; 
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .villa-badge span {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        /* SPACES - DARK */
+        .spaces-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .space-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 3rem;
+            transition: var(--transition);
+        }
+
+        .space-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .space-card h3 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .space-card h3 i {
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        .room-list { 
+            list-style: none; 
+        }
+
+        .room-list li { 
+            padding: 1rem 0; 
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex; 
+            align-items: center; 
+            gap: 1rem;
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+        }
+
+        .room-list li i { 
+            color: var(--gold);
+            width: 20px;
+        }
+
+        /* TARIFFE SECTION */
+        .tariffe {
+            background: var(--light-gray);
+        }
+
+        .calendar-luxury {
+            background: var(--white);
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin: 3rem 0;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .calendar-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .calendar-title { 
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--charcoal);
+        }
+
+        .calendar-btn { 
+            background: transparent;
+            color: var(--charcoal);
+            border: 1px solid var(--charcoal);
+            width: 50px; 
+            height: 50px; 
+            border-radius: 0;
+            cursor: pointer; 
+            font-size: 1rem; 
+            transition: var(--transition);
+        }
+
+        .calendar-btn:hover { 
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .calendar-grid { 
+            display: grid; 
+            grid-template-columns: repeat(7, 1fr); 
+            gap: 1px; 
+            background: var(--light-gray);
+            border: 1px solid var(--light-gray);
+        }
+
+        .calendar-day-header { 
+            background: var(--charcoal);
+            color: var(--white); 
+            padding: 1.2rem;
+            text-align: center; 
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .calendar-day { 
+            background: var(--white); 
+            min-height: 100px;
+            padding: 1rem;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            cursor: pointer; 
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .calendar-day:hover:not(.disabled):not(.closed) { 
+            background: var(--charcoal);
+            color: var(--white);
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .calendar-day:hover:not(.disabled):not(.closed) .calendar-day-number,
+        .calendar-day:hover:not(.disabled):not(.closed) .calendar-day-price {
+            color: var(--white);
+        }
+
+        .calendar-day-number { 
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--charcoal);
+        }
+
+        .calendar-day-price { 
+            font-size: 0.85rem; 
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .calendar-day.disabled { 
+            background: #f0f0f0;
+            color: #ccc; 
+            cursor: not-allowed; 
+        }
+
+        .calendar-day.closed { 
+            background: #e0e0e0;
+            color: #999; 
+            cursor: not-allowed; 
+        }
+
+        .calendar-day.selected { 
+            background: var(--gold) !important;
+            color: var(--black) !important;
+        }
+
+        .calendar-day.selected .calendar-day-number,
+        .calendar-day.selected .calendar-day-price {
+            color: var(--black) !important;
+            font-weight: 600;
+        }
+
+        .calendar-day.checkin { 
+            background: var(--charcoal) !important; 
+            color: var(--white) !important;
+        }
+
+        .calendar-day.checkout { 
+            background: var(--charcoal) !important; 
+            color: var(--white) !important;
+        }
+
+        .calendar-day.in-range { 
+            background: rgba(201, 169, 98, 0.2);
+        }
+
+        /* SELECTION INFO LUXURY */
+        .selection-info {
+            background: var(--white);
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+
+        .selection-dates {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--light-gray);
+            margin-bottom: 2rem;
+        }
+
+        .date-box {
+            text-align: center;
+        }
+
+        .date-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--medium-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .date-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+
+        .date-nights {
+            background: var(--charcoal);
+            color: var(--gold);
+            padding: 1rem 2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+
+        /* GALLERY MANSORY */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(2) {
+            grid-row: span 2;
+            aspect-ratio: auto;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+            filter: grayscale(20%);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10,10,10,0.4);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay i {
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        /* TERMS SECTION */
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .terms-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(201, 169, 98, 0.2);
+            padding: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .terms-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .terms-card h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .terms-card h3 i {
+            color: var(--gold);
+        }
+
+        .terms-card ul {
+            list-style: none;
+        }
+
+        .terms-card li {
+            padding: 0.8rem 0;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .terms-card li:before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+
+        .terms-highlight {
+            background: rgba(201, 169, 98, 0.1);
+            border-left: 3px solid var(--gold);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        /* CONTACT LUXURY */
+        .contact-form {
+            background: var(--white);
+            padding: 4rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 0;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom-color: var(--gold);
+        }
+
+        .submit-btn {
+            background: var(--charcoal);
+            color: var(--white);
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            font-weight: 500;
+        }
+
+        .submit-btn:hover {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 5rem 5% 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .social-links {
+            margin: 3rem 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .spaces-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-item:nth-child(2) { grid-row: span 1; }
+            .terms-grid { grid-template-columns: 1fr; }
+            .selection-dates { flex-direction: column; gap: 2rem; text-align: center; }
+            .feature-list { grid-template-columns: 1fr; }
+            .calendar-day { min-height: 60px; padding: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Villa <span>Gaia</span></a>
+            <ul class="nav-links">
+                <li><a href="#villa">La Villa</a></li>
+                <li><a href="#spazi">Gli Spazi</a></li>
+                <li><a href="#tariffe">Disponibilità</a></li>
+                <li><a href="#condizioni">Condizioni</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-subtitle">Luxury Estate — Leuca</span>
+            <h1>Villa Gaia</h1>
+            <p>Un'oasi di relax nel cuore del Salento</p>
+            <div class="hero-cta">
+                <a href="#tariffe" class="btn-primary">Verifica Disponibilità</a>
+                <a href="#villa" class="btn-secondary">Scopri la Villa</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section class="about" id="villa">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg">La Proprietà</span>
+            <h2 class="section-title">Una dimora esclusiva tra<br>comfort e tranquillità</h2>
+            <p>Situata in una tranquilla zona residenziale a soli 800 metri dagli stabilimenti balneari e dal centro di Leuca</p>
+        </div>
+        
+        <div class="about-grid reveal">
+            <div class="villa-photo-container">
+                <img src="./Giardino.png" alt="Villa Gaia - Giardino">
+                <div class="villa-badge">
+                    <span>Esterni</span>
+                    Giardino Terrazzato 210mq
+                </div>
+            </div>
+            <div class="about-text">
+                <h3>Il valore del relax: un rifugio di pace e serenità</h3>
+                <p>Villa Gaia è stata concepita come un autentico rifugio dove il tempo sembra scorrere più lentamente, lontano dai rumori e dalla frenesia quotidiana. La posizione strategica della proprietà garantisce la massima tranquillità, mantenendo una comoda vicinanza a tutti i servizi.</p>
+                <p>Il giardino terrazzato di 210 mq costituisce il vero cuore dell'esperienza: uno spazio verde privato dove godere delle dolci serate salentine circondati dai profumi della macchia mediterranea.</p>
+                
+                <ul class="feature-list">
+                    <li><i class="fas fa-ruler-combined"></i> 130 mq interni</li>
+                    <li><i class="fas fa-tree"></i> 210 mq giardino esclusivo</li>
+                    <li><i class="fas fa-car"></i> 3 posti auto</li>
+                    <li><i class="fas fa-paw"></i> Pet friendly</li>
+                    <li><i class="fas fa-users"></i> Fino a 8 ospiti</li>
+                    <li><i class="fas fa-wifi"></i> Wi-Fi ad alta velocità</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark-section" id="spazi">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg">Gli Interni</span>
+            <h2 class="section-title">Due livelli di eleganza</h2>
+            <p>Spazi luminosi e accoglienti pensati per il benessere</p>
+        </div>
+
+        <div class="spaces-grid reveal">
+            <div class="space-card">
+                <h3><i class="fas fa-level-up-alt"></i> Piano Rialzato</h3>
+                <p style="color: rgba(255,255,255,0.5); margin-bottom: 2rem; font-style: italic;">Zona notte</p>
+                <ul class="room-list">
+                    <li><i class="fas fa-bed"></i> Camera matrimoniale ampia</li>
+                    <li><i class="fas fa-bed"></i> Camera matrimoniale con balcone</li>
+                    <li><i class="fas fa-bed"></i> Camera singola</li>
+                    <li><i class="fas fa-bath"></i> Bagno completo con doccia</li>
+                </ul>
+            </div>
+            <div class="space-card">
+                <h3><i class="fas fa-level-down-alt"></i> Piano Inferiore</h3>
+                <p style="color: rgba(255,255,255,0.5); margin-bottom: 2rem; font-style: italic;">Zona giorno</p>
+                <ul class="room-list">
+                    <li><i class="fas fa-couch"></i> Living open space con cucina attrezzata</li>
+                    <li><i class="fas fa-bed"></i> Camera matrimoniale con terrazza</li>
+                    <li><i class="fas fa-bath"></i> Secondo bagno di servizio</li>
+                    <li><i class="fas fa-umbrella-beach"></i> Accesso diretto al giardino</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="tariffe" id="tariffe">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg">Prenotazione</span>
+            <h2 class="section-title">Calendario & Tariffe</h2>
+            <p>Seleziona le date per verificare la disponibilità e calcolare il preventivo</p>
+        </div>
+
+        <div class="calendar-luxury reveal">
+            <div class="calendar-header">
+                <button class="calendar-btn" onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
+                <div class="calendar-title" id="currentMonth">Febbraio 2026</div>
+                <button class="calendar-btn" onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="calendar-grid" id="calendarGrid">
+                <div class="calendar-day-header">Lun</div>
+                <div class="calendar-day-header">Mar</div>
+                <div class="calendar-day-header">Mer</div>
+                <div class="calendar-day-header">Gio</div>
+                <div class="calendar-day-header">Ven</div>
+                <div class="calendar-day-header">Sab</div>
+                <div class="calendar-day-header">Dom</div>
+            </div>
+        </div>
+
+        <div class="selection-info reveal" id="selectionInfo" style="display: none;">
+            <div class="selection-dates">
+                <div class="date-box">
+                    <div class="date-label"> Check-in</div>
+                    <div class="date-value" id="displayCheckin">-</div>
+                </div>
+                <div class="date-nights" id="displayNights">0 NOTTI</div>
+                <div class="date-box">
+                    <div class="date-label"> Check-out</div>
+                    <div class="date-value" id="displayCheckout">-</div>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                <div class="form-group">
+                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">
+                        <i class="fas fa-users"></i> Adulti (tassati)
+                    </label>
+                    <select id="numGuests" onchange="updateGuests()" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; font-family: inherit;">
+                        <option value="8" selected>8 adulti</option>
+                        <option value="7">7 adulti</option>
+                        <option value="6">6 adulti</option>
+                        <option value="5">5 adulti</option>
+                        <option value="4">4 adulti</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label style="display: block; margin-bottom: 0.5rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">
+                        <i class="fas fa-child"></i> Minori di 18 anni
+                    </label>
+                    <input type="number" id="numMinors" min="0" max="8" value="0" onchange="updateMinors()" 
+                           style="width: 100%; padding: 0.8rem; border: 1px solid #ddd;">
+                </div>
+            </div>
+
+            <div class="price-breakdown" style="background: var(--light-gray); padding: 2rem; margin: 2rem 0;">
+                <div class="price-row" style="display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid #ddd;">
+                    <span>Soggiorno</span>
+                    <span id="detailNights" style="font-weight: 600;">0 notti</span>
+                </div>
+                <div class="price-row" style="display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid #ddd;">
+                    <span>Alloggio base</span>
+                    <span id="detailAccommodation" style="font-weight: 600;">€0</span>
+                </div>
+                <div class="price-row" id="discountRow" style="display: none; color: var(--gold);">
+                    <span>Sconto gruppo <span id="discountPerc"></span></span>
+                    <span id="detailDiscount" style="font-weight: 600;">-€0</span>
+                </div>
+                <div class="price-row" style="display: flex; justify-content: space-between; padding: 1.5rem 0; margin-top: 1rem; border-top: 2px solid var(--charcoal); font-size: 1.2rem; font-weight: 600;">
+                    <span>TOTALE (escl. tassa soggiorno)</span>
+                    <span id="detailTotal">€0</span>
+                </div>
+                <div class="price-row" style="display: flex; justify-content: space-between; padding: 0.5rem 0; font-size: 0.9rem; color: var(--medium-gray); font-style: italic;">
+                    <span><i class="fas fa-info-circle"></i> Tassa soggiorno €2/adulto/notte (da pagare in loco)</span>
+                    <span id="detailTax">€0</span>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button onclick="resetSelection()" class="btn-primary" style="border-color: var(--charcoal); color: var(--charcoal);">
+                    <i class="fas fa-undo"></i> Annulla
+                </button>
+                <a href="#contatti" class="btn-secondary" style="background: var(--charcoal); color: var(--white);">
+                    Richiedi Prenotazione <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark-section" id="galleria">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg">Galleria</span>
+            <h2 class="section-title">Gli ambienti</h2>
+        </div>
+        <div class="gallery-grid reveal">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Living">
+                <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1522771753035-a0a1f66cd459?w=800&q=80" alt="Camera">
+                <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Cucina">
+                <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark-section" id="condizioni">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg">Informazioni</span>
+            <h2 class="section-title">Condizioni di Soggiorno</h2>
+        </div>
+
+        <div class="terms-grid reveal">
+            <div class="terms-card">
+                <h3><i class="fas fa-undo-alt"></i> Cancellazione</h3>
+                <div class="terms-highlight">
+                    <strong style="color: var(--gold);">24h gratuita</strong>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Disdici entro 24h dalla conferma senza penali</p>
+                </div>
+                <ul>
+                    <li>Check-in: 15:00 - 20:00</li>
+                    <li>Check-out: entro 10:00</li>
+                    <li>Late check-in: previo accordo</li>
+                </ul>
+            </div>
+
+            <div class="terms-card">
+                <h3><i class="fas fa-file-contract"></i> Prenotazione</h3>
+                <ul>
+                    <li>Caparra confermativa: 30%</li>
+                    <li>Invio copia bonifico via email</li>
+                    <li>Occupazione max: numero indicato</li>
+                    <li>Wi-fi: uso conforme alla legge</li>
+                    <li>No show: penali secondo tariffa</li>
+                </ul>
+            </div>
+
+            <div class="terms-card">
+                <h3><i class="fas fa-balance-scale"></i> Legale</h3>
+                <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem; line-height: 1.8; margin-bottom: 1rem;">
+                    Le parti si impegnano a risolvere bonariamente qualsiasi controversia.
+                </p>
+                <div class="terms-highlight">
+                    <strong style="color: var(--gold);">Foro competente</strong>
+                    <p style="font-size: 0.85rem; margin-top: 0.5rem;">Tribunale di Lecce - Legge italiana</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="contatti" style="background: var(--light-gray);">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg">Contatti</span>
+            <h2 class="section-title">Richiedi Informazioni</h2>
+            <p>Risposta garantita entro 24 ore</p>
+        </div>
+
+        <div style="max-width: 800px; margin: 0 auto;" class="reveal">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">
+                    <i class="fas fa-phone" style="color: var(--gold); margin-right: 0.5rem;"></i> 
+                    <a href="tel:+393202144987" style="color: var(--charcoal); text-decoration: none; font-weight: 600;">+39 320 214 4987</a>
+                </p>
+                <p style="font-size: 1.2rem;">
+                    <i class="fas fa-envelope" style="color: var(--gold); margin-right: 0.5rem;"></i> 
+                    gabrielepiccinni@gmail.com
+                </p>
+                <p style="margin-top: 1.5rem; color: var(--medium-gray);">
+                    Via Terragreci, n. 31<br>73040 Leuca (LE)
+                </p>
+            </div>
+
+            <div class="contact-form">
+                <form onsubmit="event.preventDefault(); alert('Messaggio inviato! Ti risponderemo presto.');">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" required placeholder="Il tuo nome">
+                        </div>
+                        <div class="form-group">
+                            <label>Cognome</label>
+                            <input type="text" required placeholder="Il tuo cognome">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" required placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Messaggio</label>
+                        <textarea rows="4" placeholder="Scrivi la tua richiesta..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Invia Messaggio <i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Villa <span>Gaia</span></div>
+            <p style="color: rgba(255,255,255,0.6); max-width: 400px; margin: 0 auto; line-height: 1.8;">
+                Luxury Estate nel cuore del Salento<br>
+                CIN: IT075019C200103077
+            </p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="tel:+393202144987"><i class="fas fa-phone"></i></a>
+                <a href="mailto:gabrielepiccinni@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Villa Gaia Salento Experience. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .section-header').forEach((el) => observer.observe(el));
+
+        // CALENDAR LOGIC (mantenuto dal codice originale)
+        let currentDate = new Date();
+        let checkinDate = null;
+        let checkoutDate = null;
+        let numGuests = 8;
+        let numMinors = 0;
+
+        const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
+            "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+
+        function isClosedMonth(month) {
+            return month === 10 || month === 11 || month === 0 || month === 1 || month === 2;
+        }
+
+        function getPriceForDate(date) {
+            const month = date.getMonth();
+            const day = date.getDate();
+
+            if (isClosedMonth(month)) return 0;
+            if (month === 3) return 120;
+            if (month === 4) return 120;
+            if (month === 5) return day <= 20 ? 160 : 200;
+            if (month === 6) return day <= 12 ? 220 : 280;
+            if (month === 7) return day <= 9 ? 320 : day <= 23 ? 400 : 280;
+            if (month === 8) return day <= 6 ? 240 : day <= 20 ? 200 : 160;
+            if (month === 9) return 120;
+            return 0;
+        }
+
+        function getDiscountRate(guests) {
+            if (guests == 7) return 0.10;
+            if (guests == 6) return 0.15;
+            if (guests == 5) return 0.20;
+            if (guests == 4) return 0.25;
+            return 0;
+        }
+
+        function generateCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const isClosed = isClosedMonth(month);
+
+            document.getElementById('currentMonth').textContent = 
+                monthNames[month] + ' ' + year + (isClosed ? ' (Chiuso)' : '');
+
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const startingDay = firstDay.getDay() || 7;
+            const totalDays = lastDay.getDate();
+            const closed = isClosedMonth(month);
+
+            let html = Array(7).fill(0).map((_, i) => {
+                const days = ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'];
+                return `<div class="calendar-day-header">${days[i]}</div>`;
+            }).join('');
+
+            for (let i = 1; i < startingDay; i++) {
+                html += '<div class="calendar-day disabled"></div>';
+            }
+
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            for (let day = 1; day <= totalDays; day++) {
+                const date = new Date(year, month, day);
+                const price = getPriceForDate(date);
+                const isPast = date < today;
+
+                let classes = 'calendar-day';
+                let content = '';
+
+                if (isPast) {
+                    classes += ' disabled';
+                    content = `<div class="calendar-day-number">${day}</div>`;
+                } else if (closed) {
+                    classes += ' closed';
+                    content = `<div class="calendar-day-number">${day}</div><div class="calendar-day-price">Chiuso</div>`;
+                } else {
+                    if (checkinDate && checkoutDate) {
+                        if (date.getTime() === checkinDate.getTime()) classes += ' checkin';
+                        else if (date.getTime() === checkoutDate.getTime()) classes += ' checkout';
+                        else if (date > checkinDate && date < checkoutDate) classes += ' in-range';
+                    } else if (checkinDate && date.getTime() === checkinDate.getTime()) {
+                        classes += ' selected';
+                    }
+
+                    content = `<div class="calendar-day-number">${day}</div><div class="calendar-day-price">€${price}</div>`;
+                }
+
+                const clickHandler = (closed || isPast) ? '' : `onclick="selectDate(${year}, ${month}, ${day})"`;
+                html += `<div class="${classes}" ${clickHandler}>${content}</div>`;
+            }
+
+            document.getElementById('calendarGrid').innerHTML = html;
+        }
+
+        function selectDate(year, month, day) {
+            if (isClosedMonth(month)) {
+                alert('La struttura è chiusa durante i mesi invernali (Novembre-Marzo).');
+                return;
+            }
+
+            const selectedDate = new Date(year, month, day);
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            if (selectedDate < today) return;
+
+            if (!checkinDate || (checkinDate && checkoutDate)) {
+                checkinDate = selectedDate;
+                checkoutDate = null;
+            } else if (checkinDate && !checkoutDate) {
+                if (selectedDate <= checkinDate) {
+                    alert('La data di check-out deve essere successiva al check-in');
+                    return;
+                }
+
+                let tempDate = new Date(checkinDate);
+                tempDate.setDate(tempDate.getDate() + 1);
+                let hasClosedMonth = false;
+
+                while (tempDate < selectedDate) {
+                    if (isClosedMonth(tempDate.getMonth())) {
+                        hasClosedMonth = true;
+                        break;
+                    }
+                    tempDate.setDate(tempDate.getDate() + 1);
+                }
+
+                if (hasClosedMonth) {
+                    alert('Non è possibile prenotare un soggiorno che attraversa i mesi di chiusura (Nov-Mar).');
+                    return;
+                }
+
+                checkoutDate = selectedDate;
+                calculateTotal();
+            }
+
+            generateCalendar();
+        }
+
+        function updateGuests() {
+            numGuests = parseInt(document.getElementById('numGuests').value);
+            if (numMinors > numGuests) {
+                numMinors = numGuests;
+                document.getElementById('numMinors').value = numMinors;
+            }
+            document.getElementById('numMinors').max = numGuests;
+            if (checkinDate && checkoutDate) calculateTotal();
+        }
+
+        function updateMinors() {
+            let val = parseInt(document.getElementById('numMinors').value) || 0;
+            if (val < 0) val = 0;
+            if (val > numGuests) {
+                alert('Il numero di minori non può superare il numero totale di ospiti');
+                val = numGuests;
+            }
+            numMinors = val;
+            document.getElementById('numMinors').value = numMinors;
+            if (checkinDate && checkoutDate) calculateTotal();
+        }
+
+        function calculateTotal() {
+            if (!checkinDate || !checkoutDate) return;
+
+            const diffTime = Math.abs(checkoutDate - checkinDate);
+            const nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            if (nights <= 0) return;
+
+            let totalAccommodation = 0;
+            let currentDate = new Date(checkinDate);
+
+            for (let i = 0; i < nights; i++) {
+                const dayPrice = getPriceForDate(currentDate);
+                if (dayPrice === 0) {
+                    alert('Errore: date non valide (mese chiuso)');
+                    return;
+                }
+                totalAccommodation += dayPrice;
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            const discountRate = getDiscountRate(numGuests);
+            const discountAmount = Math.round(totalAccommodation * discountRate);
+            const afterDiscount = totalAccommodation - discountAmount;
+            const touristTax = nights * numGuests * 2;
+            const cleaning = 100;
+            const total = afterDiscount + cleaning;
+
+            document.getElementById('selectionInfo').style.display = 'block';
+            document.getElementById('displayCheckin').textContent = 
+                checkinDate.getDate() + ' ' + monthNames[checkinDate.getMonth()];
+            document.getElementById('displayCheckout').textContent = 
+                checkoutDate.getDate() + ' ' + monthNames[checkoutDate.getMonth()];
+            document.getElementById('displayNights').textContent = nights + ' NOTTI';
+
+            document.getElementById('detailNights').textContent = `${nights} notti`;
+            document.getElementById('detailAccommodation').textContent = '€' + totalAccommodation;
+
+            const discountRow = document.getElementById('discountRow');
+            if (discountRate > 0) {
+                discountRow.style.display = 'flex';
+                document.getElementById('discountPerc').textContent = '-' + (discountRate * 100) + '%';
+                document.getElementById('detailDiscount').textContent = '-€' + discountAmount;
+            } else {
+                discountRow.style.display = 'none';
+            }
+
+            document.getElementById('detailTotal').textContent = '€' + total;
+            document.getElementById('detailTax').textContent = '€' + touristTax;
+
+            document.getElementById('selectionInfo').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function resetSelection() {
+            checkinDate = null;
+            checkoutDate = null;
+            numMinors = 0;
+            document.getElementById('numMinors').value = 0;
+            document.getElementById('selectionInfo').style.display = 'none';
+            generateCalendar();
+        }
+
+        function changeMonth(delta) {
+            currentDate.setMonth(currentDate.getMonth() + delta);
+            generateCalendar();
+        }
+
+        generateCalendar();
+    </script>
+</body>
+</html>
