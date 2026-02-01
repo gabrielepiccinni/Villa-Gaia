@@ -1,0 +1,3579 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Villa Gaia Salento Experience | Casa Vacanze di Lusso a Leuca</title>
+
+    <meta name="description" content="Villa Gaia - Villa vacanze di 130mq con giardino terrazzato a 800mt dal mare di Leuca. Fino a 8 posti letto, aria condizionata, posti auto privati.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+        :root {
+
+            --primary: #1e3a5f;
+
+            --secondary: #2a9d8f;
+
+            --accent: #e9c46a;
+
+            --sand: #f4a261;
+
+            --light: #f8f9fa;
+
+            --dark: #264653;
+
+            --success: #2ecc71;
+
+            --warning: #f39c12;
+
+            --danger: #e74c3c;
+
+        }
+
+
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+
+        body {
+
+            font-family: 'Montserrat', sans-serif;
+
+            line-height: 1.6;
+
+            color: #333;
+
+            overflow-x: hidden;
+
+        }
+
+
+
+        h1, h2, h3 {
+
+            font-family: 'Playfair Display', serif;
+
+        }
+
+
+
+        /* Navigation */
+
+        nav {
+
+            position: fixed;
+
+            top: 0;
+
+            width: 100%;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            backdrop-filter: blur(10px);
+
+            z-index: 1000;
+
+            padding: 1rem 5%;
+
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+
+            transition: all 0.3s ease;
+
+        }
+
+
+
+        nav.scrolled {
+
+            padding: 0.5rem 5%;
+
+        }
+
+
+
+        .nav-container {
+
+            max-width: 1400px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+
+        .logo {
+
+            font-family: 'Playfair Display', serif;
+
+            font-size: 1.8rem;
+
+            color: var(--primary);
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+        }
+
+
+
+        .logo span {
+
+            color: var(--secondary);
+
+        }
+
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 2rem;
+
+            list-style: none;
+
+        }
+
+
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: var(--dark);
+
+            font-weight: 600;
+
+            font-size: 0.9rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            position: relative;
+
+            transition: color 0.3s;
+
+        }
+
+
+
+        .nav-links a::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: -5px;
+
+            left: 0;
+
+            width: 0;
+
+            height: 2px;
+
+            background: var(--secondary);
+
+            transition: width 0.3s;
+
+        }
+
+
+
+        .nav-links a:hover::after {
+
+            width: 100%;
+
+        }
+
+
+
+        .mobile-menu {
+
+            display: none;
+
+            font-size: 1.5rem;
+
+            cursor: pointer;
+
+        }
+
+
+
+        /* Hero Section - SENZA PULSANTE */
+
+        .hero {
+
+            height: 100vh;
+
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.7), rgba(42, 157, 143, 0.4)), url('https://www.hdsalento.com/wp-content/uploads/2021/02/1024px-Tramonto_Santa_Maria_di_Leuca_-_panoramio.jpg') center/cover;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: white;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background-attachment: fixed;
+
+        }
+
+
+
+        .hero::before {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 0;
+
+            right: 0;
+
+            height: 200px;
+
+            background: linear-gradient(to top, rgba(255,255,255,1), transparent);
+
+        }
+
+
+
+        .hero-content {
+
+            z-index: 2;
+
+            animation: fadeInUp 1.2s ease;
+
+            background: rgba(0,0,0,0.3);
+
+            padding: 3rem;
+
+            border-radius: 20px;
+
+            backdrop-filter: blur(5px);
+
+        }
+
+
+
+        .hero-content h1 {
+
+            font-size: 5rem;
+
+            margin-bottom: 1rem;
+
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+
+            font-weight: 700;
+
+        }
+
+
+
+        .hero-content p {
+
+            font-size: 2rem;
+
+            margin-bottom: 0;
+
+            font-weight: 300;
+
+            letter-spacing: 4px;
+
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+
+            text-transform: uppercase;
+
+        }
+
+
+
+        .cta-button {
+
+            display: inline-block;
+
+            padding: 1rem 3rem;
+
+            background: var(--accent);
+
+            color: var(--dark);
+
+            text-decoration: none;
+
+            border-radius: 50px;
+
+            font-weight: 600;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            transition: all 0.3s ease;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+        }
+
+
+
+        .cta-button:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+
+            background: var(--sand);
+
+        }
+
+
+
+        .scroll-indicator {
+
+            position: absolute;
+
+            bottom: 40px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            animation: bounce 2s infinite;
+
+            color: var(--primary);
+
+            font-size: 2rem;
+
+            z-index: 3;
+
+        }
+
+
+
+        /* Sections General */
+
+        section {
+
+            padding: 5rem 5%;
+
+            max-width: 1400px;
+
+            margin: 0 auto;
+
+        }
+
+
+
+        .section-title {
+
+            text-align: center;
+
+            font-size: 3rem;
+
+            color: var(--primary);
+
+            margin-bottom: 1rem;
+
+            position: relative;
+
+            display: inline-block;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+        }
+
+
+
+        .section-title::after {
+
+            content: '';
+
+            position: absolute;
+
+            bottom: -10px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            width: 80px;
+
+            height: 4px;
+
+            background: var(--secondary);
+
+        }
+
+
+
+        .section-subtitle {
+
+            text-align: center;
+
+            color: #666;
+
+            font-size: 1.1rem;
+
+            margin-bottom: 3rem;
+
+            margin-top: 1.5rem;
+
+        }
+
+
+
+        /* About Section */
+
+        .about {
+
+            background: var(--light);
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+
+        .about::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: -100px;
+
+            right: -100px;
+
+            width: 400px;
+
+            height: 400px;
+
+            background: var(--secondary);
+
+            opacity: 0.1;
+
+            border-radius: 50%;
+
+        }
+
+
+
+        .about-grid {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 4rem;
+
+            align-items: center;
+
+            margin-top: 3rem;
+
+        }
+
+
+
+        .about-text {
+
+            font-size: 1.1rem;
+
+            line-height: 1.8;
+
+            color: #555;
+
+        }
+
+
+
+        .about-text p {
+
+            margin-bottom: 1.5rem;
+
+        }
+
+
+
+        .highlight-box {
+
+            background: white;
+
+            padding: 2rem;
+
+            border-radius: 15px;
+
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+
+            border-left: 5px solid var(--secondary);
+
+            margin: 2rem 0;
+
+        }
+
+
+
+        .features-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 1.5rem;
+
+            margin-top: 2rem;
+
+        }
+
+
+
+        .feature-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1rem;
+
+            padding: 1rem;
+
+            background: white;
+
+            border-radius: 10px;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+
+            transition: transform 0.3s;
+
+        }
+
+
+
+        .feature-item:hover {
+
+            transform: translateY(-5px);
+
+        }
+
+
+
+        .feature-icon {
+
+            width: 50px;
+
+            height: 50px;
+
+            background: var(--secondary);
+
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 1.3rem;
+
+        }
+
+
+
+        /* IMMAGINE VILLA SALENTINA */
+
+        .about-image {
+
+            position: relative;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+
+        }
+
+
+
+        .about-image img {
+
+            width: 100%;
+
+            height: 600px;
+
+            object-fit: cover;
+
+            transition: transform 0.5s;
+
+        }
+
+
+
+        .about-image:hover img {
+
+            transform: scale(1.05);
+
+        }
+
+
+
+        /* SEZIONE TARIFFE - NUOVA */
+
+        .tariffe {
+
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+
+        .tariffe::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: -50%;
+
+            left: -10%;
+
+            width: 600px;
+
+            height: 600px;
+
+            background: var(--secondary);
+
+            opacity: 0.05;
+
+            border-radius: 50%;
+
+        }
+
+
+
+        .pricing-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 2rem;
+
+            margin: 3rem 0;
+
+            position: relative;
+
+            z-index: 1;
+
+        }
+
+
+
+        .pricing-card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 2.5rem;
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+
+            transition: all 0.3s ease;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border: 2px solid transparent;
+
+        }
+
+
+
+        .pricing-card:hover {
+
+            transform: translateY(-10px);
+
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+
+            border-color: var(--secondary);
+
+        }
+
+
+
+        .pricing-card.featured {
+
+            border-color: var(--accent);
+
+            transform: scale(1.05);
+
+        }
+
+
+
+        .pricing-card.featured:hover {
+
+            transform: scale(1.05) translateY(-10px);
+
+        }
+
+
+
+        .pricing-badge {
+
+            position: absolute;
+
+            top: 20px;
+
+            right: -35px;
+
+            background: var(--accent);
+
+            color: var(--dark);
+
+            padding: 8px 40px;
+
+            transform: rotate(45deg);
+
+            font-size: 0.8rem;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+        }
+
+
+
+        .season-icon {
+
+            width: 80px;
+
+            height: 80px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 2rem;
+
+            margin: 0 auto 1.5rem;
+
+            color: white;
+
+        }
+
+
+
+        .low-season .season-icon { background: var(--success); }
+
+        .mid-season .season-icon { background: var(--warning); }
+
+        .high-season .season-icon { background: var(--danger); }
+
+
+
+        .pricing-card h3 {
+
+            text-align: center;
+
+            font-size: 1.8rem;
+
+            color: var(--primary);
+
+            margin-bottom: 0.5rem;
+
+        }
+
+
+
+        .price-tag-main {
+
+            text-align: center;
+
+            font-size: 3rem;
+
+            color: var(--primary);
+
+            font-weight: 700;
+
+            margin: 1.5rem 0;
+
+            font-family: 'Playfair Display', serif;
+
+        }
+
+
+
+        .price-tag-main span {
+
+            font-size: 1rem;
+
+            color: #666;
+
+            display: block;
+
+            margin-top: 0.5rem;
+
+            font-family: 'Montserrat', sans-serif;
+
+            font-weight: 400;
+
+        }
+
+
+
+        .dates-info {
+
+            background: rgba(0,0,0,0.03);
+
+            padding: 1rem;
+
+            border-radius: 10px;
+
+            margin: 1.5rem 0;
+
+            text-align: center;
+
+            font-size: 0.95rem;
+
+            color: #555;
+
+            border-left: 4px solid;
+
+        }
+
+
+
+        .low-season .dates-info { border-left-color: var(--success); }
+
+        .mid-season .dates-info { border-left-color: var(--warning); }
+
+        .high-season .dates-info { border-left-color: var(--danger); }
+
+
+
+        .features-list {
+
+            list-style: none;
+
+            margin-top: 1.5rem;
+
+        }
+
+
+
+        .features-list li {
+
+            padding: 0.7rem 0;
+
+            border-bottom: 1px solid #eee;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 0.8rem;
+
+            font-size: 0.95rem;
+
+        }
+
+
+
+        .features-list li i {
+
+            color: var(--secondary);
+
+            width: 20px;
+
+        }
+
+
+
+        .availability-status {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            margin-top: 1rem;
+
+            padding: 0.5rem 1rem;
+
+            border-radius: 20px;
+
+            font-size: 0.85rem;
+
+            font-weight: 600;
+
+        }
+
+
+
+        .available { background: rgba(46, 204, 113, 0.1); color: var(--success); }
+
+        .limited { background: rgba(243, 156, 18, 0.1); color: var(--warning); }
+
+        .booked { background: rgba(231, 76, 60, 0.1); color: var(--danger); }
+
+
+
+        /* Calcolatore Preventivo */
+
+        .calculator-box {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 3rem;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+
+            margin-top: 3rem;
+
+            border: 2px solid var(--accent);
+
+        }
+
+
+
+        .calculator-title {
+
+            text-align: center;
+
+            font-size: 1.8rem;
+
+            color: var(--primary);
+
+            margin-bottom: 2rem;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 1rem;
+
+        }
+
+
+
+        .calculator-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 1.5rem;
+
+            margin-bottom: 2rem;
+
+        }
+
+
+
+        .calc-group {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 0.5rem;
+
+        }
+
+
+
+        .calc-group label {
+
+            font-weight: 600;
+
+            color: var(--primary);
+
+            font-size: 0.9rem;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+        }
+
+
+
+        .calc-group input, .calc-group select {
+
+            padding: 1rem;
+
+            border: 2px solid #e9ecef;
+
+            border-radius: 10px;
+
+            font-family: inherit;
+
+            font-size: 1rem;
+
+            transition: all 0.3s;
+
+        }
+
+
+
+        .calc-group input:focus, .calc-group select:focus {
+
+            outline: none;
+
+            border-color: var(--secondary);
+
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.1);
+
+        }
+
+
+
+        .btn-calculate {
+
+            background: var(--secondary);
+
+            color: white;
+
+            border: none;
+
+            padding: 1.2rem 3rem;
+
+            border-radius: 50px;
+
+            font-size: 1.1rem;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            display: block;
+
+            margin: 0 auto;
+
+            transition: all 0.3s;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+        }
+
+
+
+        .btn-calculate:hover {
+
+            background: var(--primary);
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 10px 30px rgba(30, 58, 95, 0.3);
+
+        }
+
+
+
+        .result-box {
+
+            margin-top: 2rem;
+
+            padding: 2rem;
+
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+
+            border-radius: 15px;
+
+            color: white;
+
+            text-align: center;
+
+            display: none;
+
+            animation: fadeIn 0.5s;
+
+        }
+
+
+
+        .result-box.show {
+
+            display: block;
+
+        }
+
+
+
+        .result-price {
+
+            font-size: 3.5rem;
+
+            font-weight: 700;
+
+            margin: 1rem 0;
+
+            font-family: 'Playfair Display', serif;
+
+        }
+
+
+
+        .result-details {
+
+            opacity: 0.9;
+
+            font-size: 1.1rem;
+
+            line-height: 1.6;
+
+        }
+
+
+
+        .note-box {
+
+            margin-top: 2rem;
+
+            padding: 1.5rem;
+
+            background: rgba(233, 196, 106, 0.1);
+
+            border-left: 4px solid var(--accent);
+
+            border-radius: 10px;
+
+            font-size: 0.95rem;
+
+        }
+
+
+
+        .note-box strong {
+
+            color: var(--primary);
+
+        }
+
+
+
+        /* Spaces Section */
+
+        .spaces {
+
+            background: white;
+
+        }
+
+
+
+        .floor-plans {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 3rem;
+
+            margin-top: 4rem;
+
+        }
+
+
+
+        .floor-card {
+
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+
+            border-radius: 20px;
+
+            padding: 3rem;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: transform 0.3s;
+
+        }
+
+
+
+        .floor-card:hover {
+
+            transform: translateY(-10px);
+
+        }
+
+
+
+        .floor-card::before {
+
+            content: '';
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 5px;
+
+            background: var(--primary);
+
+        }
+
+
+
+        .floor-card.upper::before {
+
+            background: var(--secondary);
+
+        }
+
+
+
+        .floor-card h3 {
+
+            font-size: 2rem;
+
+            color: var(--primary);
+
+            margin-bottom: 1.5rem;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1rem;
+
+        }
+
+
+
+        .room-list {
+
+            list-style: none;
+
+            margin-top: 1.5rem;
+
+        }
+
+
+
+        .room-list li {
+
+            padding: 0.8rem 0;
+
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1rem;
+
+            font-size: 1.1rem;
+
+        }
+
+
+
+        .room-list li i {
+
+            color: var(--secondary);
+
+            width: 20px;
+
+        }
+
+
+
+        .terrace-highlight {
+
+            background: var(--accent);
+
+            color: var(--dark);
+
+            padding: 1.5rem;
+
+            border-radius: 15px;
+
+            margin-top: 2rem;
+
+            font-weight: 600;
+
+            text-align: center;
+
+        }
+
+
+
+        /* Gallery */
+
+        .gallery {
+
+            background: var(--dark);
+
+            color: white;
+
+            padding: 5rem 5%;
+
+        }
+
+
+
+        .gallery .section-title {
+
+            color: white;
+
+        }
+
+
+
+        .gallery-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 1.5rem;
+
+            margin-top: 3rem;
+
+        }
+
+
+
+        .gallery-item {
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 15px;
+
+            cursor: pointer;
+
+            height: 300px;
+
+        }
+
+
+
+        .gallery-item img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: transform 0.5s;
+
+        }
+
+
+
+        .gallery-item:hover img {
+
+            transform: scale(1.1);
+
+        }
+
+
+
+        .gallery-overlay {
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 0;
+
+            right: 0;
+
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+
+            padding: 2rem;
+
+            transform: translateY(100%);
+
+            transition: transform 0.3s;
+
+        }
+
+
+
+        .gallery-item:hover .gallery-overlay {
+
+            transform: translateY(0);
+
+        }
+
+
+
+        /* Services */
+
+        .services {
+
+            background: var(--light);
+
+        }
+
+
+
+        .services-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 2rem;
+
+            margin-top: 3rem;
+
+        }
+
+
+
+        .service-card {
+
+            background: white;
+
+            padding: 2.5rem;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+
+            transition: all 0.3s;
+
+            border: 2px solid transparent;
+
+        }
+
+
+
+        .service-card:hover {
+
+            border-color: var(--secondary);
+
+            transform: translateY(-5px);
+
+        }
+
+
+
+        .service-icon {
+
+            font-size: 3rem;
+
+            color: var(--secondary);
+
+            margin-bottom: 1rem;
+
+        }
+
+
+
+        .service-card h3 {
+
+            color: var(--primary);
+
+            margin-bottom: 0.5rem;
+
+        }
+
+
+
+        /* Location */
+
+        .location {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 0;
+
+            min-height: 600px;
+
+            padding: 0;
+
+            max-width: 100%;
+
+        }
+
+
+
+        .location-map {
+
+            background: #eee;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+
+        .location-map iframe {
+
+            width: 100%;
+
+            height: 100%;
+
+            border: none;
+
+            filter: grayscale(20%) contrast(1.1);
+
+        }
+
+
+
+        .location-info {
+
+            padding: 5rem;
+
+            background: var(--primary);
+
+            color: white;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+        }
+
+
+
+        .location-info h2 {
+
+            font-size: 3rem;
+
+            margin-bottom: 2rem;
+
+        }
+
+
+
+        .location-info p {
+
+            font-size: 1.2rem;
+
+            line-height: 1.8;
+
+            margin-bottom: 2rem;
+
+            opacity: 0.9;
+
+        }
+
+
+
+        .distance-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+            background: rgba(255,255,255,0.2);
+
+            padding: 0.8rem 1.5rem;
+
+            border-radius: 50px;
+
+            margin: 0.5rem;
+
+            font-weight: 600;
+
+        }
+
+
+
+        /* Info Section */
+
+        .info-section {
+
+            background: white;
+
+        }
+
+
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+            gap: 2rem;
+
+            margin-top: 3rem;
+
+        }
+
+
+
+        .info-card {
+
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+
+            border: 2px solid #e9ecef;
+
+            border-radius: 20px;
+
+            padding: 2.5rem;
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: all 0.3s;
+
+        }
+
+
+
+        .info-card:hover {
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+
+            border-color: var(--secondary);
+
+        }
+
+
+
+        .info-card.important {
+
+            border-color: var(--sand);
+
+            background: linear-gradient(135deg, #fff9f0 0%, #ffffff 100%);
+
+        }
+
+
+
+        .info-card h3 {
+
+            color: var(--primary);
+
+            font-size: 1.5rem;
+
+            margin-bottom: 1rem;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 0.5rem;
+
+        }
+
+
+
+        .info-card p {
+
+            color: #666;
+
+            line-height: 1.6;
+
+        }
+
+
+
+        .price-tag {
+
+            display: inline-block;
+
+            background: var(--sand);
+
+            color: white;
+
+            padding: 0.5rem 1rem;
+
+            border-radius: 20px;
+
+            font-weight: 700;
+
+            margin-top: 1rem;
+
+        }
+
+
+
+        /* Contact */
+
+        .contact {
+
+            background: linear-gradient(135deg, var(--light) 0%, #e9ecef 100%);
+
+        }
+
+
+
+        .contact-container {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 4rem;
+
+            margin-top: 3rem;
+
+        }
+
+
+
+        .contact-form {
+
+            background: white;
+
+            padding: 3rem;
+
+            border-radius: 20px;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+
+        }
+
+
+
+        .form-group {
+
+            margin-bottom: 1.5rem;
+
+        }
+
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 0.5rem;
+
+            color: var(--primary);
+
+            font-weight: 600;
+
+        }
+
+
+
+        .form-group input,
+
+        .form-group textarea,
+
+        .form-group select {
+
+            width: 100%;
+
+            padding: 1rem;
+
+            border: 2px solid #e9ecef;
+
+            border-radius: 10px;
+
+            font-family: inherit;
+
+            transition: border-color 0.3s;
+
+        }
+
+
+
+        .form-group input:focus,
+
+        .form-group textarea:focus {
+
+            outline: none;
+
+            border-color: var(--secondary);
+
+        }
+
+
+
+        .submit-btn {
+
+            width: 100%;
+
+            padding: 1.2rem;
+
+            background: var(--primary);
+
+            color: white;
+
+            border: none;
+
+            border-radius: 10px;
+
+            font-size: 1.1rem;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: all 0.3s;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+        }
+
+
+
+        .submit-btn:hover {
+
+            background: var(--secondary);
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 10px 30px rgba(42, 157, 143, 0.3);
+
+        }
+
+
+
+        .contact-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+        }
+
+
+
+        .contact-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 1.5rem;
+
+            margin-bottom: 2rem;
+
+            padding: 2rem;
+
+            background: white;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+
+            transition: transform 0.3s;
+
+        }
+
+
+
+        .contact-item:hover {
+
+            transform: translateX(10px);
+
+        }
+
+
+
+        .contact-icon {
+
+            width: 60px;
+
+            height: 60px;
+
+            background: var(--secondary);
+
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 1.5rem;
+
+            flex-shrink: 0;
+
+        }
+
+
+
+        /* Footer */
+
+        footer {
+
+            background: var(--dark);
+
+            color: white;
+
+            padding: 3rem 5%;
+
+            text-align: center;
+
+        }
+
+
+
+        .footer-content {
+
+            max-width: 1400px;
+
+            margin: 0 auto;
+
+        }
+
+
+
+        .social-links {
+
+            margin: 2rem 0;
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 1.5rem;
+
+        }
+
+
+
+        .social-links a {
+
+            width: 50px;
+
+            height: 50px;
+
+            background: rgba(255,255,255,0.1);
+
+            color: white;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-decoration: none;
+
+            transition: all 0.3s;
+
+        }
+
+
+
+        .social-links a:hover {
+
+            background: var(--secondary);
+
+            transform: translateY(-5px);
+
+        }
+
+
+
+        /* Animations */
+
+        @keyframes fadeInUp {
+
+            from {
+
+                opacity: 0;
+
+                transform: translateY(30px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: translateY(0);
+
+            }
+
+        }
+
+
+
+        @keyframes fadeIn {
+
+            from { opacity: 0; }
+
+            to { opacity: 1; }
+
+        }
+
+
+
+        @keyframes bounce {
+
+            0%, 20%, 50%, 80%, 100% {
+
+                transform: translateX(-50%) translateY(0);
+
+            }
+
+            40% {
+
+                transform: translateX(-50%) translateY(-10px);
+
+            }
+
+            60% {
+
+                transform: translateX(-50%) translateY(-5px);
+
+            }
+
+        }
+
+
+
+        .fade-in {
+
+            opacity: 0;
+
+            transform: translateY(30px);
+
+            transition: all 0.8s ease;
+
+        }
+
+
+
+        .fade-in.visible {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+
+
+        /* Responsive */
+
+        @media (max-width: 968px) {
+
+            .nav-links {
+
+                display: none;
+
+            }
+
+
+
+            .mobile-menu {
+
+                display: block;
+
+            }
+
+
+
+            .hero-content h1 {
+
+                font-size: 3rem;
+
+            }
+
+            
+
+            .hero-content p {
+
+                font-size: 1.3rem;
+
+            }
+
+
+
+            .hero-content {
+
+                margin: 0 1rem;
+
+                padding: 2rem;
+
+            }
+
+
+
+            .about-grid,
+
+            .floor-plans,
+
+            .location,
+
+            .contact-container {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+
+            .about-image img {
+
+                height: 400px;
+
+            }
+
+
+
+            .location-map {
+
+                height: 400px;
+
+            }
+
+
+
+            .section-title {
+
+                font-size: 2rem;
+
+            }
+
+
+
+            .pricing-card.featured {
+
+                transform: none;
+
+            }
+
+            
+
+            .pricing-card.featured:hover {
+
+                transform: translateY(-10px);
+
+            }
+
+            
+
+            .result-price {
+
+                font-size: 2.5rem;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+    <!-- Navigation -->
+
+    <nav id="navbar">
+
+        <div class="nav-container">
+
+            <a href="#" class="logo">Villa Gaia <span>Salento</span></a>
+
+            <ul class="nav-links">
+
+                <li><a href="#home">Home</a></li>
+
+                <li><a href="#villa">La Villa</a></li>
+
+                <li><a href="#tariffe">Tariffe</a></li>
+
+                <li><a href="#spazi">Gli Spazi</a></li>
+
+                <li><a href="#servizi">Servizi</a></li>
+
+                <li><a href="#posizione">Posizione</a></li>
+
+                <li><a href="#contatti">Contatti</a></li>
+
+            </ul>
+
+            <div class="mobile-menu" onclick="toggleMenu()">
+
+                <i class="fas fa-bars"></i>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Hero Section - SENZA PULSANTE -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Villa Gaia</h1>
+
+            <p>Salento Experience - Leuca</p>
+
+            <!-- PULSANTE RIMOSSO SU RICHIESTA -->
+
+        </div>
+
+        <div class="scroll-indicator">
+
+            <i class="fas fa-chevron-down"></i>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- About Section -->
+
+    <section class="about" id="villa">
+
+        <h2 class="section-title">La Villa</h2>
+
+        <p class="section-subtitle">Il tuo rifugio di lusso nel cuore del Salento</p>
+
+        
+
+        <div class="about-grid">
+
+            <div class="about-text fade-in">
+
+                <p>Benvenuti a <strong>Villa Gaia</strong>, situata in una tranquilla zona residenziale a soli <strong>800 metri</strong> dagli stabilimenti balneari e dal centro di Leuca, rinomata località balneare che sorge nell'insenatura tra Punta Ristola e Punta Meliso.</p>
+
+                
+
+                <p>La luminosa e accogliente villetta di <strong>130 mq</strong> rappresenta un'ottima soluzione per chi vuole trascorrere delle vacanze all'insegna del relax e della privacy grazie, anche, al suo <strong>giardino terrazzato di 210 mq</strong> di pertinenza esclusiva.</p>
+
+
+
+                <div class="highlight-box">
+
+                    <i class="fas fa-users" style="color: var(--secondary); margin-right: 10px;"></i>
+
+                    <strong>Capacità fino a 8 persone</strong> - Perfetta per famiglie o gruppi di amici
+
+                </div>
+
+
+
+                <div class="features-grid">
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon"><i class="fas fa-home"></i></div>
+
+                        <div>
+
+                            <strong>130 mq</strong><br>
+
+                            <small>Superficie interna</small>
+
+                        </div>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon"><i class="fas fa-tree"></i></div>
+
+                        <div>
+
+                            <strong>210 mq</strong><br>
+
+                            <small>Giardino privato</small>
+
+                        </div>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon"><i class="fas fa-car"></i></div>
+
+                        <div>
+
+                            <strong>3 Posti</strong><br>
+
+                            <small>Auto private</small>
+
+                        </div>
+
+                    </div>
+
+                    <div class="feature-item">
+
+                        <div class="feature-icon"><i class="fas fa-paw"></i></div>
+
+                        <div>
+
+                            <strong>Pet Friendly</strong><br>
+
+                            <small>Animali ammessi</small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="about-image fade-in">
+
+                <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Villa Salento Vista Mare">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SEZIONE TARIFFE E CALENDARIO -->
+
+    <section class="tariffe" id="tariffe">
+
+        <h2 class="section-title">Calendario & Tariffe</h2>
+
+        <p class="section-subtitle">Pianifica il tuo soggiorno e calcola il preventivo in tempo reale</p>
+
+
+
+        <div class="pricing-grid">
+
+            <!-- Bassa Stagione -->
+
+            <div class="pricing-card low-season fade-in">
+
+                <div class="season-icon">
+
+                    <i class="fas fa-snowflake"></i>
+
+                </div>
+
+                <h3>Bassa Stagione</h3>
+
+                <div class="price-tag-main">
+
+                    €140<span>/notte</span>
+
+                </div>
+
+                <div class="dates-info">
+
+                    <i class="fas fa-calendar-alt"></i> Gennaio - Giugno (escluso ponte)<br>
+
+                    Settembre - Dicembre
+
+                </div>
+
+                <ul class="features-list">
+
+                    <li><i class="fas fa-check"></i> Fino a 8 ospiti inclusi</li>
+
+                    <li><i class="fas fa-check"></i> Minimo 3 notti</li>
+
+                    <li><i class="fas fa-check"></i> Aria condizionata inclusa</li>
+
+                    <li><i class="fas fa-check"></i> WiFi gratis</li>
+
+                </ul>
+
+                <div class="availability-status available">
+
+                    <i class="fas fa-check-circle"></i> Disponibilità alta
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Media Stagione -->
+
+            <div class="pricing-card mid-season fade-in">
+
+                <div class="pricing-badge">Popolare</div>
+
+                <div class="season-icon">
+
+                    <i class="fas fa-sun"></i>
+
+                </div>
+
+                <h3>Media Stagione</h3>
+
+                <div class="price-tag-main">
+
+                    €220<span>/notte</span>
+
+                </div>
+
+                <div class="dates-info">
+
+                    <i class="fas fa-calendar-alt"></i> Giugno<br>
+
+                    Settembre<br>
+
+                    Ponti festivi (Pasqua, 25 Aprile, 1 Maggio)
+
+                </div>
+
+                <ul class="features-list">
+
+                    <li><i class="fas fa-check"></i> Fino a 8 ospiti inclusi</li>
+
+                    <li><i class="fas fa-check"></i> Minimo 5 notti</li>
+
+                    <li><i class="fas fa-check"></i> Late check-out su richiesta</li>
+
+                    <li><i class="fas fa-check"></i> Animali ammessi</li>
+
+                </ul>
+
+                <div class="availability-status limited">
+
+                    <i class="fas fa-exclamation-circle"></i> Ultimi slot disponibili
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Alta Stagione -->
+
+            <div class="pricing-card high-season featured fade-in">
+
+                <div class="pricing-badge">Top</div>
+
+                <div class="season-icon">
+
+                    <i class="fas fa-umbrella-beach"></i>
+
+                </div>
+
+                <h3>Alta Stagione</h3>
+
+                <div class="price-tag-main">
+
+                    €380<span>/notte</span>
+
+                </div>
+
+                <div class="dates-info">
+
+                    <i class="fas fa-calendar-alt"></i> Luglio - Agosto<br>
+
+                    Ferragosto incluso<br>
+
+                    Natale e Capodanno
+
+                </div>
+
+                <ul class="features-list">
+
+                    <li><i class="fas fa-check"></i> Fino a 8 ospiti inclusi</li>
+
+                    <li><i class="fas fa-check"></i> Soggiorno minimo 7 notti</li>
+
+                    <li><i class="fas fa-check"></i> Welcome pack incluso</li>
+
+                    <li><i class="fas fa-check"></i> Early check-in disponibile</li>
+
+                </ul>
+
+                <div class="availability-status limited">
+
+                    <i class="fas fa-fire"></i> Prenotazioni aperte
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Calcolatore Interattivo -->
+
+        <div class="calculator-box fade-in">
+
+            <div class="calculator-title">
+
+                <i class="fas fa-calculator"></i>
+
+                Calcola il tuo preventivo istantaneo
+
+            </div>
+
+            
+
+            <div class="calculator-grid">
+
+                <div class="calc-group">
+
+                    <label>Data arrivo</label>
+
+                    <input type="date" id="checkin" onchange="calculatePrice()">
+
+                </div>
+
+                <div class="calc-group">
+
+                    <label>Data partenza</label>
+
+                    <input type="date" id="checkout" onchange="calculatePrice()">
+
+                </div>
+
+                <div class="calc-group">
+
+                    <label>Numero ospiti</label>
+
+                    <select id="guests" onchange="calculatePrice()">
+
+                        <option value="1">1 ospite</option>
+
+                        <option value="2">2 ospiti</option>
+
+                        <option value="3">3 ospiti</option>
+
+                        <option value="4" selected>4 ospiti</option>
+
+                        <option value="5">5 ospiti</option>
+
+                        <option value="6">6 ospiti</option>
+
+                        <option value="7">7 ospiti</option>
+
+                        <option value="8">8 ospiti</option>
+
+                    </select>
+
+                </div>
+
+                <div class="calc-group">
+
+                    <label>Biancheria inclusa?</label>
+
+                    <select id="linen" onchange="calculatePrice()">
+
+                        <option value="0">No, porto la mia</option>
+
+                        <option value="15">Sì (+€15/persona)</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <button class="btn-calculate" onclick="calculatePrice()">
+
+                <i class="fas fa-euro-sign"></i> Calcola Totale
+
+            </button>
+
+
+
+            <div id="resultBox" class="result-box">
+
+                <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">Totale preventivo</div>
+
+                <div class="result-price" id="totalPrice">€0</div>
+
+                <div class="result-details" id="priceDetails">
+
+                    Seleziona le date per vedere il dettaglio
+
+                </div>
+
+                <button onclick="document.getElementById('contatti').scrollIntoView({behavior: 'smooth'})" style="margin-top: 1.5rem; padding: 0.8rem 2rem; background: white; color: var(--primary); border: none; border-radius: 25px; font-weight: 600; cursor: pointer;">
+
+                    Richiedi prenotazione
+
+                </button>
+
+            </div>
+
+
+
+            <div class="note-box">
+
+                <i class="fas fa-info-circle" style="color: var(--accent); margin-right: 0.5rem;"></i>
+
+                <strong>Note importanti:</strong> I prezzi indicati sono per la villa (fino a 8 posti). 
+
+                Spese di pulizia finale obbligatorie: <strong>€100</strong> (una tantum per soggiorno). 
+
+                Cauzione: <strong>€300</strong> (restituita al check-out). I prezzi possono variare in base alla durata del soggiorno e festività.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Spaces Section -->
+
+    <section class="spaces" id="spazi">
+
+        <h2 class="section-title">Gli Spazi</h2>
+
+        <p class="section-subtitle">Due livelli di comfort e eleganza</p>
+
+
+
+        <div class="floor-plans">
+
+            <div class="floor-card upper fade-in">
+
+                <h3><i class="fas fa-level-up-alt"></i> Piano Rialzato</h3>
+
+                <p style="margin-bottom: 1.5rem; color: #666;">Zona notte luminosa e spaziosa</p>
+
+                <ul class="room-list">
+
+                    <li><i class="fas fa-bed"></i> <strong>Camera Matrimoniale</strong> - Ampia e luminosa</li>
+
+                    <li><i class="fas fa-bed"></i> <strong>Camera Matrimoniale con Balcone</strong> - Vista panoramica</li>
+
+                    <li><i class="fas fa-bed"></i> <strong>Camera Singola</strong> - Perfetta per bambini</li>
+
+                    <li><i class="fas fa-bath"></i> <strong>Bagno</strong> - Completo di tutti i servizi</li>
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="floor-card lower fade-in">
+
+                <h3><i class="fas fa-level-down-alt"></i> Piano Inferiore</h3>
+
+                <p style="margin-bottom: 1.5rem; color: #666;">Zona giorno living e terrazza</p>
+
+                <ul class="room-list">
+
+                    <li><i class="fas fa-couch"></i> <strong>Living Open Space</strong> - Cucina attrezzata inclusa</li>
+
+                    <li><i class="fas fa-bath"></i> <strong>Bagno</strong> - Secondo servizio</li>
+
+                    <li><i class="fas fa-box"></i> <strong>Ripostiglio</strong> - Spazio extra</li>
+
+                    <li><i class="fas fa-bed"></i> <strong>Camera Matrimoniale</strong> - Accesso diretto terrazza</li>
+
+                </ul>
+
+                <div class="terrace-highlight">
+
+                    <i class="fas fa-umbrella-beach"></i> Terrazza con pergolato attrezzata per pranzi all'aperto
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Gallery -->
+
+    <section class="gallery" id="galleria">
+
+        <h2 class="section-title">Galleria</h2>
+
+        <p class="section-subtitle" style="color: #ccc;">Scopri gli ambienti della villa</p>
+
+        
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Soggiorno">
+
+                <div class="gallery-overlay">
+
+                    <h3>Living Room</h3>
+
+                    <p>Open space luminoso</p>
+
+                </div>
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1522771753035-a0a1f66cd459?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Camera">
+
+                <div class="gallery-overlay">
+
+                    <h3>Camera Matrimoniale</h3>
+
+                    <p>Comfort e relax</p>
+
+                </div>
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cucina">
+
+                <div class="gallery-overlay">
+
+                    <h3>Cucina</h3>
+
+                    <p>Totalmente attrezzata</p>
+
+                </div>
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bagno">
+
+                <div class="gallery-overlay">
+
+                    <h3>Bagno</h3>
+
+                    <p>Moderno e funzionale</p>
+
+                </div>
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Giardino">
+
+                <div class="gallery-overlay">
+
+                    <h3>Giardino Terrazzato</h3>
+
+                    <p>210 mq di privacy</p>
+
+                </div>
+
+            </div>
+
+            <div class="gallery-item">
+
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Terrazza">
+
+                <div class="gallery-overlay">
+
+                    <h3>Terrazza con Pergolato</h3>
+
+                    <p>Cene all'aperto</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Services -->
+
+    <section class="services" id="servizi">
+
+        <h2 class="section-title">Servizi</h2>
+
+        <p class="section-subtitle">Tutti i comfort per una vacanza senza pensieri</p>
+
+
+
+        <div class="services-grid">
+
+            <div class="service-card fade-in">
+
+                <div class="service-icon"><i class="fas fa-snowflake"></i></div>
+
+                <h3>Aria Condizionata</h3>
+
+                <p>Climatizzazione in tutti gli ambienti per il massimo comfort</p>
+
+            </div>
+
+            <div class="service-card fade-in">
+
+                <div class="service-icon"><i class="fas fa-tv"></i></div>
+
+                <h3>TV</h3>
+
+                <p>Televisione per le tue serate relax</p>
+
+            </div>
+
+            <div class="service-card fade-in">
+
+                <div class="service-icon"><i class="fas fa-tshirt"></i></div>
+
+                <h3>Lavatrice</h3>
+
+                <p>Disponibile per lunghi soggiorni</p>
+
+            </div>
+
+            <div class="service-card fade-in">
+
+                <div class="service-icon"><i class="fas fa-wind"></i></div>
+
+                <h3>Phon</h3>
+
+                <p>Accessorio bagno incluso</p>
+
+            </div>
+
+            <div class="service-card fade-in">
+
+                <div class="service-icon"><i class="fas fa-utensils"></i></div>
+
+                <h3>Cucina Attrezzata</h3>
+
+                <p>Forno elettrico, lavastoviglie e tutto il necessario</p>
+
+            </div>
+
+            <div class="service-card fade-in">
+
+                <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+
+                <h3>Zanzariere</h3>
+
+                <p>Protezione naturale dalle zanzare</p>
+
+            </div>
+
+            <div class="service-card fade-in">
+
+                <div class="service-icon"><i class="fas fa-wifi"></i></div>
+
+                <h3>Wi-Fi</h3>
+
+                <p>Connessione internet inclusa</p>
+
+            </div>
+
+            <div class="service-card fade-in">
+
+                <div class="service-icon"><i class="fas fa-parking"></i></div>
+
+                <h3>Parcheggio Privato</h3>
+
+                <p>3 posti auto riservati</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Location -->
+
+    <section class="location" id="posizione">
+
+        <div class="location-map">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3115.802338271!2d18.3566!3d39.7923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1344f75f5e9a5c6f%3A0xa3c3f3c3f3c3f3c3!2sLeuca%2C%20Province%20of%20Lecce%2C%20Italy!5e0!3m2!1sen!2sus!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+
+        </div>
+
+        <div class="location-info">
+
+            <h2>Leuca</h2>
+
+            <p>Il punto più a sud del Salento, dove l'Adriatico incontra lo Ionio. Villa Gaia è posizionata strategicamente tra Punta Ristola e Punta Meliso, a pochi passi dal centro storico e dalle spiagge.</p>
+
+            
+
+            <div style="margin-top: 2rem;">
+
+                <div class="distance-badge">
+
+                    <i class="fas fa-umbrella-beach"></i> 800mt dal mare
+
+                </div>
+
+                <div class="distance-badge">
+
+                    <i class="fas fa-store"></i> 800mt dal centro
+
+                </div>
+
+                <div class="distance-badge">
+
+                    <i class="fas fa-map-marker-alt"></i> Punta Meliso
+
+                </div>
+
+                <div class="distance-badge">
+
+                    <i class="fas fa-map-marker-alt"></i> Punta Ristola
+
+                </div>
+
+            </div>
+
+
+
+            <p style="margin-top: 2rem; font-style: italic; opacity: 0.8;">
+
+                "De Finibus Terrae" - Il luogo dove finisce la terra e inizia il mare
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Contact -->
+
+    <section class="contact" id="contatti">
+
+        <h2 class="section-title">Richiedi Informazioni</h2>
+
+        <p class="section-subtitle">Prenota il tuo soggiorno al miglior prezzo garantito</p>
+
+
+
+        <div class="contact-container">
+
+            <div class="contact-form fade-in">
+
+                <form id="bookingForm" onsubmit="handleSubmit(event)">
+
+                    <div class="form-group">
+
+                        <label>Nome e Cognome *</label>
+
+                        <input type="text" required placeholder="Mario Rossi">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Email *</label>
+
+                        <input type="email" required placeholder="mario@example.com">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Telefono</label>
+
+                        <input type="tel" placeholder="+39 123 456 7890">
+
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+
+                        <div class="form-group">
+
+                            <label>Check-in *</label>
+
+                            <input type="date" required>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label>Check-out *</label>
+
+                            <input type="date" required>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Numero Ospiti *</label>
+
+                        <select required>
+
+                            <option value="">Seleziona...</option>
+
+                            <option value="1">1 ospite</option>
+
+                            <option value="2">2 ospiti</option>
+
+                            <option value="3">3 ospiti</option>
+
+                            <option value="4">4 ospiti</option>
+
+                            <option value="5">5 ospiti</option>
+
+                            <option value="6">6 ospiti</option>
+
+                            <option value="7">7 ospiti</option>
+
+                            <option value="8">8 ospiti</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label>Messaggio / Richieste Speciali</label>
+
+                        <textarea rows="4" placeholder="Biancheria richiesta, arrivo tardo, animali domestici..."></textarea>
+
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+
+                        <i class="fas fa-paper-plane"></i> Invia Richiesta
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+
+            <div class="contact-info fade-in">
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+
+                        <i class="fas fa-map-marker-alt"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Indirizzo</h3>
+
+                        <p>Via della Villa, 73040 Leuca (LE)<br>Puglia, Italia</p>
+
+                    </div>
+
+                </div>
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+
+                        <i class="fas fa-phone"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Telefono</h3>
+
+                        <p>+39 123 456 7890<br>Dal lunedi alla domenica</p>
+
+                    </div>
+
+                </div>
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+
+                        <i class="fas fa-envelope"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Email</h3>
+
+                        <p>info@villagaiasalento.it<br>Risposta entro 24h</p>
+
+                    </div>
+
+                </div>
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+
+                        <i class="fas fa-clock"></i>
+
+                    </div>
+
+                    <div>
+
+                        <h3>Orari Check-in</h3>
+
+                        <p>Dalle 15:00 alle 20:00<br>Check-out entro 10:30</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-content">
+
+            <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Villa Gaia Salento Experience</h2>
+
+            <p style="opacity: 0.8; margin-bottom: 2rem;">La tua casa vacanze di lusso nel cuore del Salento</p>
+
+            
+
+            <div class="social-links">
+
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+
+                <a href="#"><i class="fab fa-airbnb"></i></a>
+
+                <a href="#"><i class="fas fa-envelope"></i></a>
+
+            </div>
+
+            
+
+            <p style="opacity: 0.6; font-size: 0.9rem;">
+
+                © 2026 Villa Gaia Salento Experience. Tutti i diritti riservati.<br>
+
+                <small>Partita IVA: IT12345678901 | CIR: LE07503591000012046</small>
+
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <script>
+
+        // Navbar scroll effect
+
+        window.addEventListener('scroll', function() {
+
+            const navbar = document.getElementById('navbar');
+
+            if (window.scrollY > 50) {
+
+                navbar.classList.add('scrolled');
+
+            } else {
+
+                navbar.classList.remove('scrolled');
+
+            }
+
+        });
+
+
+
+        // Fade in animation on scroll
+
+        const observerOptions = {
+
+            threshold: 0.1,
+
+            rootMargin: "0px 0px -50px 0px"
+
+        };
+
+
+
+        const observer = new IntersectionObserver(function(entries) {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add('visible');
+
+                }
+
+            });
+
+        }, observerOptions);
+
+
+
+        document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+
+
+        // Mobile menu toggle
+
+        function toggleMenu() {
+
+            const nav = document.querySelector('.nav-links');
+
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+
+            nav.style.position = 'absolute';
+
+            nav.style.top = '100%';
+
+            nav.style.left = '0';
+
+            nav.style.right = '0';
+
+            nav.style.background = 'white';
+
+            nav.style.flexDirection = 'column';
+
+            nav.style.padding = '2rem';
+
+            nav.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+
+        }
+
+
+
+        // Form submission
+
+        function handleSubmit(e) {
+
+            e.preventDefault();
+
+            alert('Grazie per la tua richiesta! Ti contatteremo entro 24 ore per confermare la disponibilità.');
+
+            e.target.reset();
+
+        }
+
+
+
+        // Smooth scroll for anchor links
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+
+            anchor.addEventListener('click', function (e) {
+
+                e.preventDefault();
+
+                const target = document.querySelector(this.getAttribute('href'));
+
+                if (target) {
+
+                    target.scrollIntoView({
+
+                        behavior: 'smooth',
+
+                        block: 'start'
+
+                    });
+
+                }
+
+            });
+
+        });
+
+
+
+        // CALCOLO PREZZI dinamico
+
+        function calculatePrice() {
+
+            const checkin = new Date(document.getElementById('checkin').value);
+
+            const checkout = new Date(document.getElementById('checkout').value);
+
+            const guests = parseInt(document.getElementById('guests').value);
+
+            const linenPerPerson = parseInt(document.getElementById('linen').value);
+
+            
+
+            // Validazione date
+
+            if (!checkin.getTime() || !checkout.getTime() || checkout <= checkin) {
+
+                return;
+
+            }
+
+            
+
+            // Calcolo notti
+
+            const diffTime = Math.abs(checkout - checkin);
+
+            const nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            
+
+            // Calcolo stagione
+
+            let seasonName = '';
+
+            let pricePerNight = 0;
+
+            let seasonColor = '';
+
+            
+
+            const month = checkin.getMonth(); // 0-11
+
+            const day = checkin.getDate();
+
+            
+
+            // Logica stagionale semplificata
+
+            const isHighSeason = (month === 6) || (month === 7) || // Luglio(6) e Agosto(7)
+
+                                (month === 11 && day >= 20) || // Natale
+
+                                (month === 0 && day <= 6); // Capodanno
+
+            
+
+            const isMidSeason = (month === 5) || // Giugno
+
+                               (month === 8) || // Settembre
+
+                               (month === 3 && (day >= 20 && day <= 25)) || // Pasqua/aprile
+
+                               (month === 4) || // Maggio (ponte 1 mag)
+
+                               (month === 10 && day === 1); // tutti i santi
+
+            
+
+            if (isHighSeason) {
+
+                seasonName = 'Alta Stagione';
+
+                pricePerNight = 380;
+
+                seasonColor = '#e74c3c';
+
+            } else if (isMidSeason) {
+
+                seasonName = 'Media Stagione';
+
+                pricePerNight = 220;
+
+                seasonColor = '#f39c12';
+
+            } else {
+
+                seasonName = 'Bassa Stagione';
+
+                pricePerNight = 140;
+
+                seasonColor = '#2ecc71';
+
+            }
+
+            
+
+            // Calcolo totale
+
+            const accommodationTotal = nights * pricePerNight;
+
+            const cleaningFee = 100; // Pulizia obbligatoria
+
+            const linenTotal = guests * linenPerPerson;
+
+            const total = accommodationTotal + cleaningFee + linenTotal;
+
+            
+
+            // Visualizzazione risultato
+
+            const resultBox = document.getElementById('resultBox');
+
+            const totalPrice = document.getElementById('totalPrice');
+
+            const priceDetails = document.getElementById('priceDetails');
+
+            
+
+            resultBox.classList.add('show');
+
+            totalPrice.textContent = '€' + total.toLocaleString('it-IT');
+
+            
+
+            let detailsHTML = `
+
+                <strong>${nights} notti</strong> in ${seasonName} (${pricePerNight}€/notte)<br>
+
+                Alloggio: €${accommodationTotal} | Pulizia: €${cleaningFee}
+
+                ${linenTotal > 0 ? `<br>Biancheria (${guests} persone): €${linenTotal}` : ''}
+
+            `;
+
+            
+
+            // Soggiorno minimo check
+
+            let minNights = 3;
+
+            if (isHighSeason) minNights = 7;
+
+            else if (isMidSeason) minNights = 5;
+
+            
+
+            if (nights < minNights) {
+
+                detailsHTML += `<br><span style="color: #ffeb3b; font-weight: bold;"><i class="fas fa-exclamation-triangle"></i> Minimo ${minNights} notti richiesto per questa stagione</span>`;
+
+                totalPrice.style.opacity = '0.6';
+
+            } else {
+
+                totalPrice.style.opacity = '1';
+
+            }
+
+            
+
+            priceDetails.innerHTML = detailsHTML;
+
+        }
+
+
+
+        // Imposta date minime (oggi)
+
+        const today = new Date().toISOString().split('T')[0];
+
+        document.getElementById('checkin').min = today;
+
+        document.getElementById('checkout').min = today;
+
+    </script>
+
+</body>
+
+</html>
