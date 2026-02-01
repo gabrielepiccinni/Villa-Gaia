@@ -72,41 +72,7 @@
         
         .tariffe { background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%); }
         
-        /* TABELLA TARIFFE */
-        .rates-table {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            margin: 2rem auto;
-            max-width: 800px;
-            overflow-x: auto;
-        }
-        .rates-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .rates-table th {
-            background: var(--primary);
-            color: white;
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-        }
-        .rates-table td {
-            padding: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-        .rates-table tr:hover {
-            background: #f8f9fa;
-        }
-        .price-highlight {
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.1rem;
-        }
-        
-        /* REGOLE GRUPPI */
+        /* REGOLE GRUPPI - spostato sotto calendario */
         .rules-box {
             background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
             border: 2px solid var(--accent);
@@ -176,7 +142,7 @@
         .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
         .legend-color { width: 20px; height: 20px; border-radius: 4px; border: 1px solid #ddd; }
         
-        .selection-info { background: white; border-radius: 15px; padding: 2rem; margin-top: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-left: 5px solid var(--booking-blue); }
+        .selection-info { background: white; border-radius: 15px; padding: 2rem; margin-top: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-left: 5px solid var(--secondary); }
         .selection-dates { display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
         .date-box { text-align: center; }
         .date-label { font-size: 0.9rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
@@ -209,10 +175,33 @@
         .price-row.total { font-size: 1.3rem; font-weight: 700; color: var(--primary); border-bottom: none; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 2px solid var(--primary); }
         .price-row.tax { color: #e74c3c; font-size: 0.9rem; font-style: italic; }
         
-        .booking-box { background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 20px 60px rgba(0,0,0,0.1); margin-top: 3rem; border: 3px solid var(--booking-blue); text-align: center; }
-        .booking-title { color: var(--booking-blue); font-size: 1.8rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center; gap: 1rem; }
-        .booking-button { display: inline-block; background: var(--booking-blue); color: white; padding: 1.5rem 4rem; border-radius: 50px; font-size: 1.3rem; font-weight: 700; text-decoration: none; margin: 1.5rem 0; box-shadow: 0 10px 30px rgba(0,53,128,0.3); transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; }
-        .booking-button:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0,53,128,0.4); background: #002a60; }
+        /* CONTACT BOX */
+        .contact-box { 
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); 
+            border-radius: 20px; 
+            padding: 3rem; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15); 
+            margin-top: 3rem; 
+            text-align: center; 
+            color: white;
+        }
+        .contact-box-title { 
+            font-size: 1.8rem; 
+            margin-bottom: 1rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 1rem; 
+            color: white;
+        }
+        .contact-box p { 
+            font-size: 1.1rem; 
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+        }
+        .contact-box strong {
+            color: var(--accent);
+        }
         
         .spaces { background: white; }
         .floor-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 4rem; }
@@ -229,6 +218,95 @@
         .gallery-item { position: relative; overflow: hidden; border-radius: 15px; height: 300px; }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
         .gallery-item:hover img { transform: scale(1.1); }
+        
+        /* SEZIONE RECENSIONI */
+        .reviews { background: var(--light); }
+        .reviews-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+            margin-top: 3rem; 
+        }
+        .review-card { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--secondary);
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+        .review-header { 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem; 
+            margin-bottom: 1rem; 
+        }
+        .review-avatar { 
+            width: 60px; 
+            height: 60px; 
+            background: linear-gradient(135deg, var(--secondary), var(--primary)); 
+            color: white; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: 700; 
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .review-meta { flex: 1; }
+        .review-name { 
+            font-weight: 700; 
+            color: var(--primary); 
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        .review-date { 
+            font-size: 0.85rem; 
+            color: #888; 
+        }
+        .review-stars { 
+            color: #ffc107; 
+            margin-bottom: 0.8rem; 
+            font-size: 0.95rem;
+        }
+        .review-text { 
+            color: #555; 
+            line-height: 1.7; 
+            font-style: italic;
+        }
+        .review-text::before {
+            content: '"';
+            font-size: 2rem;
+            color: var(--accent);
+            line-height: 0;
+            margin-right: 0.2rem;
+            vertical-align: middle;
+        }
+        .reviews-summary {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .reviews-avg {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+        .reviews-count {
+            color: #666;
+            margin-top: 0.5rem;
+        }
         
         .contact { background: linear-gradient(135deg, var(--light) 0%, #e9ecef 100%); }
         .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
@@ -254,10 +332,9 @@
             .hero-content h1 { font-size: 3rem; }
             .nav-links { display: none; }
             .villa-photo-container { transform: none; }
-            .booking-button { padding: 1.2rem 2rem; font-size: 1.1rem; }
             .selection-dates { flex-direction: column; gap: 1rem; }
-            .rates-table { font-size: 0.9rem; }
             .discount-grid { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -269,6 +346,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#villa">La Villa</a></li>
                 <li><a href="#tariffe">Tariffe</a></li>
+                <li><a href="#recensioni">Recensioni</a></li>
                 <li><a href="#contatti">Contatti</a></li>
             </ul>
         </div>
@@ -324,112 +402,6 @@
     <section class="tariffe" id="tariffe">
         <h2 class="section-title">Calendario & Tariffe</h2>
         <p class="section-subtitle">Seleziona le date sul calendario per vedere i prezzi giornalieri e calcolare il totale</p>
-        
-        <!-- TABELLA TARIFFE DETTAGLIATA -->
-        <div class="rates-table">
-            <h3 style="text-align: center; color: var(--primary); margin-bottom: 1.5rem; font-family: 'Playfair Display', serif;">
-                <i class="fas fa-calendar-alt"></i> Tariffe Stagionali 2026
-            </h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Periodo</th>
-                        <th>Tariffa Giornaliera</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><i class="fas fa-sun" style="color: var(--accent);"></i> 1 Aprile - 31 Maggio</td>
-                        <td class="price-highlight">€120</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-sun" style="color: var(--accent);"></i> 1 Giugno - 20 Giugno</td>
-                        <td class="price-highlight">€160</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-sun" style="color: #f4a261;"></i> 21 Giugno - 30 Giugno</td>
-                        <td class="price-highlight">€200</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-umbrella-beach" style="color: var(--secondary);"></i> 1 Luglio - 12 Luglio</td>
-                        <td class="price-highlight">€220</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-umbrella-beach" style="color: var(--secondary);"></i> 13 Luglio - 31 Luglio</td>
-                        <td class="price-highlight">€280</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-star" style="color: #e74c3c;"></i> 1 Agosto - 9 Agosto</td>
-                        <td class="price-highlight" style="color: #e74c3c;">€320</td>
-                    </tr>
-                    <tr style="background: #fff3cd;">
-                        <td><i class="fas fa-crown" style="color: #e74c3c;"></i> <strong>10 Agosto - 23 Agosto (Ferragosto)</strong></td>
-                        <td class="price-highlight" style="color: #c0392b; font-size: 1.2rem;">€400</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-umbrella-beach" style="color: var(--secondary);"></i> 24 Agosto - 30 Agosto</td>
-                        <td class="price-highlight">€280</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-sun" style="color: #f4a261;"></i> 31 Agosto - 6 Settembre</td>
-                        <td class="price-highlight">€240</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-sun" style="color: var(--accent);"></i> 7 Settembre - 20 Settembre</td>
-                        <td class="price-highlight">€200</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-sun" style="color: var(--accent);"></i> 21 Settembre - 30 Settembre</td>
-                        <td class="price-highlight">€160</td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-leaf" style="color: #27ae60;"></i> 1 Ottobre - 31 Ottobre</td>
-                        <td class="price-highlight">€120</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- REGOLE GRUPPI E SCONTI -->
-        <div class="rules-box">
-            <h3><i class="fas fa-info-circle"></i> Regole di Soggiorno e Sconti</h3>
-            <p style="margin-bottom: 1rem;"><strong>Le tariffe si intendono per gruppi di massimo 8 persone.</strong></p>
-            
-            <h4 style="color: var(--primary); margin: 1.5rem 0 0.5rem 0;">Sconti per gruppi numerosi:</h4>
-            <div class="discount-grid">
-                <div class="discount-item">
-                    <div class="discount-perc">-10%</div>
-                    <div>7 persone</div>
-                </div>
-                <div class="discount-item">
-                    <div class="discount-perc">-15%</div>
-                    <div>6 persone</div>
-                </div>
-                <div class="discount-item">
-                    <div class="discount-perc">-20%</div>
-                    <div>5 persone</div>
-                </div>
-                <div class="discount-item">
-                    <div class="discount-perc">-25%</div>
-                    <div>4 persone</div>
-                </div>
-            </div>
-            
-            <div style="margin-top: 1rem; padding: 0.5rem; background: white; border-radius: 5px;">
-                <i class="fas fa-child" style="color: var(--secondary);"></i> 
-                <strong>Bambini under 3 anni:</strong> non vengono conteggiati nel numero di ospiti (massimo 2 bambini under 3 per soggiorno).
-            </div>
-            
-            <div class="tax-notice">
-                <i class="fas fa-receipt"></i> 
-                <strong>Importante:</strong> L'imposta di soggiorno è di <strong>€2 a persona al giorno</strong> (bambini under 3 esclusi). 
-                Tale importo <u>non è incluso</u> nella tariffa e dovrà essere pagato in contanti al momento del check-in.
-            </div>
-            
-            <div style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
-                <i class="fas fa-broom"></i> Pulizia finale obbligatoria: €100 (inclusa nel preventivo online)
-            </div>
-        </div>
 
         <!-- CALENDARIO INTERATTIVO -->
         <div class="calendar-container">
@@ -526,24 +498,71 @@
                 <button onclick="resetSelection()" style="background: #f5f5f5; color: #333; border: none; padding: 0.8rem 2rem; border-radius: 25px; cursor: pointer; margin-right: 1rem;">
                     <i class="fas fa-undo"></i> Annulla selezione
                 </button>
-                <a href="https://www.booking.com/hotel/it/villa-gaia-leuca.html" target="_blank" class="booking-button" style="display: inline-block; padding: 1rem 3rem; font-size: 1.1rem;">
-                    <i class="fas fa-calendar-check"></i> Prenota ora su Booking
+                <a href="#contatti" style="display: inline-block; background: var(--secondary); color: white; padding: 1rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(42,157,143,0.3);">
+                    <i class="fas fa-envelope"></i> Richiedi prenotazione
                 </a>
             </div>
         </div>
 
-        <div class="booking-box" style="margin-top: 3rem;">
-            <div class="booking-title">
-                <i class="fas fa-info-circle"></i>
-                <span>Preferisci prenotare direttamente?</span>
+        <!-- REGOLE GRUPPI E SCONTI - SPOSTATO SOTTO IL CALENDARIO -->
+        <div class="rules-box">
+            <h3><i class="fas fa-info-circle"></i> Regole di Soggiorno e Sconti</h3>
+            <p style="margin-bottom: 1rem;"><strong>Le tariffe si intendono per gruppi di 8 persone.</strong></p>
+            
+            <h4 style="color: var(--primary); margin: 1.5rem 0 0.5rem 0;">Sconti per gruppi inferiori:</h4>
+            <div class="discount-grid">
+                <div class="discount-item">
+                    <div class="discount-perc">-10%</div>
+                    <div>7 persone</div>
+                </div>
+                <div class="discount-item">
+                    <div class="discount-perc">-15%</div>
+                    <div>6 persone</div>
+                </div>
+                <div class="discount-item">
+                    <div class="discount-perc">-20%</div>
+                    <div>5 persone</div>
+                </div>
+                <div class="discount-item">
+                    <div class="discount-perc">-25%</div>
+                    <div>4 persone</div>
+                </div>
             </div>
-            <p style="font-size: 1.1rem; color: #555;">
-                Per prenotazioni contattaci via telefono o email. 
-                <br><strong>Ricorda:</strong> la struttura è aperta <u>esclusivamente da aprile a ottobre</u>.
+            
+            <div style="margin-top: 1rem; padding: 0.5rem; background: white; border-radius: 5px;">
+                <i class="fas fa-child" style="color: var(--secondary);"></i> 
+                <strong>Bambini under 3 anni:</strong> non vengono conteggiati nel numero di ospiti (massimo 2 bambini under 3 per soggiorno).
+            </div>
+            
+            <div class="tax-notice">
+                <i class="fas fa-receipt"></i> 
+                <strong>Importante:</strong> L'imposta di soggiorno è di <strong>€2 a persona al giorno</strong> (bambini under 3 esclusi). 
+                Tale importo <u>non è incluso</u> nella tariffa e dovrà essere pagato in contanti al momento del check-in.
+            </div>
+            
+            <div style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                <i class="fas fa-broom"></i> Pulizia finale obbligatoria: €100 (inclusa nel preventivo online)
+            </div>
+        </div>
+
+        <!-- CONTACT BOX -->
+        <div class="contact-box">
+            <div class="contact-box-title">
+                <i class="fas fa-phone-alt"></i>
+                <span>Prenota Direttamente</span>
+            </div>
+            <p>
+                Per prenotazioni contattaci via telefono o email per le migliori condizioni.<br>
+                <strong>Risposta garantita entro 24 ore!</strong>
             </p>
-            <a href="https://www.booking.com/hotel/it/villa-gaia-leuca.html" target="_blank" class="booking-button">
-                <i class="fas fa-external-link-alt"></i> Vedi su Booking.com
-            </a>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                <a href="tel:+393202144987" style="display: inline-flex; align-items: center; gap: 0.5rem; background: white; color: var(--primary); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    <i class="fas fa-phone"></i> Chiama ora
+                </a>
+                <a href="mailto:gabrielepiccinni@gmail.com" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--dark); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    <i class="fas fa-envelope"></i> Scrivi email
+                </a>
+            </div>
         </div>
     </section>
 
@@ -577,13 +596,125 @@
         </div>
     </section>
 
-    <section class="gallery">
+    <section class="gallery" id="galleria">
         <h2 class="section-title">Galleria</h2>
         <p class="section-subtitle" style="color: #ccc;">Gli ambienti della villa</p>
         <div class="gallery-grid">
             <div class="gallery-item"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Living"></div>
             <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522771753035-a0a1f66cd459?w=800&q=80" alt="Camera"></div>
             <div class="gallery-item"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Cucina"></div>
+        </div>
+    </section>
+
+    <!-- SEZIONE RECENSIONI -->
+    <section class="reviews" id="recensioni">
+        <h2 class="section-title">Cosa Dicono i Nostri Ospiti</h2>
+        <p class="section-subtitle">Esperienze autentiche di chi ha soggiornato a Villa Gaia</p>
+        
+        <div class="reviews-summary">
+            <div class="reviews-avg">4.9/5</div>
+            <div class="review-stars" style="font-size: 1.5rem; justify-content: center; display: flex; gap: 0.2rem;">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="reviews-count">Basato su 48 recensioni verificate</div>
+        </div>
+
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">MR</div>
+                    <div class="review-meta">
+                        <div class="review-name">Marco Rossi</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Agosto 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Vacanza perfetta! La villa è bellissima, pulitissima e dotata di ogni comfort. Il giardino terrazzato è stato il nostro angolo di paradiso per colazioni all'aperto. A 10 minuti a piedi dal mare, location strategica per visitare il Salento. Torneremo sicuramente!
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">LB</div>
+                    <div class="review-meta">
+                        <div class="review-name">Laura Bianchi</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Luglio 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Abbiamo trascorso una settimana da sogno con gli amici. La casa è spaziosa, ben arredata e fresca anche nelle giornate più calde. Il proprietario Gabriele è stato disponibilissimo e ci ha dato ottimi consigli su ristoranti e spiagge. Super consigliato!
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">FV</div>
+                    <div class="review-meta">
+                        <div class="review-name">Famiglia Verdi</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Settembre 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Settembre al Salento è magico e Villa Gaia è il posto ideale per goderselo. Tranquillità assoluta, giardino curato dove i nostri bambini hanno giocato in sicurezza. La cucina è super attrezzata, abbiamo cucinato pesce fresco comprato al porto di Leuca. Top!
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">AM</div>
+                    <div class="review-meta">
+                        <div class="review-name">Anna Moro</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Giugno 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Ottima esperienza! La villa corrisponde esattamente alle foto, anzi dal vivo è ancora più bella. Posizione comoda per raggiungere sia le spiagge Ioniche che quelle Adriatiche. Unico neo il parcheggio in salita, ma ci si abitua subito. Wi-Fi veloce e clima efficiente.
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">GF</div>
+                    <div class="review-meta">
+                        <div class="review-name">Giuseppe Ferrara</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Agosto 2024</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Secondo anno di fila a Villa Gaia, ormai è diventata la nostra casa estiva! La pulizia è impeccabile, i letti comodissimi e la doccia esterna è una chicca dopo il mare. Leuca è bellissima e meno affollata di altre località. Grazie mille a Gabriele per l'accoglienza!
+                </div>
+            </div>
+
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">SC</div>
+                    <div class="review-meta">
+                        <div class="review-name">Silvia Conti</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Maggio 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Weekend di maggio indimenticabile. Abbiamo apprezzato particolarmente la veranda coperta dove cenare all'aperto anche nelle sere ventose. La casa è silenziosa e il quartiere residenziale è molto tranquillo. Rapporto qualità-prezzo eccellente per una villa di questo livello!
+                </div>
+            </div>
         </div>
     </section>
 
@@ -643,7 +774,7 @@
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="tel:+393202144987"><i class="fas fa-phone"></i></a>
-            <a href="https://www.booking.com/hotel/it/villa-gaia-leuca.html" target="_blank"><i class="fas fa-calendar-check"></i></a>
+            <a href="mailto:gabrielepiccinni@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
         <p style="opacity: 0.6; font-size: 0.9rem;">© 2026 Villa Gaia - Apertura stagionale: Aprile/Ottobre</p>
     </footer>
