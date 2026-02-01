@@ -29,11 +29,24 @@
         .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--secondary); transition: width 0.3s; }
         .nav-links a:hover::after { width: 100%; }
         
-        .hero { height: 100vh; background: linear-gradient(135deg, rgba(30,58,95,0.7), rgba(42,157,143,0.4)), url('https://www.hdsalento.com/wp-content/uploads/2021/02/1024px-Tramonto_Santa_Maria_di_Leuca_-_panoramio.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; background-attachment: fixed; }
-        .hero-content { z-index: 2; background: rgba(0,0,0,0.3); padding: 3rem; border-radius: 20px; backdrop-filter: blur(5px); }
-        .hero-content h1 { font-size: 5rem; margin-bottom: 1rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.6); }
-        .hero-content p { font-size: 2rem; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; }
-        .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; color: var(--primary); font-size: 2rem; }
+        /* NUOVA HERO CON COLORI PIÙ ACCESI - Tramonto intenso Leuca */
+        .hero { 
+            height: 100vh; 
+            background: linear-gradient(135deg, rgba(30,58,95,0.4), rgba(231,76,60,0.3)), 
+            url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: white; 
+            position: relative; 
+            background-attachment: fixed;
+            background-position: center 30%;
+        }
+        .hero-content { z-index: 2; background: rgba(0,0,0,0.2); padding: 3rem; border-radius: 20px; backdrop-filter: blur(3px); border: 1px solid rgba(255,255,255,0.2); }
+        .hero-content h1 { font-size: 5rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.8); color: #fff; }
+        .hero-content p { font-size: 2rem; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: #fff; text-shadow: 2px 2px 6px rgba(0,0,0,0.8); }
+        .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; color: white; font-size: 2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
         
         section { padding: 5rem 5%; max-width: 1400px; margin: 0 auto; }
         .section-title { text-align: center; font-size: 3rem; color: var(--primary); margin-bottom: 1rem; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
@@ -48,18 +61,68 @@
         .feature-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .feature-icon { width: 50px; height: 50px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
         
+        /* Stili per la nuova foto della villa */
+        .villa-photo-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.3);
+            transform: rotate(-1deg);
+            transition: transform 0.3s;
+        }
+        .villa-photo-container:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+        .villa-photo-container img { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+        }
+        .villa-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
         .tariffe { background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%); }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0; }
-        .pricing-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: 0 15px 40px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem; margin: 3rem 0; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .pricing-card { background: white; border-radius: 20px; padding: 3rem; box-shadow: 0 15px 40px rgba(0,0,0,0.08); text-align: center; transition: transform 0.3s; position: relative; }
         .pricing-card:hover { transform: translateY(-10px); }
-        .pricing-card.featured { border: 2px solid var(--accent); transform: scale(1.05); }
-        .season-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem; color: white; }
-        .low-season .season-icon { background: #2ecc71; }
-        .mid-season .season-icon { background: #f39c12; }
-        .high-season .season-icon { background: #e74c3c; }
-        .price-tag-main { font-size: 3rem; color: var(--primary); font-weight: 700; margin: 1.5rem 0; font-family: 'Playfair Display', serif; }
+        .pricing-card.featured { border: 3px solid var(--accent); transform: scale(1.05); }
+        .pricing-card.featured:hover { transform: scale(1.05) translateY(-10px); }
+        
+        .season-label { 
+            display: inline-block; 
+            background: var(--secondary); 
+            color: white; 
+            padding: 0.5rem 1.5rem; 
+            border-radius: 20px; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        .high-season .season-label { background: #e74c3c; }
+        
+        .price-prefix { 
+            font-size: 1.1rem; 
+            color: #666; 
+            display: block; 
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .price-tag-main { font-size: 3.5rem; color: var(--primary); font-weight: 700; margin: 1rem 0; font-family: 'Playfair Display', serif; }
         .price-tag-main span { font-size: 1rem; color: #666; display: block; margin-top: 0.5rem; font-family: 'Montserrat', sans-serif; font-weight: 400; }
-        .dates-info { background: rgba(0,0,0,0.03); padding: 1rem; border-radius: 10px; margin: 1.5rem 0; font-size: 0.95rem; color: #555; }
+        
+        .dates-info { background: rgba(0,0,0,0.03); padding: 1.5rem; border-radius: 10px; margin: 2rem 0; font-size: 1rem; color: #555; line-height: 1.8; }
         .features-list { list-style: none; text-align: left; margin-top: 1.5rem; }
         .features-list li { padding: 0.7rem 0; border-bottom: 1px solid #eee; display: flex; align-items: center; gap: 0.8rem; }
         .features-list li i { color: var(--secondary); }
@@ -113,8 +176,11 @@
         
         @media (max-width: 968px) {
             .about-grid, .floor-plans, .contact-container { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
             .hero-content h1 { font-size: 3rem; }
             .nav-links { display: none; }
+            .pricing-card.featured { transform: none; }
+            .villa-photo-container { transform: none; }
         }
     </style>
 </head>
@@ -171,57 +237,76 @@
                     </div>
                 </div>
             </div>
-            <div style="text-align: center;">
-                <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&w=800&q=80" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.2);" alt="Villa">
+            
+            <!-- NUOVA FOTO DELLA VILLA REALE -->
+            <div class="villa-photo-container">
+                <!-- 
+                IMPORTANTE: Devi caricare la foto "Giardino.png" su GitHub nel tuo repository.
+                1. Vai su https://github.com/gabrielepiccinni/Villa-Gaia
+                2. Clicca "Add file" → "Upload files"
+                3. Carica la foto Giardino.png
+                4. Poi sostituisci il src qui sotto con: ./Giardino.png o il link diretto
+                -->
+                <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&w=800&q=80" alt="Villa Gaia - Giardino Terrazzato" id="villa-img">
+                <div class="villa-badge">
+                    <i class="fas fa-camera"></i> Il Giardino
+                </div>
             </div>
         </div>
     </section>
 
     <section class="tariffe" id="tariffe">
         <h2 class="section-title">Calendario & Tariffe</h2>
-        <p class="section-subtitle">Pianifica il tuo soggiorno e calcola il preventivo</p>
+        <p class="section-subtitle">Pianifica il tuo soggiorno e calcola il preventivo in tempo reale</p>
         
         <div class="pricing-grid">
+            <!-- Bassa Stagione - Prezzo aggiornato a 120€ -->
             <div class="pricing-card low-season">
-                <div class="season-icon"><i class="fas fa-snowflake"></i></div>
+                <div class="season-label">Stagione</div>
                 <h3>Bassa Stagione</h3>
-                <div class="price-tag-main">€140<span>/notte</span></div>
-                <div class="dates-info">Gennaio-Giugno<br>Settembre-Dicembre</div>
+                <span class="price-prefix">a partire da</span>
+                <div class="price-tag-main">€120<span>/notte</span></div>
+                <div class="dates-info">
+                    <strong>Gennaio - Marzo</strong><br>
+                    <strong>Aprile - Giugno</strong><br>
+                    <strong>Settembre - Ottobre</strong><br>
+                    <strong>Novembre - Dicembre</strong><br>
+                    <small>(esclusi ponti e festività)</small>
+                </div>
                 <ul class="features-list">
-                    <li><i class="fas fa-check"></i> Fino a 8 ospiti</li>
+                    <li><i class="fas fa-check"></i> Fino a 8 ospiti inclusi</li>
                     <li><i class="fas fa-check"></i> Minimo 3 notti</li>
-                    <li><i class="fas fa-check"></i> Aria condizionata</li>
-                    <li><i class="fas fa-check"></i> WiFi gratis</li>
+                    <li><i class="fas fa-check"></i> Aria condizionata inclusa</li>
+                    <li><i class="fas fa-check"></i> WiFi gratuito</li>
+                    <li><i class="fas fa-check"></i> Posti auto privati</li>
                 </ul>
             </div>
             
-            <div class="pricing-card mid-season">
-                <div class="season-icon"><i class="fas fa-sun"></i></div>
-                <h3>Media Stagione</h3>
-                <div class="price-tag-main">€220<span>/notte</span></div>
-                <div class="dates-info">Giugno, Settembre<br>Ponti festivi</div>
-                <ul class="features-list">
-                    <li><i class="fas fa-check"></i> Fino a 8 ospiti</li>
-                    <li><i class="fas fa-check"></i> Minimo 5 notti</li>
-                    <li><i class="fas fa-check"></i> Animali ammessi</li>
-                </ul>
-            </div>
-            
+            <!-- Alta Stagione - Prezzo aggiornato a 240€ -->
             <div class="pricing-card high-season featured">
-                <div class="season-icon"><i class="fas fa-umbrella-beach"></i></div>
+                <div class="season-label">Top Season</div>
                 <h3>Alta Stagione</h3>
-                <div class="price-tag-main">€380<span>/notte</span></div>
-                <div class="dates-info">Luglio-Agosto<br>Natale e Capodanno</div>
+                <span class="price-prefix">a partire da</span>
+                <div class="price-tag-main">€240<span>/notte</span></div>
+                <div class="dates-info">
+                    <strong>Luglio - Agosto</strong><br>
+                    <strong>Ferragosto</strong><br>
+                    <strong>Natale e Capodanno</strong><br>
+                    <strong>Ponti festivi</strong><br>
+                    <small>(Pasqua, 25 Aprile, 1 Maggio)</small>
+                </div>
                 <ul class="features-list">
-                    <li><i class="fas fa-check"></i> Fino a 8 ospiti</li>
-                    <li><i class="fas fa-check"></i> Minimo 7 notti</li>
-                    <li><i class="fas fa-check"></i> Welcome pack</li>
+                    <li><i class="fas fa-check"></i> Fino a 8 ospiti inclusi</li>
+                    <li><i class="fas fa-check"></i> Soggiorno minimo 7 notti</li>
+                    <li><i class="fas fa-check"></i> Welcome pack di benvenuto</li>
+                    <li><i class="fas fa-check"></i> Early check-in disponibile</li>
+                    <li><i class="fas fa-check"></i> Late check-out su richiesta</li>
                 </ul>
             </div>
         </div>
 
         <div class="calculator-box">
-            <h3 style="text-align: center; margin-bottom: 2rem;"><i class="fas fa-calculator"></i> Calcola il tuo preventivo</h3>
+            <h3 style="text-align: center; margin-bottom: 2rem; color: var(--primary);"><i class="fas fa-calculator"></i> Calcola il tuo preventivo istantaneo</h3>
             <div class="calculator-grid">
                 <div class="calc-group">
                     <label>Data arrivo</label>
@@ -232,36 +317,43 @@
                     <input type="date" id="checkout" onchange="calculatePrice()">
                 </div>
                 <div class="calc-group">
-                    <label>Ospiti</label>
+                    <label>Numero ospiti</label>
                     <select id="guests" onchange="calculatePrice()">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
+                        <option value="1">1 ospite</option>
+                        <option value="2" selected>2 ospiti</option>
+                        <option value="3">3 ospiti</option>
+                        <option value="4">4 ospiti</option>
+                        <option value="5">5 ospiti</option>
+                        <option value="6">6 ospiti</option>
+                        <option value="7">7 ospiti</option>
+                        <option value="8">8 ospiti</option>
                     </select>
                 </div>
                 <div class="calc-group">
-                    <label>Biancheria (+€15/pers.)</label>
+                    <label>Biancheria inclusa?</label>
                     <select id="linen" onchange="calculatePrice()">
-                        <option value="0">No</option>
-                        <option value="15">Sì</option>
+                        <option value="0">No, porto la mia</option>
+                        <option value="15">Sì (+€15/persona)</option>
                     </select>
                 </div>
             </div>
-            <button class="btn-calculate" onclick="calculatePrice()">Calcola Totale</button>
+            <button class="btn-calculate" onclick="calculatePrice()">
+                <i class="fas fa-euro-sign"></i> Calcola Totale
+            </button>
             
             <div id="resultBox" class="result-box">
-                <div>Totale preventivo</div>
+                <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">Totale preventivo</div>
                 <div class="result-price" id="totalPrice">€0</div>
-                <div id="priceDetails">Seleziona le date</div>
+                <div class="result-details" id="priceDetails">Seleziona le date per vedere il dettaglio</div>
+                <button onclick="document.getElementById('contatti').scrollIntoView({behavior: 'smooth'})" style="margin-top: 1.5rem; padding: 0.8rem 2rem; background: white; color: var(--primary); border: none; border-radius: 25px; font-weight: 600; cursor: pointer;">
+                    Richiedi prenotazione
+                </button>
             </div>
             
-            <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(233,196,106,0.1); border-left: 4px solid var(--accent); border-radius: 10px; font-size: 0.9rem;">
-                <strong>Note:</strong> Pulizia finale €100 obbligatoria. Cauzione €300 (restituita al check-out).
+            <div style="margin-top: 2rem; padding: 1.5rem; background: rgba(233,196,106,0.1); border-left: 4px solid var(--accent); border-radius: 10px; font-size: 0.95rem;">
+                <i class="fas fa-info-circle" style="color: var(--accent); margin-right: 0.5rem;"></i>
+                <strong>Note importanti:</strong> Spese di pulizia finale obbligatorie <strong>€100</strong> (una tantum). 
+                Cauzione <strong>€300</strong> (restituita al check-out). I prezzi "a partire da" possono variare in base alla durata del soggiorno e alla festività.
             </div>
         </div>
     </section>
@@ -272,25 +364,25 @@
         <div class="floor-plans">
             <div class="floor-card">
                 <h3><i class="fas fa-level-up-alt"></i> Piano Rialzato</h3>
-                <p style="color: #666; margin-bottom: 1rem;">Zona notte</p>
+                <p style="color: #666; margin-bottom: 1rem;">Zona notte luminosa e spaziosa</p>
                 <ul class="room-list">
-                    <li><i class="fas fa-bed"></i> Camera matrimoniale ampia</li>
-                    <li><i class="fas fa-bed"></i> Camera matrimoniale con balcone</li>
-                    <li><i class="fas fa-bed"></i> Camera singola</li>
-                    <li><i class="fas fa-bath"></i> Bagno completo</li>
+                    <li><i class="fas fa-bed"></i> <strong>Camera Matrimoniale</strong> ampia e luminosa</li>
+                    <li><i class="fas fa-bed"></i> <strong>Camera Matrimoniale</strong> con balcone vista</li>
+                    <li><i class="fas fa-bed"></i> <strong>Camera Singola</strong> ideale per bambini</li>
+                    <li><i class="fas fa-bath"></i> <strong>Bagno</strong> completo con doccia</li>
                 </ul>
             </div>
             <div class="floor-card">
                 <h3><i class="fas fa-level-down-alt"></i> Piano Inferiore</h3>
-                <p style="color: #666; margin-bottom: 1rem;">Zona giorno</p>
+                <p style="color: #666; margin-bottom: 1rem;">Zona giorno living e terrazza</p>
                 <ul class="room-list">
-                    <li><i class="fas fa-couch"></i> Living open space con cucina</li>
-                    <li><i class="fas fa-bed"></i> Camera matrimoniale</li>
-                    <li><i class="fas fa-bath"></i> Secondo bagno</li>
-                    <li><i class="fas fa-box"></i> Ripostiglio</li>
+                    <li><i class="fas fa-couch"></i> <strong>Living Open Space</strong> con cucina attrezzata</li>
+                    <li><i class="fas fa-bed"></i> <strong>Camera Matrimoniale</strong> con accesso terrazza</li>
+                    <li><i class="fas fa-bath"></i> <strong>Secondo Bagno</strong> di servizio</li>
+                    <li><i class="fas fa-box"></i> <strong>Ripostiglio</strong> e lavanderia</li>
                 </ul>
                 <div class="terrace-highlight">
-                    <i class="fas fa-umbrella-beach"></i> Terrazza con pergolato per pranzi all'aperto
+                    <i class="fas fa-umbrella-beach"></i> Terrazza con pergolato attrezzata per pranzi all'aperto
                 </div>
             </div>
         </div>
@@ -298,7 +390,7 @@
 
     <section class="gallery">
         <h2 class="section-title">Galleria</h2>
-        <p class="section-subtitle" style="color: #ccc;">Gli ambienti della villa</p>
+        <p class="section-subtitle" style="color: #ccc;">Scopri gli ambienti della villa</p>
         <div class="gallery-grid">
             <div class="gallery-item"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Living"></div>
             <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522771753035-a0a1f66cd459?w=800&q=80" alt="Camera"></div>
@@ -308,35 +400,50 @@
 
     <section class="contact" id="contatti">
         <h2 class="section-title">Richiedi Informazioni</h2>
-        <p class="section-subtitle">Prenota il tuo soggiorno</p>
+        <p class="section-subtitle">Prenota il tuo soggiorno al miglior prezzo garantito</p>
         <div class="contact-container">
             <div class="contact-form">
-                <form onsubmit="event.preventDefault(); alert('Richiesta inviata! Ti contatteremo presto.');">
+                <form onsubmit="event.preventDefault(); alert('Grazie per la richiesta! Ti contatteremo entro 24 ore.');">
                     <div class="form-group">
                         <label>Nome e Cognome *</label>
                         <input type="text" required placeholder="Mario Rossi">
                     </div>
                     <div class="form-group">
                         <label>Email *</label>
-                        <input type="email" required placeholder="email@example.com">
+                        <input type="email" required placeholder="mario@example.com">
                     </div>
                     <div class="form-group">
-                        <label>Messaggio</label>
-                        <textarea rows="4" placeholder="Date, numero ospiti, richieste particolari..."></textarea>
+                        <label>Telefono</label>
+                        <input type="tel" placeholder="+39 123 456 7890">
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label>Check-in</label>
+                            <input type="date">
+                        </div>
+                        <div class="form-group">
+                            <label>Check-out</label>
+                            <input type="date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Messaggio / Richieste</label>
+                        <textarea rows="4" placeholder="Date preferite, numero ospiti, animali domestici..."></textarea>
                     </div>
                     <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Invia Richiesta</button>
                 </form>
             </div>
             <div style="display: flex; flex-direction: column; gap: 2rem;">
                 <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
-                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-map-marker-alt"></i> Indirizzo</h3>
-                    <p>Via della Villa<br>73040 Leuca (LE)<br>Puglia, Italia</p>
-                    <p style="margin-top: 1rem;"><i class="fas fa-phone"></i> +39 123 456 7890</p>
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-map-marker-alt"></i> Dove Siamo</h3>
+                    <p>Via della Villa, 73040<br>Leuca (LE) - Puglia</p>
+                    <p style="margin-top: 1rem;"><i class="fas fa-phone"></i> +39 123 456 7890<br>
+                    <i class="fas fa-envelope"></i> gabrielepiccinni@gmail.com</p>
                 </div>
                 <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
-                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-info-circle"></i> Check-in/out</h3>
-                    <p><strong>Arrivo:</strong> 15:00 - 20:00<br>
-                    <strong>Partenza:</strong> 7:30 - 10:30<br>
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-clock"></i> Orari</h3>
+                    <p><strong>Check-in:</strong> 15:00 - 20:00<br>
+                    <strong>Check-out:</strong> 10:30<br>
                     <strong>Arrivi tardivi:</strong> +€50 (20:00-24:00)</p>
                 </div>
             </div>
@@ -345,13 +452,14 @@
 
     <footer>
         <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Villa Gaia Salento Experience</h2>
-        <p>La tua casa vacanze nel cuore del Salento</p>
+        <p>La tua casa vacanze di lusso nel cuore del Salento</p>
         <div class="social-links">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
         </div>
-        <p style="opacity: 0.6; font-size: 0.9rem;">© 2026 Villa Gaia | gabrielepiccinni@gmail.com</p>
+        <p style="opacity: 0.6; font-size: 0.9rem;">© 2026 Villa Gaia | Tutti i diritti riservati</p>
     </footer>
 
     <script>
@@ -359,29 +467,75 @@
             const checkin = new Date(document.getElementById('checkin').value);
             const checkout = new Date(document.getElementById('checkout').value);
             const guests = parseInt(document.getElementById('guests').value);
-            const linen = parseInt(document.getElementById('linen').value);
+            const linenPerPerson = parseInt(document.getElementById('linen').value);
             
-            if (!checkin.getTime() || !checkout.getTime() || checkout <= checkin) return;
-            
-            const nights = Math.ceil(Math.abs(checkout - checkin) / (1000 * 60 * 60 * 24));
-            const month = checkin.getMonth();
-            
-            let pricePerNight = 140;
-            if (month === 6 || month === 7 || (month === 11 && checkin.getDate() >= 20) || (month === 0 && checkin.getDate() <= 6)) {
-                pricePerNight = 380;
-            } else if (month === 5 || month === 8 || month === 4) {
-                pricePerNight = 220;
+            if (!checkin.getTime() || !checkout.getTime() || checkout <= checkin) {
+                return;
             }
             
-            const total = (nights * pricePerNight) + 100 + (guests * linen);
+            const diffTime = Math.abs(checkout - checkin);
+            const nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             
-            document.getElementById('resultBox').classList.add('show');
-            document.getElementById('totalPrice').textContent = '€' + total;
-            document.getElementById('priceDetails').innerHTML = `${nights} notti a €${pricePerNight}/notte + pulizia €100${linen > 0 ? ' + biancheria' : ''}`;
+            // NUOVI PREZZI AGGIORNATI
+            let seasonName = '';
+            let pricePerNight = 120; // Default bassa stagione (era 140, ora 120)
+            let minNights = 3;
+            
+            const month = checkin.getMonth();
+            const day = checkin.getDate();
+            
+            // Alta stagione: Luglio(6), Agosto(7), Natale, Capodanno, Ponti
+            const isHighSeason = (month === 6) || (month === 7) || 
+                                (month === 11 && day >= 20) || 
+                                (month === 0 && day <= 6) ||
+                                (month === 3 && day >= 20 && day <= 25) || 
+                                (month === 3 && day === 25) || 
+                                (month === 4 && day === 1) || 
+                                (month === 10 && day === 1);
+            
+            if (isHighSeason) {
+                seasonName = 'Alta Stagione';
+                pricePerNight = 240; // Era 380, ora 240
+                minNights = 7;
+            } else {
+                seasonName = 'Bassa Stagione';
+                pricePerNight = 120; // Nuovo prezzo
+                minNights = 3;
+            }
+            
+            const accommodationTotal = nights * pricePerNight;
+            const cleaningFee = 100;
+            const linenTotal = guests * linenPerPerson;
+            const total = accommodationTotal + cleaningFee + linenTotal;
+            
+            const resultBox = document.getElementById('resultBox');
+            const totalPrice = document.getElementById('totalPrice');
+            const priceDetails = document.getElementById('priceDetails');
+            
+            resultBox.classList.add('show');
+            totalPrice.textContent = '€' + total.toLocaleString('it-IT');
+            
+            let detailsHTML = `
+                <strong>${nights} notti</strong> in ${seasonName}<br>
+                <small>€${pricePerNight}/notte × ${nights} notti = €${accommodationTotal}</small><br>
+                <small>Pulizia finale: €${cleaningFee}</small>
+                ${linenTotal > 0 ? `<br><small>Biancheria (${guests} persone): €${linenTotal}</small>` : ''}
+            `;
+            
+            if (nights < minNights) {
+                detailsHTML += `<br><span style="color: #ffeb3b; font-weight: bold;">⚠️ Minimo ${minNights} notti richiesto</span>`;
+                totalPrice.style.opacity = '0.6';
+            } else {
+                totalPrice.style.opacity = '1';
+            }
+            
+            priceDetails.innerHTML = detailsHTML;
         }
-        
-        document.getElementById('checkin').min = new Date().toISOString().split('T')[0];
-        document.getElementById('checkout').min = new Date().toISOString().split('T')[0];
+
+        // Imposta date minime (oggi)
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').min = today;
+        document.getElementById('checkout').min = today;
     </script>
 </body>
 </html>
