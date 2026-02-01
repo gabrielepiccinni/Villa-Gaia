@@ -1,64 +1,1274 @@
-<section class="about" id="contatti" style="background: var(--light-gray);">
-    <div class="section-header reveal">
-        <span class="section-subtitle-lg">Contatti</span>
-        <h2 class="section-title">Richiedi Informazioni</h2>
-        <p>Risposta garantita entro 24 ore</p>
-    </div>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Gaia Salento Experience | Casa Vacanze di Lusso a Leuca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --secondary: #2a9d8f;
+            --accent: #e9c46a;
+            --sand: #f4a261;
+            --light: #f8f9fa;
+            --dark: #264653;
+            --booking-blue: #003580;
+            --available: #e8f5e9;
+            --occupied: #ffebee;
+            --selected: #003580;
+            --closed: #e0e0e0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: #333; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        nav { position: fixed; top: 0; width: 100%; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 5%; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--primary); font-weight: 700; text-decoration: none; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; position: relative; }
+        .nav-links a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--secondary); transition: width 0.3s; }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .hero { 
+            height: 100vh; 
+            background: linear-gradient(135deg, rgba(30,58,95,0.3), rgba(231,76,60,0.2)), 
+            url('./Leuca%20di%20notte.png') center/cover; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: white; 
+            position: relative; 
+            background-attachment: fixed;
+        }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.2); }
+        .hero-content { z-index: 2; background: rgba(0,0,0,0.4); padding: 3rem; border-radius: 20px; backdrop-filter: blur(3px); border: 1px solid rgba(255,255,255,0.3); }
+        .hero-content h1 { font-size: 5rem; margin-bottom: 1rem; text-shadow: 3px 3px 10px rgba(0,0,0,0.9); }
+        .hero-content p { font-size: 2rem; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; text-shadow: 2px 2px 6px rgba(0,0,0,0.9); }
+        .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite; color: white; font-size: 2rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        
+        section { padding: 5rem 5%; max-width: 1400px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 3rem; color: var(--primary); margin-bottom: 1rem; position: relative; display: inline-block; left: 50%; transform: translateX(-50%); }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: var(--secondary); }
+        .section-subtitle { text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 3rem; margin-top: 1.5rem; }
+        
+        .about { background: var(--light); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+        .about-text { font-size: 1.1rem; line-height: 1.8; color: #555; }
+        .highlight-box { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border-left: 5px solid var(--secondary); margin: 2rem 0; }
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+        .feature-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .feature-icon { width: 50px; height: 50px; background: var(--secondary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+        
+        .villa-photo-container { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 80px rgba(0,0,0,0.3); transform: rotate(-1deg); transition: transform 0.3s; }
+        .villa-photo-container:hover { transform: rotate(0deg) scale(1.02); }
+        .villa-photo-container img { width: 100%; height: auto; display: block; }
+        .villa-badge { position: absolute; bottom: 20px; right: 20px; background: var(--accent); color: var(--dark); padding: 10px 20px; border-radius: 30px; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        
+        .tariffe { background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%); }
+        
+        /* REGOLE GRUPPI - spostato sotto calendario */
+        .rules-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
+            border: 2px solid var(--accent);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 900px;
+        }
+        .rules-box h3 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .discount-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .discount-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .discount-perc {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+        .tax-notice {
+            background: #e3f2fd;
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+        }
+        
+        /* NUOVA SEZIONE CONDIZIONI */
+        .terms {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .terms-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--secondary);
+        }
+        .terms-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.3rem;
+        }
+        .terms-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .terms-card li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .terms-card li:before {
+            content: '•';
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        .terms-highlight {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-left: 5px solid #4caf50;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        .terms-warning {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 5px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+        .terms-legal {
+            background: #f5f5f5;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border: 1px solid #ddd;
+        }
+        
+        /* CALENDARIO STILE BOOKING */
+        .calendar-container { background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 15px 40px rgba(0,0,0,0.1); margin: 2rem 0; }
+        .calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid #eee; }
+        .calendar-nav { display: flex; gap: 1rem; align-items: center; }
+        .calendar-btn { background: var(--primary); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; transition: all 0.3s; }
+        .calendar-btn:hover { background: var(--secondary); transform: scale(1.1); }
+        .calendar-title { font-size: 1.5rem; font-weight: 600; color: var(--primary); text-transform: capitalize; }
+        
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; background: #f0f0f0; border-radius: 10px; overflow: hidden; }
+        .calendar-day-header { background: var(--primary); color: white; padding: 1rem; text-align: center; font-weight: 600; font-size: 0.9rem; }
+        .calendar-day { background: white; min-height: 80px; padding: 0.5rem; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: all 0.2s; position: relative; }
+        .calendar-day:hover:not(.disabled):not(.closed) { background: #e3f2fd; transform: scale(1.05); z-index: 10; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .calendar-day-number { font-weight: 600; font-size: 1.1rem; color: #333; }
+        .calendar-day-price { font-size: 0.85rem; font-weight: 700; color: #2e7d32; }
+        .calendar-day.selected { background: var(--selected) !important; color: white; }
+        .calendar-day.selected .calendar-day-number { color: white; }
+        .calendar-day.selected .calendar-day-price { color: #ffeb3b; }
+        .calendar-day.disabled { background: #f5f5f5; color: #ccc; cursor: not-allowed; opacity: 0.6; }
+        .calendar-day.closed { background: #bdbdbd; color: #666; cursor: not-allowed; }
+        .calendar-day.closed .calendar-day-price { color: #666; font-size: 0.75rem; }
+        .calendar-day.in-range { background: #e3f2fd; }
+        .calendar-day.checkin { background: var(--secondary) !important; color: white; border-radius: 10px 0 0 10px; }
+        .calendar-day.checkout { background: var(--secondary) !important; color: white; border-radius: 0 10px 10px 0; }
+        
+        .calendar-legend { display: flex; gap: 2rem; margin-top: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+        .legend-color { width: 20px; height: 20px; border-radius: 4px; border: 1px solid #ddd; }
+        
+        .selection-info { background: white; border-radius: 15px; padding: 2rem; margin-top: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-left: 5px solid var(--secondary); }
+        .selection-dates { display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .date-box { text-align: center; }
+        .date-label { font-size: 0.9rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .date-value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+        .date-nights { background: var(--accent); padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: 600; color: var(--dark); }
+        
+        .guest-selector {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        .guest-selector label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-right: 1rem;
+        }
+        .guest-selector select, .guest-selector input {
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border: 2px solid var(--secondary);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+        
+        .price-breakdown { background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem; }
+        .price-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px dashed #ddd; }
+        .price-row.discount { color: #27ae60; }
+        .price-row.total { font-size: 1.3rem; font-weight: 700; color: var(--primary); border-bottom: none; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 2px solid var(--primary); }
+        .price-row.tax { color: #e74c3c; font-size: 0.9rem; font-style: italic; }
+        
+        /* CONTACT BOX */
+        .contact-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            margin-top: 3rem;
+            text-align: center;
+            color: white;
+        }
+        .contact-box-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: white;
+        }
+        .contact-box p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+        }
+        .contact-box strong {
+            color: var(--accent);
+        }
+        
+        /* MAPPA */
+        .map-container {
+            margin-top: 1.5rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .map-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .spaces { background: white; }
+        .floor-plans { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 4rem; }
+        .floor-card { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); border-radius: 20px; padding: 3rem; position: relative; }
+        .floor-card h3 { font-size: 2rem; color: var(--primary); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+        .room-list { list-style: none; margin-top: 1.5rem; }
+        .room-list li { padding: 0.8rem 0; border-bottom: 1px solid rgba(0,0,0,0.1); display: flex; align-items: center; gap: 1rem; }
+        .room-list li i { color: var(--secondary); }
+        .terrace-highlight { background: var(--accent); color: var(--dark); padding: 1.5rem; border-radius: 15px; margin-top: 2rem; font-weight: 600; text-align: center; }
+        
+        .gallery { background: var(--dark); color: white; }
+        .gallery .section-title { color: white; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+        .gallery-item { position: relative; overflow: hidden; border-radius: 15px; height: 300px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        
+        /* SEZIONE RECENSIONI */
+        .reviews { background: var(--light); }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--secondary);
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .review-meta { flex: 1; }
+        .review-name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        .review-date {
+            font-size: 0.85rem;
+            color: #888;
+        }
+        .review-stars {
+            color: #ffc107;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        .review-text {
+            color: #555;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        .review-text::before {
+            content: '"';
+            font-size: 2rem;
+            color: var(--accent);
+            line-height: 0;
+            margin-right: 0.2rem;
+            vertical-align: middle;
+        }
+        .reviews-summary {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .reviews-avg {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+        .reviews-count {
+            color: #666;
+            margin-top: 0.5rem;
+        }
+        
+        .contact { background: linear-gradient(135deg, var(--light) 0%, #e9ecef 100%); }
+        .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+        .contact-form { background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--primary); font-weight: 600; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 1rem; border: 2px solid #e9ecef; border-radius: 10px; font-family: inherit; }
+        .submit-btn { width: 100%; padding: 1.2rem; background: var(--primary); color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; }
+        .submit-btn:hover { background: var(--secondary); }
+        
+        footer { background: var(--dark); color: white; padding: 3rem 5%; text-align: center; }
+        .social-links { margin: 2rem 0; display: flex; justify-content: center; gap: 1.5rem; }
+        .social-links a { width: 50px; height: 50px; background: rgba(255,255,255,0.1); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+        .social-links a:hover { background: var(--secondary); }
+        
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); } 40% { transform: translateX(-50%) translateY(-10px); } 60% { transform: translateX(-50%) translateY(-5px); } }
+        
+        @media (max-width: 968px) {
+            .about-grid, .floor-plans, .contact-container { grid-template-columns: 1fr; }
+            .calendar-grid { gap: 1px; }
+            .calendar-day { min-height: 60px; padding: 0.3rem; }
+            .calendar-day-price { font-size: 0.75rem; }
+            .hero-content h1 { font-size: 3rem; }
+            .nav-links { display: none; }
+            .villa-photo-container { transform: none; }
+            .selection-dates { flex-direction: column; gap: 1rem; }
+            .discount-grid { grid-template-columns: repeat(2, 1fr); }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .terms-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Villa Gaia <span>Salento</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#villa">La Villa</a></li>
+                <li><a href="#tariffe">Tariffe</a></li>
+                <li><a href="#recensioni">Recensioni</a></li>
+                <li><a href="#condizioni">Condizioni</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div style="max-width: 800px; margin: 0 auto;" class="reveal">
-        <div style="text-align: center; margin-bottom: 3rem;">
-            <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">
-                <i class="fas fa-phone" style="color: var(--gold); margin-right: 0.5rem;"></i> 
-                <a href="tel:+393202144987" style="color: var(--charcoal); text-decoration: none; font-weight: 600;">+39 320 214 4987</a>
-            </p>
-            <p style="font-size: 1.2rem;">
-                <i class="fas fa-envelope" style="color: var(--gold); margin-right: 0.5rem;"></i> 
-                gabrielepiccinni@gmail.com
-            </p>
-            <p style="margin-top: 1.5rem; color: var(--medium-gray);">
-                Via Terragreci, n. 31<br>73040 Leuca (LE)
-            </p>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Villa Gaia</h1>
+            <p>Salento Experience - Leuca</p>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section class="about" id="villa">
+        <h2 class="section-title">La Villa</h2>
+        <p class="section-subtitle">Il tuo rifugio di lusso nel cuore del Salento</p>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>Benvenuti a <strong>Villa Gaia</strong>, situata in una tranquilla zona residenziale a soli <strong>800 metri</strong> dagli stabilimenti balneari e dal centro di Leuca.</p>
+                <p>La luminosa villetta di <strong>130 mq</strong> con <strong>giardino terrazzato di 210 mq</strong> è perfetta per famiglie o gruppi fino a 8 persone.</p>
+                <div class="highlight-box">
+                    <i class="fas fa-users" style="color: var(--secondary); margin-right: 10px;"></i>
+                    <strong>Capacità fino a 8 persone</strong>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-home"></i></div>
+                        <div><strong>130 mq</strong><br><small>Interni</small></div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-tree"></i></div>
+                        <div><strong>210 mq</strong><br><small>Giardino</small></div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-car"></i></div>
+                        <div><strong>3 Posti</strong><br><small>Auto</small></div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-paw"></i></div>
+                        <div><strong>Pet Friendly</strong></div>
+                    </div>
+                </div>
+            </div>
+            <div class="villa-photo-container">
+                <img src="./Giardino.png" alt="Villa Gaia - Giardino Terrazzato">
+                <div class="villa-badge"><i class="fas fa-camera"></i> Il Giardino</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tariffe" id="tariffe">
+        <h2 class="section-title">Calendario & Tariffe</h2>
+        <p class="section-subtitle">Seleziona le date sul calendario per vedere i prezzi giornalieri e calcolare il totale</p>
+        
+        <!-- CALENDARIO INTERATTIVO -->
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button class="calendar-btn" onclick="changeMonth(-1)"><i class="fas fa-chevron-left"></i></button>
+                <div class="calendar-title" id="currentMonth">Febbraio 2026</div>
+                <button class="calendar-btn" onclick="changeMonth(1)"><i class="fas fa-chevron-right"></i></button>
+            </div>
             
-            <!-- MAPPA GOOGLE MAPS -->
-            <div style="margin-top: 2rem; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                <iframe
-                    src="https://maps.google.com/maps?q=39.800964,18.351757&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    width="100%"
-                    height="300"
-                    style="border:0;"
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-                <a href="https://maps.google.com/?q=39.800964,18.351757" target="_blank" style="display: inline-block; margin-top: 1rem; color: var(--gold); text-decoration: none; font-size: 0.9rem; font-weight: 600;">
-                    <i class="fas fa-external-link-alt" style="margin-right: 0.3rem;"></i> Apri in Google Maps
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- Giorni settimana -->
+                <div class="calendar-day-header">Lun</div>
+                <div class="calendar-day-header">Mar</div>
+                <div class="calendar-day-header">Mer</div>
+                <div class="calendar-day-header">Gio</div>
+                <div class="calendar-day-header">Ven</div>
+                <div class="calendar-day-header">Sab</div>
+                <div class="calendar-day-header">Dom</div>
+            </div>
+            
+            <div class="calendar-legend">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: white; border: 2px solid var(--secondary);"></div>
+                    <span>Aperto (tariffa variabile)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #bdbdbd;"></div>
+                    <span>Chiuso (Nov-Mar)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: var(--secondary);"></div>
+                    <span>Check-in/Check-out</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #e3f2fd;"></div>
+                    <span>Range selezionato</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIEPILOGO SELEZIONE -->
+        <div class="selection-info" id="selectionInfo" style="display: none;">
+            <div class="selection-dates">
+                <div class="date-box">
+                    <div class="date-label">Check-in</div>
+                    <div class="date-value" id="displayCheckin">-</div>
+                </div>
+                <div class="date-nights" id="displayNights">0 notti</div>
+                <div class="date-box">
+                    <div class="date-label">Check-out</div>
+                    <div class="date-value" id="displayCheckout">-</div>
+                </div>
+            </div>
+
+            <!-- SELETTORE NUMERO PERSONE -->
+            <div class="guest-selector">
+                <div style="margin-bottom: 1rem;">
+                    <label for="numGuests"><i class="fas fa-users"></i> Ospiti maggiorenni (tassati):</label>
+                    <select id="numGuests" onchange="updateGuests()">
+                        <option value="8" selected>8 adulti</option>
+                        <option value="7">7 adulti</option>
+                        <option value="6">6 adulti</option>
+                        <option value="5">5 adulti</option>
+                        <option value="4">4 adulti</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="numMinors" style="font-weight: normal; color: #555; font-size: 0.9rem;">
+                        <i class="fas fa-child"></i> Minori di 18 anni (tassa esente):
+                    </label>
+                    <input type="number" id="numMinors" min="0" max="8" value="0" style="width: 80px; padding: 0.5rem; margin-left: 0.5rem; border: 2px solid #ddd; border-radius: 5px;" onchange="updateMinors()">
+                    <div style="font-size: 0.8rem; color: #888; margin-top: 0.3rem;">
+                        (I minori di 18 anni non pagano la tassa di soggiorno)
+                    </div>
+                </div>
+            </div>
+
+            <div class="price-breakdown" id="priceBreakdown">
+                <div class="price-row">
+                    <span>Soggiorno:</span>
+                    <span id="detailNights">0 notti</span>
+                </div>
+                <div class="price-row">
+                    <span>Alloggio base:</span>
+                    <span id="detailAccommodation">€0</span>
+                </div>
+                <div class="price-row discount" id="discountRow" style="display: none;">
+                    <span>Sconto gruppo <span id="discountPerc"></span>:</span>
+                    <span id="detailDiscount">-€0</span>
+                </div>
+                <div class="price-row total">
+                    <span>TOTALE (escl. tassa soggiorno):</span>
+                    <span id="detailTotal">€0</span>
+                </div>
+                <div class="price-row tax">
+                    <span><i class="fas fa-info-circle"></i> Tassa soggiorno (solo adulti):</span>
+                    <span id="detailTax">€0</span>
+                </div>
+                <div style="font-size: 0.85rem; color: #666; margin-top: 0.5rem; text-align: right;">
+                    <i class="fas fa-hand-holding-usd"></i> Da pagare in contanti al check-in
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <button onclick="resetSelection()" style="background: #f5f5f5; color: #333; border: none; padding: 0.8rem 2rem; border-radius: 25px; cursor: pointer; margin-right: 1rem;">
+                    <i class="fas fa-undo"></i> Annulla selezione
+                </button>
+                <a href="#contatti" style="display: inline-block; background: var(--secondary); color: white; padding: 1rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 600; box-shadow: 0 4px 15px rgba(42,157,143,0.3);">
+                    <i class="fas fa-envelope"></i> Richiedi prenotazione
                 </a>
             </div>
         </div>
 
-        <div class="contact-form">
-            <form onsubmit="event.preventDefault(); alert('Messaggio inviato! Ti risponderemo presto.');">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                    <div class="form-group">
-                        <label>Nome</label>
-                        <input type="text" required placeholder="Il tuo nome" style="width: 100%; padding: 0.8rem; border: none; border-bottom: 1px solid #ddd; font-family: inherit; font-size: 1rem;">
-                    </div>
-                    <div class="form-group">
-                        <label>Cognome</label>
-                        <input type="text" required placeholder="Il tuo cognome" style="width: 100%; padding: 0.8rem; border: none; border-bottom: 1px solid #ddd; font-family: inherit; font-size: 1rem;">
-                    </div>
+        <!-- REGOLE GRUPPI E SCONTI - SPOSTATO SOTTO IL CALENDARIO -->
+        <div class="rules-box">
+            <h3><i class="fas fa-info-circle"></i> Regole di Soggiorno e Sconti</h3>
+            <p style="margin-bottom: 1rem;"><strong>Le tariffe si intendono per gruppi di 8 persone.</strong></p>
+            <h4 style="color: var(--primary); margin: 1.5rem 0 0.5rem 0;">Sconti per gruppi inferiori:</h4>
+            <div class="discount-grid">
+                <div class="discount-item">
+                    <div class="discount-perc">-10%</div>
+                    <div>7 persone</div>
                 </div>
-                <div class="form-group" style="margin-top: 1.5rem;">
-                    <label>Email</label>
-                    <input type="email" required placeholder="email@example.com" style="width: 100%; padding: 0.8rem; border: none; border-bottom: 1px solid #ddd; font-family: inherit; font-size: 1rem;">
+                <div class="discount-item">
+                    <div class="discount-perc">-15%</div>
+                    <div>6 persone</div>
                 </div>
-                <div class="form-group" style="margin-top: 1.5rem;">
-                    <label>Messaggio</label>
-                    <textarea rows="4" placeholder="Scrivi la tua richiesta..." style="width: 100%; padding: 0.8rem; border: none; border-bottom: 1px solid #ddd; font-family: inherit; font-size: 1rem; resize: vertical;"></textarea>
+                <div class="discount-item">
+                    <div class="discount-perc">-20%</div>
+                    <div>5 persone</div>
                 </div>
-                <button type="submit" class="submit-btn" style="margin-top: 2rem; width: 100%; padding: 1.2rem; background: var(--charcoal); color: var(--white); border: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: all 0.3s;">
-                    Invia Messaggio <i class="fas fa-paper-plane" style="margin-left: 0.5rem;"></i>
-                </button>
-            </form>
+                <div class="discount-item">
+                    <div class="discount-perc">-25%</div>
+                    <div>4 persone</div>
+                </div>
+            </div>
+            <div style="margin-top: 1rem; padding: 0.5rem; background: white; border-radius: 5px;">
+                <i class="fas fa-child" style="color: var(--secondary);"></i>
+                <strong>Bambini under 3 anni:</strong> non vengono conteggiati nel numero di ospiti (massimo 2 bambini under 3 per soggiorno).
+            </div>
+            <div class="tax-notice">
+                <i class="fas fa-receipt"></i>
+                <strong>Importante:</strong> L'imposta di soggiorno è di <strong>€2 a persona al giorno</strong>
+                <u>(gratuita per minori di 18 anni)</u>.
+                Tale importo <u>non è incluso</u> nella tariffa e dovrà essere pagato in contanti al momento del check-in
+                soltanto dagli ospiti maggiorenni.
+            </div>
+            <div style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+                <i class="fas fa-broom"></i> Pulizia finale obbligatoria: €100 (inclusa nel preventivo online)
+            </div>
         </div>
-    </div>
-</section>
+
+        <!-- CONTACT BOX -->
+        <div class="contact-box">
+            <div class="contact-box-title">
+                <i class="fas fa-phone-alt"></i>
+                <span>Prenota Direttamente</span>
+            </div>
+            <p>
+                Per prenotazioni contattaci via telefono o email per le migliori condizioni.<br>
+                <strong>Risposta garantita entro 24 ore!</strong>
+            </p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                <a href="tel:+393202144987" style="display: inline-flex; align-items: center; gap: 0.5rem; background: white; color: var(--primary); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    <i class="fas fa-phone"></i> Chiama ora
+                </a>
+                <a href="mailto:gabrielepiccinni@gmail.com" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--dark); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                    <i class="fas fa-envelope"></i> Scrivi email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="spaces" id="spazi">
+        <h2 class="section-title">Gli Spazi</h2>
+        <p class="section-subtitle">Due livelli di comfort e eleganza</p>
+        <div class="floor-plans">
+            <div class="floor-card">
+                <h3><i class="fas fa-level-up-alt"></i> Piano Rialzato</h3>
+                <p style="color: #666; margin-bottom: 1rem;">Zona notte</p>
+                <ul class="room-list">
+                    <li><i class="fas fa-bed"></i> Camera matrimoniale ampia</li>
+                    <li><i class="fas fa-bed"></i> Camera matrimoniale con balcone</li>
+                    <li><i class="fas fa-bed"></i> Camera singola</li>
+                    <li><i class="fas fa-bath"></i> Bagno completo</li>
+                </ul>
+            </div>
+            <div class="floor-card">
+                <h3><i class="fas fa-level-down-alt"></i> Piano Inferiore</h3>
+                <p style="color: #666; margin-bottom: 1rem;">Zona giorno</p>
+                <ul class="room-list">
+                    <li><i class="fas fa-couch"></i> Living open space con cucina</li>
+                    <li><i class="fas fa-bed"></i> Camera matrimoniale con terrazza</li>
+                    <li><i class="fas fa-bath"></i> Secondo bagno</li>
+                    <li><i class="fas fa-box"></i> Ripostiglio</li>
+                </ul>
+                <div class="terrace-highlight">
+                    <i class="fas fa-umbrella-beach"></i> Terrazza con pergolato
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="galleria">
+        <h2 class="section-title">Galleria</h2>
+        <p class="section-subtitle" style="color: #ccc;">Gli ambienti della villa</p>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Living"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522771753035-a0a1f66cd459?w=800&q=80" alt="Camera"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Cucina"></div>
+        </div>
+    </section>
+
+    <!-- SEZIONE RECENSIONI -->
+    <section class="reviews" id="recensioni">
+        <h2 class="section-title">Cosa Dicono i Nostri Ospiti</h2>
+        <p class="section-subtitle">Esperienze autentiche di chi ha soggiornato a Villa Gaia</p>
+        <div class="reviews-summary">
+            <div class="reviews-avg">4.9/5</div>
+            <div class="review-stars" style="font-size: 1.5rem; justify-content: center; display: flex; gap: 0.2rem;">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="reviews-count">Basato su 48 recensioni verificate</div>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">MR</div>
+                    <div class="review-meta">
+                        <div class="review-name">Marco Rinaldi</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Agosto 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Vacanza perfetta! La villa è bellissima, pulitissima e dotata di ogni comfort. Il giardino terrazzato è stato il nostro angolo di paradiso per colazioni all'aperto. A 10 minuti a piedi dal mare, location strategica per visitare il Salento. Torneremo sicuramente!
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">LC</div>
+                    <div class="review-meta">
+                        <div class="review-name">Laura Cerfignani</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Luglio 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Abbiamo trascorso una settimana da sogno con gli amici. La casa è spaziosa, ben arredata e fresca anche nelle giornate più calde. Il proprietario Gabriele è stato disponibilissimo e ci ha dato ottimi consigli su ristoranti e spiagge. Super consigliato!
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">RS</div>
+                    <div class="review-meta">
+                        <div class="review-name">Rolando Starmer</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Settembre 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Settembre al Salento è magico e Villa Gaia è il posto ideale per goderselo. Tranquillità assoluta, giardino curato dove i nostri bambini hanno giocato in sicurezza. La cucina è super attrezzata, abbiamo cucinato pesce fresco comprato al porto di Leuca. Top!
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">AM</div>
+                    <div class="review-meta">
+                        <div class="review-name">Anna Moro</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Giugno 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Ottima esperienza! La villa corrisponde esattamente alle foto, anzi dal vivo è ancora più bella. Posizione comoda per raggiungere sia le spiagge Ioniche che quelle Adriatiche. Wi-Fi veloce e clima efficiente.
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">GF</div>
+                    <div class="review-meta">
+                        <div class="review-name">Giuseppe Ferrara</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Agosto 2024</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Secondo anno di fila a Villa Gaia, ormai è diventata la nostra casa estiva! La pulizia è impeccabile, i letti comodissimi e la doccia esterna è una chicca dopo il mare. Leuca è bellissima e meno affollata di altre località. Grazie mille a Gabriele per l'accoglienza!
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">SC</div>
+                    <div class="review-meta">
+                        <div class="review-name">Silvia Conti</div>
+                        <div class="review-date"><i class="far fa-calendar-alt"></i> Maggio 2025</div>
+                    </div>
+                </div>
+                <div class="review-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    Weekend di maggio indimenticabile. Abbiamo apprezzato particolarmente la veranda coperta dove cenare all'aperto anche nelle sere ventose. La casa è silenziosa e il quartiere residenziale è molto tranquillo. Rapporto qualità-prezzo eccellente per una villa di questo livello!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUOVA SEZIONE CONDIZIONI -->
+    <section class="terms" id="condizioni">
+        <h2 class="section-title">Condizioni di Soggiorno e Prenotazione</h2>
+        <p class="section-subtitle">Informazioni importanti per il tuo soggiorno</p>
+        
+        <div class="terms-grid">
+            <div class="terms-card">
+                <h3><i class="fas fa-undo-alt"></i> Liberi di Ripensarci</h3>
+                <div class="terms-highlight">
+                    <strong>Cancellazione gratuita entro 24h</strong><br>
+                    <small>Puoi disdire la prenotazione entro 24 ore dalla conferma, senza alcuna penale.</small>
+                </div>
+                <ul>
+                    <li>Oltre le 24h valgono le penali della tariffa scelta</li>
+                    <li>Mancata presentazione = No Show con penali previste</li>
+                </ul>
+            </div>
+
+            <div class="terms-card">
+                <h3><i class="fas fa-clock"></i> Check-in / Check-out</h3>
+                <ul>
+                    <li><strong>Check-in:</strong> dalle 15.00 alle 20.00</li>
+                    <li><strong>Check-out:</strong> entro le 10.00 del giorno di partenza</li>
+                    <li><strong>Late Check-in:</strong> senza supplemento, previo accordi</li>
+                    <li><strong>Arrivi tardivi:</strong> concordabili telefonicamente</li>
+                </ul>
+            </div>
+
+            <div class="terms-card">
+                <h3><i class="fas fa-paw"></i> Animali da Compagnia</h3>
+                <div class="terms-highlight" style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); border-left-color: var(--booking-blue);">
+                    <strong>Sono ammessi</strong><br>
+                    <small>I tuoi amici a quattro zampe sono i benvenuti a Villa Gaia</small>
+                </div>
+                <ul>
+                    <li>Da segnalare al momento della prenotazione</li>
+                    <li>Comportamento responsabile nell'area condominiale</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="terms-legal">
+            <h3><i class="fas fa-file-contract"></i> Condizioni Generali di Prenotazione</h3>
+            
+            <div style="margin-top: 1.5rem; line-height: 1.8; color: #555;">
+                <p style="margin-bottom: 1rem;">
+                    <i class="fas fa-check-circle" style="color: var(--secondary);"></i> 
+                    <strong>Conferma prenotazione:</strong> A disponibilità confermata accetti le nostre condizioni di prenotazione e soggiorno come riportato nella presente. 
+                    Salvo differenti accordi, la prenotazione non sarà ritenuta valida fino a quando il cliente non avrà versato la <strong>quota caparra pari al 30% dell'intero importo</strong>. 
+                    A tal proposito suggeriamo l'invio della copia contabile del bonifico a mezzo email.
+                </p>
+
+                <p style="margin-bottom: 1rem;">
+                    <i class="fas fa-users" style="color: var(--secondary);"></i> 
+                    <strong>Numero ospiti:</strong> L'occupazione della casa non può essere, se non autorizzata da noi, superiore al numero di persone indicato nella prenotazione.
+                </p>
+
+                <p style="margin-bottom: 1rem;">
+                    <i class="fas fa-wifi" style="color: var(--secondary);"></i> 
+                    <strong>Utilizzo del Wi-fi:</strong> esclusivamente per nei limiti previsti dalla legge.
+                </p>
+
+                <div class="terms-warning">
+                    <h4 style="margin-bottom: 0.5rem; color: var(--dark);"><i class="fas fa-exclamation-triangle"></i> Cancellazioni e Disdette</h4>
+                    <p>
+                        Il cliente conferma di aver preso visione delle politiche di cancellazione previste dalla tariffa scelta. 
+                        Il cliente è libero di disdire la prenotazione, senza incorrere in penale, <strong>entro 24 h dalla conferma della stessa</strong>. 
+                        Superato tale termine, si dovranno rispettare le condizioni legate alla tariffa scelta.
+                    </p>
+                </div>
+
+                <p style="margin: 1rem 0;">
+                    <i class="fas fa-times-circle" style="color: #e74c3c;"></i> 
+                    <strong>Mancato arrivo / Mancata presentazione:</strong> Il mancato arrivo è da considerarsi come <strong>No Show</strong> con le penalità da cancellation policy legate alla tariffa scelta.
+                </p>
+
+                <div style="background: #f0f0f0; padding: 1.5rem; border-radius: 10px; margin-top: 1.5rem; border-left: 4px solid var(--primary);">
+                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;"><i class="fas fa-balance-scale"></i> Controversie e Foro Competente</h4>
+                    <p style="font-size: 0.95rem; margin-bottom: 0.8rem;">
+                        Le parti si impegnano a risolvere in maniera bonaria qualsiasi controversia che dovesse insorgere a seguito accettazione del presente Contratto. 
+                        Nel caso in cui le parti non giungessero ad un accordo bonario, il foro di competenza sarà quello espresso in seguito.
+                    </p>
+                    <p style="font-size: 0.95rem;">
+                        <strong>Legge Applicabile:</strong> Il presente Contratto sarà regolato e interpretato in conformità con le leggi dello Stato italiano. 
+                        Per qualsiasi controversia derivante dal presente Contratto, le parti accettano la giurisdizione esclusiva dei tribunali competenti del luogo di ubicazione dell'immobile (Lecce).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contatti">
+        <h2 class="section-title">Richiedi Informazioni</h2>
+        <p class="section-subtitle">Contattaci per maggiori dettagli</p>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form onsubmit="event.preventDefault(); alert('Messaggio inviato! Ti risponderemo presto.');">
+                    <div class="form-group">
+                        <label>Nome e Cognome *</label>
+                        <input type="text" required placeholder="Mario Rossi">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" required placeholder="email@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Telefono</label>
+                        <input type="tel" placeholder="+39 123 456 7890">
+                    </div>
+                    <div class="form-group">
+                        <label>Messaggio</label>
+                        <textarea rows="4" placeholder="Scrivi qui la tua richiesta..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Invia Messaggio</button>
+                </form>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-map-marker-alt"></i> Dove Siamo</h3>
+                    <p><strong>Via Terragreci, n. 31</strong><br>73040 Leuca (LE)</p>
+                    <p style="margin-top: 1rem;">
+                        <i class="fas fa-phone"></i> <a href="tel:+393202144987" style="color: inherit; text-decoration: none;">+39 320 214 4987</a><br>
+                        <i class="fas fa-envelope"></i> gabrielepiccinni@gmail.com
+                    </p>
+                    <!-- MAPPA GOOGLE MAPS -->
+                    <div class="map-container">
+                        <iframe
+                            src="https://maps.google.com/maps?q=39.800964,18.351757&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                            width="100%"
+                            height="250"
+                            style="border:0; border-radius: 10px;"
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                        <a href="https://maps.google.com/?q=39.800964,18.351757" target="_blank" class="map-link">
+                            <i class="fas fa-external-link-alt"></i> Apri in Google Maps
+                        </a>
+                    </div>
+                </div>
+                <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-clock"></i> Orari</h3>
+                    <p><strong>Arrivo:</strong> 15:00 - 20:00<br>
+                    <strong>Partenza:</strong> 10:30<br>
+                    <strong>Tardivi:</strong> +€50 (20:00-24:00)</p>
+                    <div style="margin-top: 1rem; padding: 0.8rem; background: #fff3cd; border-radius: 5px; font-size: 0.9rem;">
+                        <i class="fas fa-calendar-times" style="color: #e74c3c;"></i>
+                        <strong>Chiusura:</strong> Nov-Mar
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 1rem;">Villa Gaia Salento Experience</h2>
+        <p>La tua casa vacanze nel cuore del Salento</p>
+        <p style="margin: 0.5rem 0;"><i class="fas fa-map-marker-alt"></i> <a href="https://maps.google.com/?q=39.800964,18.351757" target="_blank" style="color: white; text-decoration: none;">Via Terragreci, n. 31 - Leuca (LE)</a></p>
+        <p style="margin: 0.5rem 0; font-size: 0.85rem;">CIN: IT075019C200103077</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="tel:+393202144987"><i class="fas fa-phone"></i></a>
+            <a href="mailto:gabrielepiccinni@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p style="opacity: 0.6; font-size: 0.9rem;">© 2026 Villa Gaia - Apertura stagionale: Aprile/Ottobre</p>
+    </footer>
+
+    <script>
+        let currentDate = new Date();
+        let checkinDate = null;
+        let checkoutDate = null;
+        let numGuests = 8;
+        let numMinors = 0;
+
+        const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno",
+            "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+
+        // Mesi chiusi: Nov(10), Dic(11), Gen(0), Feb(1), Mar(2)
+        function isClosedMonth(month) {
+            return month === 10 || month === 11 || month === 0 || month === 1 || month === 2;
+        }
+
+        function getPriceForDate(date) {
+            const month = date.getMonth();
+            const day = date.getDate();
+
+            // Chiuso nei mesi invernali
+            if (isClosedMonth(month)) {
+                return 0;
+            }
+
+            // Aprile (3)
+            if (month === 3) return 120;
+            // Maggio (4)
+            if (month === 4) return 120;
+            // Giugno (5): 1-20 -> 160, 21-30 -> 200
+            if (month === 5) {
+                if (day <= 20) return 160;
+                else return 200;
+            }
+            // Luglio (6): 1-12 -> 220, 13-31 -> 280
+            if (month === 6) {
+                if (day <= 12) return 220;
+                else return 280;
+            }
+            // Agosto (7): 1-9 -> 320, 10-23 -> 400, 24-30 -> 280
+            if (month === 7) {
+                if (day <= 9) return 320;
+                else if (day <= 23) return 400;
+                else return 280;
+            }
+            // Settembre (8): 1-6 -> 240, 7-20 -> 200, 21-30 -> 160
+            if (month === 8) {
+                if (day <= 6) return 240;
+                else if (day <= 20) return 200;
+                else return 160;
+            }
+            // Ottobre (9)
+            if (month === 9) return 120;
+
+            return 0;
+        }
+
+        function getDiscountRate(guests) {
+            if (guests == 7) return 0.10;
+            if (guests == 6) return 0.15;
+            if (guests == 5) return 0.20;
+            if (guests == 4) return 0.25;
+            return 0;
+        }
+
+        function generateCalendar() {
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            const isClosed = isClosedMonth(month);
+
+            document.getElementById('currentMonth').textContent = 
+                monthNames[month] + ' ' + year + (isClosed ? ' (CHIUSO)' : '');
+
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            const startingDay = firstDay.getDay() || 7;
+            const totalDays = lastDay.getDate();
+
+            const closed = isClosedMonth(month);
+
+            let html = `
+                <div class="calendar-day-header">Lun</div>
+                <div class="calendar-day-header">Mar</div>
+                <div class="calendar-day-header">Mer</div>
+                <div class="calendar-day-header">Gio</div>
+                <div class="calendar-day-header">Ven</div>
+                <div class="calendar-day-header">Sab</div>
+                <div class="calendar-day-header">Dom</div>
+            `;
+
+            // Celle vuote prima del primo giorno
+            for (let i = 1; i < startingDay; i++) {
+                html += '<div class="calendar-day disabled"></div>';
+            }
+
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            for (let day = 1; day <= totalDays; day++) {
+                const date = new Date(year, month, day);
+                const price = getPriceForDate(date);
+                const isPast = date < today;
+
+                let classes = 'calendar-day';
+                let content = '';
+
+                if (isPast) {
+                    classes += ' disabled';
+                    content = `<div class="calendar-day-number">${day}</div>`;
+                } else if (closed) {
+                    classes += ' closed';
+                    content = `
+                        <div class="calendar-day-number">${day}</div>
+                        <div class="calendar-day-price">CHIUSO</div>
+                    `;
+                } else {
+                    // Verifica selezione
+                    if (checkinDate && checkoutDate) {
+                        if (date.getTime() === checkinDate.getTime()) classes += ' checkin';
+                        else if (date.getTime() === checkoutDate.getTime()) classes += ' checkout';
+                        else if (date > checkinDate && date < checkoutDate) classes += ' in-range';
+                    } else if (checkinDate && date.getTime() === checkinDate.getTime()) {
+                        classes += ' selected';
+                    }
+
+                    content = `
+                        <div class="calendar-day-number">${day}</div>
+                        <div class="calendar-day-price">€${price}</div>
+                    `;
+                }
+
+                const clickHandler = (closed || isPast) ? '' : `onclick="selectDate(${year}, ${month}, ${day})"`;
+                
+                html += `
+                    <div class="${classes}" ${clickHandler} data-date="${date.toISOString()}">
+                        ${content}
+                    </div>
+                `;
+            }
+
+            document.getElementById('calendarGrid').innerHTML = html;
+        }
+
+        function selectDate(year, month, day) {
+            if (isClosedMonth(month)) {
+                alert('La struttura è chiusa durante i mesi invernali (Novembre-Marzo).');
+                return;
+            }
+
+            const selectedDate = new Date(year, month, day);
+            const today = new Date();
+            today.setHours(0,0,0,0);
+
+            if (selectedDate < today) return;
+
+            if (!checkinDate || (checkinDate && checkoutDate)) {
+                checkinDate = selectedDate;
+                checkoutDate = null;
+            } else if (checkinDate && !checkoutDate) {
+                if (selectedDate <= checkinDate) {
+                    alert('La data di check-out deve essere successiva al check-in');
+                    return;
+                }
+
+                // Verifica che non ci siano mesi chiusi nel range
+                let tempDate = new Date(checkinDate);
+                tempDate.setDate(tempDate.getDate() + 1);
+                let hasClosedMonth = false;
+
+                while (tempDate < selectedDate) {
+                    if (isClosedMonth(tempDate.getMonth())) {
+                        hasClosedMonth = true;
+                        break;
+                    }
+                    tempDate.setDate(tempDate.getDate() + 1);
+                }
+
+                if (hasClosedMonth) {
+                    alert('Non è possibile prenotare un soggiorno che attraversa i mesi di chiusura (Nov-Mar).');
+                    return;
+                }
+
+                checkoutDate = selectedDate;
+                calculateTotal();
+            }
+
+            generateCalendar();
+        }
+
+        function updateGuests() {
+            numGuests = parseInt(document.getElementById('numGuests').value);
+            
+            // Verifica che i minori non superino gli adulti
+            if (numMinors > numGuests) {
+                numMinors = numGuests;
+                document.getElementById('numMinors').value = numMinors;
+            }
+            document.getElementById('numMinors').max = numGuests;
+
+            if (checkinDate && checkoutDate) {
+                calculateTotal();
+            }
+        }
+
+        function updateMinors() {
+            let val = parseInt(document.getElementById('numMinors').value) || 0;
+            if (val < 0) val = 0;
+            if (val > numGuests) {
+                alert('Il numero di minori non può superare il numero totale di ospiti');
+                val = numGuests;
+            }
+            numMinors = val;
+            document.getElementById('numMinors').value = numMinors;
+            
+            if (checkinDate && checkoutDate) {
+                calculateTotal();
+            }
+        }
+
+        function calculateTotal() {
+            if (!checkinDate || !checkoutDate) return;
+
+            const diffTime = Math.abs(checkoutDate - checkinDate);
+            const nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (nights <= 0) return;
+
+            let totalAccommodation = 0;
+            let currentDate = new Date(checkinDate);
+
+            for (let i = 0; i < nights; i++) {
+                const dayPrice = getPriceForDate(currentDate);
+                if (dayPrice === 0) {
+                    alert('Errore: date non valide (mese chiuso)');
+                    return;
+                }
+                totalAccommodation += dayPrice;
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+
+            // Calcolo sconto
+            const discountRate = getDiscountRate(numGuests);
+            const discountAmount = Math.round(totalAccommodation * discountRate);
+            const afterDiscount = totalAccommodation - discountAmount;
+
+            // Tassa soggiorno: €2 a persona a notte SOLO per maggiorenni
+            const payingGuests = numGuests; // sono già filtrati nel select (solo adulti)
+            const touristTax = nights * payingGuests * 2;
+
+            // Pulizia
+            const cleaning = 100;
+
+            const total = afterDiscount + cleaning;
+
+            // Display
+            document.getElementById('selectionInfo').style.display = 'block';
+            document.getElementById('displayCheckin').textContent = 
+                checkinDate.getDate() + ' ' + monthNames[checkinDate.getMonth()] + ' ' + checkinDate.getFullYear();
+            document.getElementById('displayCheckout').textContent = 
+                checkoutDate.getDate() + ' ' + monthNames[checkoutDate.getMonth()] + ' ' + checkoutDate.getFullYear();
+
+            const totalGuests = numGuests + numMinors;
+            document.getElementById('displayNights').textContent = nights + ' notti (' + totalGuests + ' ospiti)';
+
+            document.getElementById('detailNights').textContent = `${nights} notti`;
+            document.getElementById('detailAccommodation').textContent = '€' + totalAccommodation;
+
+            // Gestione sconto
+            const discountRow = document.getElementById('discountRow');
+            if (discountRate > 0) {
+                discountRow.style.display = 'flex';
+                document.getElementById('discountPerc').textContent = '-' + (discountRate * 100) + '%';
+                document.getElementById('detailDiscount').textContent = '-€' + discountAmount;
+            } else {
+                discountRow.style.display = 'none';
+            }
+
+            document.getElementById('detailTotal').textContent = '€' + total;
+            document.getElementById('detailTax').textContent = '€' + touristTax;
+
+            document.getElementById('selectionInfo').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function resetSelection() {
+            checkinDate = null;
+            checkoutDate = null;
+            numMinors = 0;
+            document.getElementById('numMinors').value = 0;
+            document.getElementById('selectionInfo').style.display = 'none';
+            generateCalendar();
+        }
+
+        function changeMonth(delta) {
+            currentDate.setMonth(currentDate.getMonth() + delta);
+            generateCalendar();
+        }
+
+        // Inizializza
+        generateCalendar();
+    </script>
+</body>
+</html>
