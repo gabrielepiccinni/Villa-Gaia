@@ -1,0 +1,2456 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Gaia | Luxury Estate - Leuca</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --black: #0a0a0a;
+            --charcoal: #1a1a1a;
+            --dark-gray: #2d2d2d;
+            --medium-gray: #666;
+            --light-gray: #f9f9f9;
+            --white: #ffffff;
+            --gold: #c9a962;
+            --gold-light: #e0c78a;
+            --gold-dim: rgba(201, 169, 98, 0.2);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.05);
+            --shadow-luxury: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        html { 
+            scroll-behavior: smooth; 
+            font-size: 16px; 
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--charcoal);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        a { 
+            text-decoration: none; 
+            transition: var(--transition); 
+        }
+        
+        ul { 
+            list-style: none; 
+        }
+        
+        img { 
+            max-width: 100%; 
+            display: block; 
+        }
+        
+        button, select, input { 
+            font-family: inherit; 
+        }
+
+        /* --- CUSTOM TOAST NOTIFICATIONS --- */
+        #toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            background: var(--white);
+            color: var(--charcoal);
+            padding: 1rem 1.5rem;
+            border-left: 4px solid var(--gold);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideInRight 0.4s ease forwards;
+            min-width: 300px;
+        }
+
+        .toast.error { 
+            border-left-color: #d9534f; 
+        }
+        
+        .toast.success { 
+            border-left-color: #5cb85c; 
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeOut {
+            to { opacity: 0; transform: translateX(20px); }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem 5%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            z-index: 1002;
+        }
+
+        .logo span { 
+            color: var(--gold); 
+            font-weight: 400; 
+            font-style: italic; 
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            z-index: 1002;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            font-weight: 400;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { 
+            color: var(--gold); 
+        }
+        
+        .nav-links a:hover::after { 
+            width: 100%; 
+        }
+
+        /* --- LANGUAGE SWITCHER (Dropdown) --- */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+            margin-left: auto;
+            z-index: 1005;
+        }
+
+        .current-lang {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--white);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 5px 10px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .current-lang:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-shadow: var(--shadow-luxury);
+            padding: 0.5rem 0;
+            display: none;
+            flex-direction: column;
+            min-width: 150px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .lang-dropdown.active {
+            display: flex;
+        }
+
+        .lang-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--charcoal);
+            transition: var(--transition);
+        }
+
+        .lang-option:hover {
+            background: var(--light-gray);
+            color: var(--gold);
+        }
+
+        /* Mobile Menu Toggle */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1002;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10,10,10,0.3), rgba(10,10,10,0.6)),
+                        url('https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=2070') center/cover no-repeat fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 0 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            font-weight: 300;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .hero-cta { 
+            display: flex; 
+            gap: 1.5rem; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+        }
+
+        .btn-primary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--gold);
+            padding: 1rem 2.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: var(--gold);
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover { 
+            color: var(--black); 
+            border-color: var(--gold); 
+        }
+        
+        .btn-primary:hover::before { 
+            width: 100%; 
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--charcoal);
+            padding: 1rem 2.5rem;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 500;
+            border: 1px solid var(--white);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover { 
+            background: transparent; 
+            color: var(--white); 
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 1.5rem;
+            animation: bounce 2.5s infinite;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0) translateX(-50%);
+            }
+            40% {
+                transform: translateY(-20px) translateX(-50%);
+            }
+            60% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section { 
+            padding: 6rem 5%; 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            position: relative; 
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .section-header.visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+
+        .section-subtitle-lg {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: var(--charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--medium-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        .dark-section {
+            background: var(--charcoal);
+            color: var(--white);
+            max-width: 100%;
+            padding: 7rem 5%;
+        }
+
+        .dark-section .section-title { 
+            color: var(--white); 
+        }
+        
+        .dark-section .section-header p { 
+            color: rgba(255,255,255,0.6); 
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- ABOUT LUXURY GRID --- */
+        .about-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1.1fr; 
+            gap: 5rem; 
+            align-items: center; 
+        }
+
+        .about-text h3 { 
+            font-size: 2.2rem; 
+            margin-bottom: 1.5rem; 
+            color: var(--charcoal); 
+        }
+
+        .about-text p { 
+            color: var(--medium-gray); 
+            margin-bottom: 1.5rem; 
+            font-weight: 300; 
+        }
+
+        .feature-list {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .feature-list li { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.8rem; 
+            color: var(--charcoal); 
+            font-size: 0.95rem; 
+        }
+
+        .feature-list i { 
+            color: var(--gold); 
+        }
+
+        .villa-photo-container {
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-luxury);
+        }
+
+        .villa-photo-container img { 
+            width: 100%; 
+            transition: transform 1.2s ease; 
+        }
+
+        .villa-photo-container:hover img { 
+            transform: scale(1.05); 
+        }
+
+        .villa-badge {
+            position: absolute;
+            bottom: 0; 
+            left: 0; 
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: var(--white);
+            padding: 3rem 2rem 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+        }
+
+        .villa-badge span {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- SPACES --- */
+        .spaces-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 2rem; 
+        }
+
+        .space-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 3rem 2rem;
+            transition: var(--transition);
+        }
+
+        .space-card:hover { 
+            background: rgba(255,255,255,0.05); 
+            border-color: var(--gold); 
+            transform: translateY(-5px); 
+        }
+
+        .space-card h3 { 
+            color: var(--white); 
+            font-size: 1.5rem; 
+            margin-bottom: 0.5rem; 
+            display: flex; 
+            align-items: center; 
+            gap: 1rem; 
+        }
+
+        .space-card h3 i { 
+            color: var(--gold); 
+        }
+
+        .level-subtitle {
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: -0.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .room-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+            display: flex; 
+            gap: 1rem;
+        }
+
+        .room-list li i { 
+            color: var(--gold); 
+            margin-top: 4px; 
+        }
+
+        /* --- NEW DESCRIPTION SECTION --- */
+        .description-highlight {
+            background: var(--light-gray);
+            text-align: center;
+            padding: 8rem 10%;
+            position: relative;
+        }
+
+        .description-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px; 
+            height: 80px;
+            background: var(--gold);
+        }
+
+        .desc-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .desc-quote {
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .desc-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--charcoal);
+            font-weight: 300;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .desc-features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .desc-feat-item {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .desc-feat-item i {
+            font-size: 1.5rem;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .desc-feat-item span {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--medium-gray);
+        }
+
+        /* --- CALENDAR & TARIFFE --- */
+        .tariffe { 
+            background: var(--white); 
+            padding-top: 4rem; 
+        }
+
+        .calendar-luxury {
+            background: var(--white);
+            padding: 2rem;
+            box-shadow: var(--shadow-luxury);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .calendar-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 2rem; 
+        }
+
+        .calendar-btn {
+            background: transparent; 
+            color: var(--charcoal); 
+            border: 1px solid #ddd;
+            width: 40px; 
+            height: 40px; 
+            border-radius: 50%; 
+            cursor: pointer;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .calendar-btn:hover { 
+            background: var(--charcoal); 
+            color: var(--white); 
+            border-color: var(--charcoal); 
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: #eee;
+            border: 1px solid #eee;
+        }
+
+        .calendar-day-header {
+            background: var(--charcoal); 
+            color: var(--white); 
+            padding: 1rem;
+            text-align: center; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+        }
+
+        .calendar-day {
+            background: var(--white); 
+            min-height: 100px; 
+            padding: 0.8rem;
+            cursor: pointer; 
+            transition: var(--transition); 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between;
+        }
+
+        .calendar-day:hover:not(.disabled):not(.closed) { 
+            background: var(--charcoal); 
+        }
+
+        .calendar-day:hover:not(.disabled):not(.closed) * { 
+            color: var(--white) !important; 
+        }
+
+        .calendar-day.disabled { 
+            background: #fafafa; 
+            color: #ccc; 
+            cursor: default; 
+        }
+
+        .calendar-day.closed { 
+            background: #f0f0f0; 
+            color: #aaa; 
+            cursor: default; 
+        }
+
+        .calendar-day.selected { 
+            background: var(--gold) !important; 
+            color: var(--black) !important; 
+        }
+
+        .calendar-day.selected .calendar-day-number { 
+            font-weight: 700; 
+        }
+
+        .calendar-day.checkin, .calendar-day.checkout { 
+            background: var(--charcoal) !important; 
+            color: var(--white) !important; 
+        }
+
+        .calendar-day.in-range { 
+            background: var(--gold-light); 
+        }
+
+        .calendar-day-number { 
+            font-weight: 500; 
+            font-size: 0.95rem; 
+            color: var(--charcoal); 
+        }
+
+        .calendar-day-price { 
+            font-size: 0.8rem; 
+            color: var(--gold); 
+            font-weight: 600; 
+        }
+
+        .closed .calendar-day-price { 
+            color: #aaa; 
+            font-size: 0.7rem; 
+        }
+
+        /* --- SELECTION INFO --- */
+        .selection-info {
+            background: var(--white);
+            padding: 3rem;
+            box-shadow: var(--shadow-luxury);
+            margin-top: 2rem;
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+        }
+
+        .selection-dates {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            border-bottom: 2px solid var(--light-gray); 
+            padding-bottom: 2rem;
+        }
+
+        .date-label { 
+            font-size: 0.7rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            color: var(--medium-gray); 
+        }
+
+        .date-value { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2rem; 
+            color: var(--charcoal); 
+            font-weight: 600; 
+        }
+
+        .date-nights { 
+            background: var(--charcoal); 
+            color: var(--gold); 
+            padding: 0.5rem 1.5rem; 
+            font-weight: 600; 
+            font-size: 0.8rem; 
+            letter-spacing: 1px; 
+        }
+
+        .price-breakdown {
+            background: var(--light-gray);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .price-row {
+            display: flex; 
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--charcoal);
+        }
+
+        .price-row.total {
+            border-top: 2px solid var(--gold);
+            padding-top: 1.5rem;
+            margin-top: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .price-row.deposit-row {
+            background-color: rgba(201, 169, 98, 0.1);
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .deposit-note {
+            font-size: 0.8rem;
+            color: var(--medium-gray);
+            line-height: 1.4;
+            margin-top: 0.5rem;
+            font-style: italic;
+            display: block;
+        }
+
+        .discount { 
+            color: #d9534f; 
+        }
+
+        .tax-note {
+            font-size: 0.85rem;
+            color: var(--medium-gray);
+            font-style: italic;
+            text-align: right;
+            margin-top: 0.5rem;
+        }
+
+        /* --- GALLERY --- */
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 1rem; 
+        }
+
+        .gallery-item { 
+            position: relative; 
+            overflow: hidden; 
+            aspect-ratio: 1/1; 
+            cursor: pointer; 
+        }
+
+        .gallery-item:nth-child(2) { 
+            grid-row: span 2; 
+            aspect-ratio: auto; 
+        }
+
+        .gallery-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.8s ease; 
+            filter: brightness(0.9); 
+        }
+
+        .gallery-item:hover img { 
+            transform: scale(1.1); 
+            filter: brightness(1); 
+        }
+
+        .gallery-overlay {
+            position: absolute; 
+            inset: 0; 
+            background: rgba(0,0,0,0.3);
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            opacity: 0; 
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay { 
+            opacity: 1; 
+        }
+
+        .gallery-overlay i { 
+            color: var(--white); 
+            font-size: 2rem; 
+            background: var(--gold); 
+            width: 60px; 
+            height: 60px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            border-radius: 50%; 
+        }
+
+        /* --- REVIEWS SECTION --- */
+        .reviews-section {
+            background: var(--light-gray);
+            padding: 7rem 5%;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-luxury);
+        }
+
+        .review-stars {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: var(--medium-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gold-dim);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .review-info h4 {
+            font-size: 1rem;
+            color: var(--charcoal);
+            margin-bottom: 0.2rem;
+        }
+
+        .review-info span {
+            font-size: 0.8rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- TERMS --- */
+        .terms-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2rem; 
+        }
+
+        .terms-card { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            padding: 2.5rem; 
+        }
+
+        .terms-card h3 { 
+            color: var(--white); 
+            font-size: 1.2rem; 
+            margin-bottom: 1.5rem; 
+            display: flex; 
+            gap: 0.8rem; 
+            align-items: center; 
+        }
+
+        .terms-card h3 i { 
+            color: var(--gold); 
+        }
+
+        .terms-card li { 
+            padding: 0.8rem 0; 
+            color: rgba(255,255,255,0.7); 
+            font-size: 0.9rem; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+        }
+
+        /* --- CONTACT --- */
+        .contact-grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info-box {
+            background: var(--white);
+            padding: 3rem;
+            box-shadow: var(--shadow-luxury);
+            height: 100%;
+        }
+
+        .contact-form { 
+            background: var(--white); 
+            padding: 3rem; 
+            box-shadow: var(--shadow-luxury); 
+        }
+
+        .form-group { 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+        }
+
+        .form-group label { 
+            display: block; 
+            margin-bottom: 0.5rem; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            color: var(--medium-gray); 
+        }
+
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%; 
+            padding: 1rem 0; 
+            border: none; 
+            border-bottom: 1px solid #ddd;
+            font-size: 1rem; 
+            transition: var(--transition); 
+            background: transparent;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none; 
+            border-bottom-color: var(--gold);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info-item i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .contact-info-content h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--medium-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info-content p {
+            color: var(--charcoal);
+            font-size: 1.1rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--black);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 3rem 5%;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                padding: 5rem 3rem;
+                transition: right 0.4s ease;
+                width: 70%;
+                max-width: 300px;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .about-grid,
+            .contact-grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Toast Container for Notifications -->
+    <div id="toast-container"></div>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Villa <span>Gaia</span></a>
+            
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#villa" onclick="toggleMenu()" data-i18n="nav_villa">La Villa</a></li>
+                <li><a href="#spazi" onclick="toggleMenu()" data-i18n="nav_spazi">Gli Spazi</a></li>
+                <li><a href="#esperienza" onclick="toggleMenu()" data-i18n="nav_esperienza">L'Esperienza</a></li>
+                <li><a href="#tariffe" onclick="toggleMenu()" data-i18n="nav_tariffe">Disponibilità</a></li>
+                <li><a href="#recensioni" onclick="toggleMenu()" data-i18n="nav_recensioni">Recensioni</a></li>
+                <li><a href="#condizioni" onclick="toggleMenu()" data-i18n="nav_condizioni">Condizioni</a></li>
+                <li><a href="#contatti" onclick="toggleMenu()" data-i18n="nav_contatti">Contatti</a></li>
+            </ul>
+
+            <!-- LANGUAGE SWITCHER -->
+            <div class="language-switcher">
+                <div class="current-lang" onclick="toggleDropdown()">
+                    <span id="current-flag">🇮🇹</span>
+                    <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+                </div>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option" onclick="changeLanguage('it')">🇮🇹 Italiano</div>
+                    <div class="lang-option" onclick="changeLanguage('en')">🇬🇧 English</div>
+                    <div class="lang-option" onclick="changeLanguage('fr')">🇫🇷 Français</div>
+                    <div class="lang-option" onclick="changeLanguage('de')">🇩🇪 Deutsch</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <span class="hero-subtitle" data-i18n="hero_subtitle">Salento Experience</span>
+            <h1 data-i18n="hero_title">Villa Gaia</h1>
+            <p data-i18n="hero_text">Un'oasi di relax nel cuore del Salento</p>
+            <div class="hero-cta">
+                <a href="#tariffe" class="btn-primary" data-i18n="btn_check">Verifica Disponibilità</a>
+                <a href="#villa" class="btn-secondary" data-i18n="btn_discover">Scopri la Villa</a>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('villa').scrollIntoView()">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section class="about" id="villa">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg" data-i18n="sec_prop">La Proprietà</span>
+            <h2 class="section-title" data-i18n="sec_prop_title">Una dimora esclusiva tra comfort e tranquillità</h2>
+            <p data-i18n="sec_prop_desc">Situata in una tranquilla zona residenziale a soli 800 metri dal mare e dal centro di Leuca</p>
+        </div>
+
+        <div class="about-grid reveal">
+            <div class="villa-photo-container">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075" alt="Villa Gaia - Giardino">
+                <div class="villa-badge">
+                    <span data-i18n="outdoor">Esterni</span>
+                    Giardino Terrazzato 210mq
+                </div>
+            </div>
+            <div class="about-text">
+                <h3 data-i18n="about_title">Il valore del relax: un rifugio di pace e serenità</h3>
+                <p class="dynamic-text" data-key="desc_about1">Villa Gaia è stata concepita come un autentico rifugio dove il tempo sembra scorrere più lentamente. La posizione strategica garantisce la massima tranquillità, mantenendo una comoda vicinanza a tutti i servizi.</p>
+                <p class="dynamic-text" data-key="desc_about2">Il giardino terrazzato di 210 mq costituisce il vero cuore dell'esperienza: uno spazio verde privato dove godere delle serate salentine circondati dai profumi della macchia mediterranea.</p>
+
+                <ul class="feature-list">
+                    <li><i class="fas fa-ruler-combined"></i> 130 mq interni</li>
+                    <li><i class="fas fa-tree"></i> 210 mq giardino esclusivo</li>
+                    <li><i class="fas fa-car"></i> 3 posti auto privati</li>
+                    <li><i class="fas fa-paw"></i> Pet friendly</li>
+                    <li><i class="fas fa-users"></i> Fino a 8 ospiti</li>
+                    <li><i class="fas fa-wifi"></i> Wi-Fi ad alta velocità</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="dark-section" id="spazi">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg" data-i18n="sec_interni">Gli Interni</span>
+            <h2 class="section-title" data-i18n="sec_int_title">Due livelli di eleganza</h2>
+            <p data-i18n="sec_int_desc">Spazi luminosi e accoglienti pensati per il benessere</p>
+        </div>
+        <div class="spaces-grid reveal">
+            <div class="space-card">
+                <h3><i class="fas fa-level-up-alt"></i> <span data-i18n="floor_upper">Piano Rialzato</span></h3>
+                <p class="level-subtitle" data-i18n="level_street">Livello stradale</p>
+                <ul class="room-list">
+                    <li><i class="fas fa-bed"></i> <span data-i18n="room_std">Camera con letto matrimoniale standard</span></li>
+                    <li><i class="fas fa-bed"></i> <span data-i18n="room_french">Camera matrimoniale con letto francese</span></li>
+                    <li><i class="fas fa-bed"></i> <span data-i18n="room_single">Camera con letto singolo</span></li>
+                    <li><i class="fas fa-bath"></i> <span data-i18n="room_bath">Bagno completo</span></li>
+                </ul>
+            </div>
+            <div class="space-card">
+                <h3><i class="fas fa-level-down-alt"></i> <span data-i18n="floor_lower">Piano inferiore</span></h3>
+                <p class="level-subtitle" data-i18n="level_garden">Livello giardino</p>
+                <ul class="room-list">
+                    <li><i class="fas fa-couch"></i> <span data-i18n="room_living">Living open space con cucina</span></li>
+                    <li><i class="fas fa-bed"></i> <span data-i18n="room_std_lower">Camera con letto matrimoniale standard</span></li>
+                    <li><i class="fas fa-bath"></i> <span data-i18n="room_bath">Bagno completo</span></li>
+                    <li><i class="fas fa-box"></i> <span data-i18n="room_storage">Ripostiglio lavanderia</span></li>
+                    <li><i class="fas fa-umbrella-beach"></i> <span data-i18n="room_garden">Giardino con pergolato</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: DESCRIZIONE -->
+    <section class="description-highlight reveal" id="esperienza">
+        <div class="desc-content">
+            <i class="fas fa-quote-left desc-quote"></i>
+            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 2rem; color: var(--charcoal);" data-i18n="exp_title">L'Oasi di Relax</h2>
+            <p class="desc-text dynamic-text" data-key="exp_desc">Villa Gaia è una casa indipendente di 130 mq, situata in una posizione di rara bellezza a Santa Maria di Leuca. Qui, dove il Mar Ionio e il Mar Adriatico si abbracciano, troverete un'oasi di pace assoluta. La proprietà è stata pensata per garantire la massima privacy e tranquillità: spazi interni luminosi e accoglienti si aprono su un giardino privato, ideale per godersi il relax lontano dal caos, immersi nella quiete della natura salentina.</p>
+
+            <div class="desc-features">
+                <div class="desc-feat-item">
+                    <i class="fas fa-home"></i>
+                    <span data-i18n="feat_indep">Casa Indipendente</span>
+                </div>
+                <div class="desc-feat-item">
+                    <i class="fas fa-water"></i>
+                    <span data-i18n="feat_seas">Due Mari</span>
+                </div>
+                <div class="desc-feat-item">
+                    <i class="fas fa-leaf"></i>
+                    <span data-i18n="feat_privacy">Privacy Totale</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tariffe" id="tariffe">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg" data-i18n="sec_book">Prenotazione</span>
+            <h2 class="section-title" data-i18n="sec_cal_title">Calendario & Tariffe</h2>
+            <p data-i18n="sec_cal_desc">Seleziona le date per verificare la disponibilità e calcolare il preventivo</p>
+        </div>
+        <div class="calendar-luxury reveal">
+            <div class="calendar-header">
+                <button class="calendar-btn" onclick="changeMonth(-1)" aria-label="Mese precedente"><i class="fas fa-chevron-left"></i></button>
+                <div class="calendar-title" id="currentMonth" style="font-family: 'Playfair Display'; font-size: 1.5rem;"></div>
+                <button class="calendar-btn" onclick="changeMonth(1)" aria-label="Mese successivo"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <div class="calendar-grid" id="calendar"></div>
+        </div>
+
+        <div class="selection-info" id="selectionInfo" style="display: none;">
+            <div class="selection-dates">
+                <div>
+                    <div class="date-label" data-i18n="checkin">Check-in</div>
+                    <div class="date-value" id="checkinDate">-</div>
+                </div>
+                <div class="date-nights" id="nightsCount">0 notti</div>
+                <div>
+                    <div class="date-label" data-i18n="checkout">Check-out</div>
+                    <div class="date-value" id="checkoutDate">-</div>
+                </div>
+            </div>
+
+            <div class="price-breakdown">
+                <div class="price-row">
+                    <span data-i18n="row_stay">Soggiorno</span>
+                    <span id="stayDetail">-</span>
+                </div>
+                <div class="price-row">
+                    <span data-i18n="row_base">Base alloggio</span>
+                    <strong id="basePrice">€0</strong>
+                </div>
+                <div class="price-row">
+                    <span data-i18n="row_clean">Pulizia finale (una tantum)</span>
+                    <strong>€80</strong>
+                </div>
+                <div class="price-row">
+                    <span data-i18n="row_linen">Biancheria (lenzuola + 3 asciugamani)</span>
+                    <strong id="linenPrice">€0</strong>
+                </div>
+                <div class="price-row total">
+                    <span data-i18n="row_total">TOTALE DA VERSARE</span>
+                    <span id="totalPrice">€0</span>
+                </div>
+                <div class="price-row deposit-row">
+                    <span data-i18n="row_deposit">CAPARRA (30%)</span>
+                    <span id="depositAmount">€0</span>
+                </div>
+                <small class="deposit-note" data-i18n="deposit_note">Versamento tramite bonifico. Validità 48h.</small>
+                <div class="tax-note" data-i18n="tax_note">Tassa soggiorno €2/adulto/notte (a seconda della località, da versare in loco)</div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                <label style="flex: 1;">
+                    <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--medium-gray); display: block; margin-bottom: 0.5rem;" data-i18n="label_adults">Adulti</span>
+                    <input type="number" id="adultsCount" min="1" max="8" value="2" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                </label>
+                <label style="flex: 1;">
+                    <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--medium-gray); display: block; margin-bottom: 0.5rem;" data-i18n="label_minors">Minori</span>
+                    <input type="number" id="minorsCount" min="0" max="6" value="0" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 4px;">
+                </label>
+            </div>
+
+            <button class="btn-primary" style="width: 100%; margin-top: 2rem;" onclick="proceedBooking()" data-i18n="btn_book">Prenota Ora</button>
+            <button class="btn-secondary" style="width: 100%; margin-top: 1rem; background: transparent; color: var(--charcoal); border: 1px solid var(--charcoal);" onclick="resetSelection()" data-i18n="btn_reset">Reset Selezione</button>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="galleria" style="padding-top: 4rem;">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg" data-i18n="sec_gallery">Galleria</span>
+            <h2 class="section-title" data-i18n="sec_gallery_title">La Villa in Immagini</h2>
+        </div>
+        <div class="gallery-grid reveal">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=2070" alt="Esterno Villa">
+                <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053" alt="Soggiorno">
+                <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=2057" alt="Camera da letto">
+                <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=2070" alt="Cucina">
+                <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2074" alt="Bagno">
+                <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=2084" alt="Giardino">
+                <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS SECTION -->
+    <section class="reviews-section" id="recensioni">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg" data-i18n="sec_reviews">Recensioni</span>
+            <h2 class="section-title" data-i18n="sec_reviews_title">Cosa Dicono i Nostri Ospiti</h2>
+            <p data-i18n="sec_reviews_desc">Esperienze autentiche di chi ha soggiornato a Villa Gaia</p>
+        </div>
+        <div class="reviews-grid reveal">
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text dynamic-text" data-key="rev1">"Una villa meravigliosa immersa nella tranquillità. Il giardino è uno spazio magico dove abbiamo trascorso le serate più belle della nostra vacanza. Posizione perfetta, a pochi passi dal mare."</p>
+                <div class="review-author">
+                    <div class="review-avatar">M</div>
+                    <div class="review-info">
+                        <h4>Marco & Giulia</h4>
+                        <span data-i18n="loc_milano">Milano</span>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text dynamic-text" data-key="rev2">"Villa Gaia ha superato le nostre aspettative. Spazi accoglienti, attenzione ai dettagli e una zona molto tranquilla. Perfetta per rilassarsi e godersi il Salento."</p>
+                <div class="review-author">
+                    <div class="review-avatar">L</div>
+                    <div class="review-info">
+                        <h4>Laura</h4>
+                        <span data-i18n="loc_roma">Roma</span>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card">
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text dynamic-text" data-key="rev3">"Location stupenda, ideale per famiglie. I bambini hanno adorato il giardino e noi la comodità di avere tutto a portata di mano. Torneremo sicuramente!"</p>
+                <div class="review-author">
+                    <div class="review-avatar">A</div>
+                    <div class="review-info">
+                        <h4>Alessandro & Chiara</h4>
+                        <span data-i18n="loc_torino">Torino</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TERMS SECTION -->
+    <section class="dark-section" id="condizioni">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg" data-i18n="sec_terms">Condizioni</span>
+            <h2 class="section-title" data-i18n="sec_terms_title">Termini & Servizi</h2>
+        </div>
+        <div class="terms-grid reveal">
+            <div class="terms-card">
+                <h3><i class="fas fa-calendar-check"></i> <span data-i18n="terms_booking">Prenotazione</span></h3>
+                <ul>
+                    <li class="dynamic-text" data-key="terms_book_1">Caparra del 30% richiesta al momento della prenotazione</li>
+                    <li class="dynamic-text" data-key="terms_book_2">Saldo da versare 15 giorni prima dell'arrivo</li>
+                    <li class="dynamic-text" data-key="terms_book_3">Cancellazione gratuita fino a 30 giorni prima</li>
+                </ul>
+            </div>
+            <div class="terms-card">
+                <h3><i class="fas fa-clock"></i> <span data-i18n="terms_services">Check-in/out</span></h3>
+                <ul>
+                    <li class="dynamic-text" data-key="terms_check_1">Check-in dalle 16:00</li>
+                    <li class="dynamic-text" data-key="terms_check_2">Check-out entro le 10:00</li>
+                    <li class="dynamic-text" data-key="terms_check_3">Check-in anticipato su richiesta (secondo disponibilità)</li>
+                </ul>
+            </div>
+            <div class="terms-card">
+                <h3><i class="fas fa-info-circle"></i> <span data-i18n="terms_rules">Regole</span></h3>
+                <ul>
+                    <li class="dynamic-text" data-key="terms_rule_1">Animali domestici benvenuti</li>
+                    <li class="dynamic-text" data-key="terms_rule_2">Vietato fumare negli spazi interni</li>
+                    <li class="dynamic-text" data-key="terms_rule_3">Rispetto della quiete tra le 14:00 e le 16:00 e dopo le 23:00</li>
+                    <li class="dynamic-text" data-key="terms_rule_4">Massimo 8 ospiti</li>
+                    <li class="dynamic-text" data-key="terms_wifi">Wi-Fi gratuito ad alta velocità</li>
+                    <li class="dynamic-text" data-key="terms_parking">3 posti auto privati inclusi</li>
+                    <li class="dynamic-text" data-key="terms_kids">Area gioco per bambini nel giardino</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contatti">
+        <div class="section-header reveal">
+            <span class="section-subtitle-lg" data-i18n="sec_contact">Contatti</span>
+            <h2 class="section-title" data-i18n="sec_contact_title">Richiedi Informazioni</h2>
+            <p data-i18n="sec_contact_desc">Siamo qui per rispondere a tutte le tue domande</p>
+        </div>
+
+        <div class="contact-grid-container reveal">
+            <div class="contact-info-box">
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem;">Villa Gaia</h3>
+                
+                <div class="contact-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-info-content">
+                        <h4>Indirizzo</h4>
+                        <p>Santa Maria di Leuca<br>Puglia, Italia</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <i class="fas fa-phone"></i>
+                    <div class="contact-info-content">
+                        <h4>Telefono</h4>
+                        <p>+39 123 456 7890</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-info-content">
+                        <h4>Email</h4>
+                        <p>info@villagaia.it</p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label data-i18n="lbl_name">Nome</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="lbl_surname">Cognome</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="lbl_email">Email</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="lbl_message">Messaggio</label>
+                    <textarea required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%;" data-i18n="btn_submit">Invia Richiesta</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p data-i18n="footer_copy">&copy; 2026 Villa Gaia Salento Experience. Tutti i diritti riservati.</p>
+    </footer>
+
+    <script>
+        // ============================================
+        // TRANSLATIONS OBJECT - COMPLETE 4 LANGUAGES
+        // ============================================
+        const translations = {
+            it: {
+                // Navigation
+                nav_villa: "La Villa",
+                nav_spazi: "Gli Spazi",
+                nav_esperienza: "L'Esperienza",
+                nav_tariffe: "Disponibilità",
+                nav_recensioni: "Recensioni",
+                nav_condizioni: "Condizioni",
+                nav_contatti: "Contatti",
+                
+                // Hero
+                hero_subtitle: "Salento Experience",
+                hero_title: "Villa Gaia",
+                hero_text: "Un'oasi di relax nel cuore del Salento",
+                btn_check: "Verifica Disponibilità",
+                btn_discover: "Scopri la Villa",
+                
+                // About Section
+                sec_prop: "La Proprietà",
+                sec_prop_title: "Una dimora esclusiva tra comfort e tranquillità",
+                sec_prop_desc: "Situata in una tranquilla zona residenziale a soli 800 metri dal mare e dal centro di Leuca",
+                about_title: "Il valore del relax: un rifugio di pace e serenità",
+                outdoor: "Esterni",
+                desc_about1: "Villa Gaia è stata concepita come un autentico rifugio dove il tempo sembra scorrere più lentamente. La posizione strategica garantisce la massima tranquillità, mantenendo una comoda vicinanza a tutti i servizi.",
+                desc_about2: "Il giardino terrazzato di 210 mq costituisce il vero cuore dell'esperienza: uno spazio verde privato dove godere delle serate salentine circondati dai profumi della macchia mediterranea.",
+                
+                // Spaces Section
+                sec_interni: "Gli Interni",
+                sec_int_title: "Due livelli di eleganza",
+                sec_int_desc: "Spazi luminosi e accoglienti pensati per il benessere",
+                floor_upper: "Piano Rialzato",
+                floor_lower: "Piano inferiore",
+                level_street: "Livello stradale",
+                level_garden: "Livello giardino",
+                room_std: "Camera con letto matrimoniale standard",
+                room_french: "Camera matrimoniale con letto francese",
+                room_single: "Camera con letto singolo",
+                room_bath: "Bagno completo",
+                room_living: "Living open space con cucina",
+                room_std_lower: "Camera con letto matrimoniale standard",
+                room_storage: "Ripostiglio lavanderia",
+                room_garden: "Giardino con pergolato",
+                
+                // Experience Section
+                exp_title: "L'Oasi di Relax",
+                exp_desc: "Villa Gaia è una casa indipendente di 130 mq, situata in una posizione di rara bellezza a Santa Maria di Leuca. Qui, dove il Mar Ionio e il Mar Adriatico si abbracciano, troverete un'oasi di pace assoluta. La proprietà è stata pensata per garantire la massima privacy e tranquillità: spazi interni luminosi e accoglienti si aprono su un giardino privato, ideale per godersi il relax lontano dal caos, immersi nella quiete della natura salentina.",
+                feat_indep: "Casa Indipendente",
+                feat_seas: "Due Mari",
+                feat_privacy: "Privacy Totale",
+                
+                // Calendar Section
+                sec_book: "Prenotazione",
+                sec_cal_title: "Calendario & Tariffe",
+                sec_cal_desc: "Seleziona le date per verificare la disponibilità e calcolare il preventivo",
+                checkin: "Check-in",
+                checkout: "Check-out",
+                row_stay: "Soggiorno",
+                row_base: "Base alloggio",
+                row_clean: "Pulizia finale (una tantum)",
+                row_linen: "Biancheria (lenzuola + 3 asciugamani)",
+                row_total: "TOTALE DA VERSARE",
+                row_deposit: "CAPARRA (30%)",
+                deposit_note: "Versamento tramite bonifico. Validità 48h.",
+                tax_note: "Tassa soggiorno €2/adulto/notte (a seconda della località, da versare in loco)",
+                label_adults: "Adulti",
+                label_minors: "Minori",
+                btn_book: "Prenota Ora",
+                btn_reset: "Reset Selezione",
+                
+                // Gallery
+                sec_gallery: "Galleria",
+                sec_gallery_title: "La Villa in Immagini",
+                
+                // Reviews
+                sec_reviews: "Recensioni",
+                sec_reviews_title: "Cosa Dicono i Nostri Ospiti",
+                sec_reviews_desc: "Esperienze autentiche di chi ha soggiornato a Villa Gaia",
+                rev1: "\"Una villa meravigliosa immersa nella tranquillità. Il giardino è uno spazio magico dove abbiamo trascorso le serate più belle della nostra vacanza. Posizione perfetta, a pochi passi dal mare.\"",
+                rev2: "\"Villa Gaia ha superato le nostre aspettative. Spazi accoglienti, attenzione ai dettagli e una zona molto tranquilla. Perfetta per rilassarsi e godersi il Salento.\"",
+                rev3: "\"Location stupenda, ideale per famiglie. I bambini hanno adorato il giardino e noi la comodità di avere tutto a portata di mano. Torneremo sicuramente!\"",
+                loc_milano: "Milano",
+                loc_roma: "Roma",
+                loc_torino: "Torino",
+                
+                // Terms
+                sec_terms: "Condizioni",
+                sec_terms_title: "Termini & Servizi",
+                terms_booking: "Prenotazione",
+                terms_services: "Check-in/out",
+                terms_rules: "Regole",
+                terms_book_1: "Caparra del 30% richiesta al momento della prenotazione",
+                terms_book_2: "Saldo da versare 15 giorni prima dell'arrivo",
+                terms_book_3: "Cancellazione gratuita fino a 30 giorni prima",
+                terms_check_1: "Check-in dalle 16:00",
+                terms_check_2: "Check-out entro le 10:00",
+                terms_check_3: "Check-in anticipato su richiesta (secondo disponibilità)",
+                terms_rule_1: "Animali domestici benvenuti",
+                terms_rule_2: "Vietato fumare negli spazi interni",
+                terms_rule_3: "Rispetto della quiete tra le 14:00 e le 16:00 e dopo le 23:00",
+                terms_rule_4: "Massimo 8 ospiti",
+                terms_wifi: "Wi-Fi gratuito ad alta velocità",
+                terms_parking: "3 posti auto privati inclusi",
+                terms_kids: "Area gioco per bambini nel giardino",
+                
+                // Contact
+                sec_contact: "Contatti",
+                sec_contact_title: "Richiedi Informazioni",
+                sec_contact_desc: "Siamo qui per rispondere a tutte le tue domande",
+                lbl_name: "Nome",
+                lbl_surname: "Cognome",
+                lbl_email: "Email",
+                lbl_message: "Messaggio",
+                btn_submit: "Invia Richiesta",
+                
+                // Footer
+                footer_copy: "&copy; 2026 Villa Gaia Salento Experience. Tutti i diritti riservati."
+            },
+            
+            en: {
+                // Navigation
+                nav_villa: "The Villa",
+                nav_spazi: "The Spaces",
+                nav_esperienza: "The Experience",
+                nav_tariffe: "Availability",
+                nav_recensioni: "Reviews",
+                nav_condizioni: "Terms",
+                nav_contatti: "Contact",
+                
+                // Hero
+                hero_subtitle: "Salento Experience",
+                hero_title: "Villa Gaia",
+                hero_text: "An oasis of relaxation in the heart of Salento",
+                btn_check: "Check Availability",
+                btn_discover: "Discover the Villa",
+                
+                // About Section
+                sec_prop: "The Property",
+                sec_prop_title: "An exclusive residence of comfort and tranquility",
+                sec_prop_desc: "Located in a quiet residential area just 800 meters from the sea and Leuca town center",
+                about_title: "The value of relaxation: a haven of peace and serenity",
+                outdoor: "Outdoor",
+                desc_about1: "Villa Gaia was conceived as an authentic refuge where time seems to slow down. The strategic location ensures maximum tranquility while maintaining convenient proximity to all services.",
+                desc_about2: "The 210 sqm terraced garden is the true heart of the experience: a private green space where you can enjoy Salento evenings surrounded by the scents of Mediterranean vegetation.",
+                
+                // Spaces Section
+                sec_interni: "The Interiors",
+                sec_int_title: "Two levels of elegance",
+                sec_int_desc: "Bright and welcoming spaces designed for wellbeing",
+                floor_upper: "Ground Floor",
+                floor_lower: "Lower Floor",
+                level_street: "Street level",
+                level_garden: "Garden level",
+                room_std: "Room with standard double bed",
+                room_french: "Room with French double bed",
+                room_single: "Single bedroom",
+                room_bath: "Full bathroom",
+                room_living: "Open space living with kitchen",
+                room_std_lower: "Room with standard double bed",
+                room_storage: "Laundry storage",
+                room_garden: "Garden with pergola",
+                
+                // Experience Section
+                exp_title: "The Oasis of Relaxation",
+                exp_desc: "Villa Gaia is an independent 130 sqm house, located in a position of rare beauty in Santa Maria di Leuca. Here, where the Ionian Sea and Adriatic Sea embrace, you will find an oasis of absolute peace. The property was designed to ensure maximum privacy and tranquility: bright and welcoming interior spaces open onto a private garden, ideal for enjoying relaxation away from chaos, immersed in the quiet of Salento nature.",
+                feat_indep: "Independent House",
+                feat_seas: "Two Seas",
+                feat_privacy: "Total Privacy",
+                
+                // Calendar Section
+                sec_book: "Booking",
+                sec_cal_title: "Calendar & Rates",
+                sec_cal_desc: "Select dates to check availability and calculate your quote",
+                checkin: "Check-in",
+                checkout: "Check-out",
+                row_stay: "Stay",
+                row_base: "Accommodation",
+                row_clean: "Final cleaning (one-time)",
+                row_linen: "Linen (sheets + 3 towels)",
+                row_total: "TOTAL TO PAY",
+                row_deposit: "DEPOSIT (30%)",
+                deposit_note: "Payment by bank transfer. Valid for 48h.",
+                tax_note: "Tourist tax €2/adult/night (location dependent, payable on-site)",
+                label_adults: "Adults",
+                label_minors: "Minors",
+                btn_book: "Book Now",
+                btn_reset: "Reset Selection",
+                
+                // Gallery
+                sec_gallery: "Gallery",
+                sec_gallery_title: "The Villa in Images",
+                
+                // Reviews
+                sec_reviews: "Reviews",
+                sec_reviews_title: "What Our Guests Say",
+                sec_reviews_desc: "Authentic experiences from those who stayed at Villa Gaia",
+                rev1: "\"A wonderful villa surrounded by tranquility. The garden is a magical space where we spent the most beautiful evenings of our vacation. Perfect location, steps from the sea.\"",
+                rev2: "\"Villa Gaia exceeded our expectations. Welcoming spaces, attention to detail, and a very quiet area. Perfect for relaxing and enjoying Salento.\"",
+                rev3: "\"Stunning location, ideal for families. The children loved the garden and we loved the convenience of having everything at hand. We will definitely return!\"",
+                loc_milano: "Milan",
+                loc_roma: "Rome",
+                loc_torino: "Turin",
+                
+                // Terms
+                sec_terms: "Terms",
+                sec_terms_title: "Terms & Services",
+                terms_booking: "Booking",
+                terms_services: "Check-in/out",
+                terms_rules: "Rules",
+                terms_book_1: "30% deposit required upon booking",
+                terms_book_2: "Balance due 15 days before arrival",
+                terms_book_3: "Free cancellation up to 30 days before",
+                terms_check_1: "Check-in from 4:00 PM",
+                terms_check_2: "Check-out by 10:00 AM",
+                terms_check_3: "Early check-in upon request (subject to availability)",
+                terms_rule_1: "Pets welcome",
+                terms_rule_2: "No smoking indoors",
+                terms_rule_3: "Quiet hours between 2:00 PM - 4:00 PM and after 11:00 PM",
+                terms_rule_4: "Maximum 8 guests",
+                terms_wifi: "Free high-speed Wi-Fi",
+                terms_parking: "3 private parking spaces included",
+                terms_kids: "Children's play area in the garden",
+                
+                // Contact
+                sec_contact: "Contact",
+                sec_contact_title: "Request Information",
+                sec_contact_desc: "We are here to answer all your questions",
+                lbl_name: "Name",
+                lbl_surname: "Surname",
+                lbl_email: "Email",
+                lbl_message: "Message",
+                btn_submit: "Send Request",
+                
+                // Footer
+                footer_copy: "&copy; 2026 Villa Gaia Salento Experience. All rights reserved."
+            },
+            
+            fr: {
+                // Navigation
+                nav_villa: "La Villa",
+                nav_spazi: "Les Espaces",
+                nav_esperienza: "L'Expérience",
+                nav_tariffe: "Disponibilité",
+                nav_recensioni: "Avis",
+                nav_condizioni: "Conditions",
+                nav_contatti: "Contact",
+                
+                // Hero
+                hero_subtitle: "Expérience Salento",
+                hero_title: "Villa Gaia",
+                hero_text: "Une oasis de détente au cœur du Salento",
+                btn_check: "Vérifier la Disponibilité",
+                btn_discover: "Découvrir la Villa",
+                
+                // About Section
+                sec_prop: "La Propriété",
+                sec_prop_title: "Une demeure exclusive entre confort et tranquillité",
+                sec_prop_desc: "Située dans un quartier résidentiel calme à seulement 800 mètres de la mer et du centre de Leuca",
+                about_title: "La valeur de la détente : un refuge de paix et de sérénité",
+                outdoor: "Extérieurs",
+                desc_about1: "Villa Gaia a été conçue comme un refuge authentique où le temps semble s'écouler plus lentement. L'emplacement stratégique garantit une tranquillité maximale tout en maintenant une proximité pratique avec tous les services.",
+                desc_about2: "Le jardin en terrasse de 210 m² constitue le véritable cœur de l'expérience : un espace vert privé où profiter des soirées du Salento entouré des parfums du maquis méditerranéen.",
+                
+                // Spaces Section
+                sec_interni: "Les Intérieurs",
+                sec_int_title: "Deux niveaux d'élégance",
+                sec_int_desc: "Espaces lumineux et accueillants pensés pour le bien-être",
+                floor_upper: "Rez-de-chaussée Surélevé",
+                floor_lower: "Étage Inférieur",
+                level_street: "Niveau rue",
+                level_garden: "Niveau jardin",
+                room_std: "Chambre avec lit double standard",
+                room_french: "Chambre avec lit double français",
+                room_single: "Chambre simple",
+                room_bath: "Salle de bain complète",
+                room_living: "Salon open space avec cuisine",
+                room_std_lower: "Chambre avec lit double standard",
+                room_storage: "Buanderie",
+                room_garden: "Jardin avec pergola",
+                
+                // Experience Section
+                exp_title: "L'Oasis de Détente",
+                exp_desc: "Villa Gaia est une maison indépendante de 130 m², située dans un endroit d'une beauté rare à Santa Maria di Leuca. Ici, où la mer Ionienne et l'Adriatique s'embrassent, vous trouverez une oasis de paix absolue. La propriété a été conçue pour garantir un maximum d'intimité et de tranquillité : des espaces intérieurs lumineux et accueillants s'ouvrent sur un jardin privé, idéal pour profiter de la détente loin du chaos, immergé dans le calme de la nature du Salento.",
+                feat_indep: "Maison Indépendante",
+                feat_seas: "Deux Mers",
+                feat_privacy: "Intimité Totale",
+                
+                // Calendar Section
+                sec_book: "Réservation",
+                sec_cal_title: "Calendrier & Tarifs",
+                sec_cal_desc: "Sélectionnez les dates pour vérifier la disponibilité et calculer votre devis",
+                checkin: "Arrivée",
+                checkout: "Départ",
+                row_stay: "Séjour",
+                row_base: "Hébergement",
+                row_clean: "Ménage final (unique)",
+                row_linen: "Linge (draps + 3 serviettes)",
+                row_total: "TOTAL À PAYER",
+                row_deposit: "ACOMPTE (30%)",
+                deposit_note: "Paiement par virement bancaire. Validité 48h.",
+                tax_note: "Taxe de séjour €2/adulte/nuit (selon localité, à régler sur place)",
+                label_adults: "Adultes",
+                label_minors: "Mineurs",
+                btn_book: "Réserver Maintenant",
+                btn_reset: "Réinitialiser la Sélection",
+                
+                // Gallery
+                sec_gallery: "Galerie",
+                sec_gallery_title: "La Villa en Images",
+                
+                // Reviews
+                sec_reviews: "Avis",
+                sec_reviews_title: "Ce Que Disent Nos Invités",
+                sec_reviews_desc: "Expériences authentiques de ceux qui ont séjourné à Villa Gaia",
+                rev1: "\"Une villa merveilleuse entourée de tranquillité. Le jardin est un espace magique où nous avons passé les plus belles soirées de nos vacances. Emplacement parfait, à quelques pas de la mer.\"",
+                rev2: "\"Villa Gaia a dépassé nos attentes. Espaces accueillants, attention aux détails et une zone très calme. Parfait pour se détendre et profiter du Salento.\"",
+                rev3: "\"Endroit magnifique, idéal pour les familles. Les enfants ont adoré le jardin et nous avons apprécié la commodité d'avoir tout à portée de main. Nous reviendrons certainement !\"",
+                loc_milano: "Milan",
+                loc_roma: "Rome",
+                loc_torino: "Turin",
+                
+                // Terms
+                sec_terms: "Conditions",
+                sec_terms_title: "Conditions & Services",
+                terms_booking: "Réservation",
+                terms_services: "Arrivée/Départ",
+                terms_rules: "Règles",
+                terms_book_1: "Acompte de 30% requis lors de la réservation",
+                terms_book_2: "Solde à régler 15 jours avant l'arrivée",
+                terms_book_3: "Annulation gratuite jusqu'à 30 jours avant",
+                terms_check_1: "Arrivée à partir de 16h00",
+                terms_check_2: "Départ avant 10h00",
+                terms_check_3: "Arrivée anticipée sur demande (selon disponibilité)",
+                terms_rule_1: "Animaux domestiques bienvenus",
+                terms_rule_2: "Interdiction de fumer à l'intérieur",
+                terms_rule_3: "Respect du calme entre 14h00 - 16h00 et après 23h00",
+                terms_rule_4: "Maximum 8 invités",
+                terms_wifi: "Wi-Fi haute vitesse gratuit",
+                terms_parking: "3 places de parking privées incluses",
+                terms_kids: "Aire de jeux pour enfants dans le jardin",
+                
+                // Contact
+                sec_contact: "Contact",
+                sec_contact_title: "Demander des Informations",
+                sec_contact_desc: "Nous sommes là pour répondre à toutes vos questions",
+                lbl_name: "Prénom",
+                lbl_surname: "Nom",
+                lbl_email: "Email",
+                lbl_message: "Message",
+                btn_submit: "Envoyer la Demande",
+                
+                // Footer
+                footer_copy: "&copy; 2026 Villa Gaia Salento Experience. Tous droits réservés."
+            },
+            
+            de: {
+                // Navigation
+                nav_villa: "Die Villa",
+                nav_spazi: "Die Räume",
+                nav_esperienza: "Das Erlebnis",
+                nav_tariffe: "Verfügbarkeit",
+                nav_recensioni: "Bewertungen",
+                nav_condizioni: "Bedingungen",
+                nav_contatti: "Kontakt",
+                
+                // Hero
+                hero_subtitle: "Salento Erlebnis",
+                hero_title: "Villa Gaia",
+                hero_text: "Eine Oase der Entspannung im Herzen des Salento",
+                btn_check: "Verfügbarkeit Prüfen",
+                btn_discover: "Villa Entdecken",
+                
+                // About Section
+                sec_prop: "Das Anwesen",
+                sec_prop_title: "Ein exklusives Domizil zwischen Komfort und Ruhe",
+                sec_prop_desc: "In einer ruhigen Wohngegend gelegen, nur 800 Meter vom Meer und Leuca Zentrum entfernt",
+                about_title: "Der Wert der Entspannung: ein Zufluchtsort der Ruhe und Gelassenheit",
+                outdoor: "Außenbereich",
+                desc_about1: "Villa Gaia wurde als authentischer Zufluchtsort konzipiert, wo die Zeit langsamer zu vergehen scheint. Die strategische Lage garantiert maximale Ruhe bei gleichzeitiger bequemer Nähe zu allen Dienstleistungen.",
+                desc_about2: "Der 210 qm große Terrassengarten bildet das wahre Herzstück des Erlebnisses: ein privater Grünraum, um Salento-Abende umgeben von den Düften der mediterranen Macchia zu genießen.",
+                
+                // Spaces Section
+                sec_interni: "Die Innenräume",
+                sec_int_title: "Zwei Ebenen der Eleganz",
+                sec_int_desc: "Helle und einladende Räume für das Wohlbefinden konzipiert",
+                floor_upper: "Hochparterre",
+                floor_lower: "Untere Etage",
+                level_street: "Straßenebene",
+                level_garden: "Gartenebene",
+                room_std: "Zimmer mit Standard-Doppelbett",
+                room_french: "Zimmer mit französischem Doppelbett",
+                room_single: "Einzelzimmer",
+                room_bath: "Komplettes Badezimmer",
+                room_living: "Offener Wohnbereich mit Küche",
+                room_std_lower: "Zimmer mit Standard-Doppelbett",
+                room_storage: "Waschküche",
+                room_garden: "Garten mit Pergola",
+                
+                // Experience Section
+                exp_title: "Die Oase der Entspannung",
+                exp_desc: "Villa Gaia ist ein unabhängiges 130 qm großes Haus an einem Ort von seltener Schönheit in Santa Maria di Leuca. Hier, wo sich das Ionische Meer und die Adria umarmen, finden Sie eine Oase absoluter Ruhe. Das Anwesen wurde konzipiert, um maximale Privatsphäre und Ruhe zu gewährleisten: helle und einladende Innenräume öffnen sich zu einem privaten Garten, ideal um Entspannung fernab vom Chaos zu genießen, eingetaucht in die Stille der Salento-Natur.",
+                feat_indep: "Unabhängiges Haus",
+                feat_seas: "Zwei Meere",
+                feat_privacy: "Totale Privatsphäre",
+                
+                // Calendar Section
+                sec_book: "Buchung",
+                sec_cal_title: "Kalender & Preise",
+                sec_cal_desc: "Wählen Sie die Daten zur Überprüfung der Verfügbarkeit und Berechnung des Angebots",
+                checkin: "Anreise",
+                checkout: "Abreise",
+                row_stay: "Aufenthalt",
+                row_base: "Unterkunft",
+                row_clean: "Endreinigung (einmalig)",
+                row_linen: "Wäsche (Bettwäsche + 3 Handtücher)",
+                row_total: "GESAMT ZU ZAHLEN",
+                row_deposit: "ANZAHLUNG (30%)",
+                deposit_note: "Zahlung per Überweisung. Gültig 48h.",
+                tax_note: "Kurtaxe €2/Erwachsene/Nacht (ortsabhängig vor Ort zu zahlen)",
+                label_adults: "Erwachsene",
+                label_minors: "Minderjährige",
+                btn_book: "Jetzt Buchen",
+                btn_reset: "Auswahl Zurücksetzen",
+                
+                // Gallery
+                sec_gallery: "Galerie",
+                sec_gallery_title: "Die Villa in Bildern",
+                
+                // Reviews
+                sec_reviews: "Bewertungen",
+                sec_reviews_title: "Was Unsere Gäste Sagen",
+                sec_reviews_desc: "Authentische Erfahrungen von Gästen der Villa Gaia",
+                rev1: "\"Eine wunderbare Villa umgeben von Ruhe. Der Garten ist ein magischer Ort, wo wir die schönsten Abende unseres Urlaubs verbracht haben. Perfekte Lage, nur wenige Schritte vom Meer.\"",
+                rev2: "\"Villa Gaia hat unsere Erwartungen übertroffen. Einladende Räume, Liebe zum Detail und eine sehr ruhige Gegend. Perfekt zum Entspannen und Genießen des Salento.\"",
+                rev3: "\"Atemberaubende Location, ideal für Familien. Die Kinder liebten den Garten und wir die Bequemlichkeit, alles griffbereit zu haben. Wir werden sicherlich wiederkommen!\"",
+                loc_milano: "Mailand",
+                loc_roma: "Rom",
+                loc_torino: "Turin",
+                
+                // Terms
+                sec_terms: "Bedingungen",
+                sec_terms_title: "Bedingungen & Services",
+                terms_booking: "Buchung",
+                terms_services: "Check-in/out",
+                terms_rules: "Regeln",
+                terms_book_1: "30% Anzahlung bei Buchung erforderlich",
+                terms_book_2: "Restzahlung 15 Tage vor Anreise",
+                terms_book_3: "Kostenlose Stornierung bis 30 Tage vorher",
+                terms_check_1: "Check-in ab 16:00 Uhr",
+                terms_check_2: "Check-out bis 10:00 Uhr",
+                terms_check_3: "Früher Check-in auf Anfrage (je nach Verfügbarkeit)",
+                terms_rule_1: "Haustiere willkommen",
+                terms_rule_2: "Rauchen in Innenräumen verboten",
+                terms_rule_3: "Ruhezeiten zwischen 14:00 - 16:00 Uhr und nach 23:00 Uhr",
+                terms_rule_4: "Maximal 8 Gäste",
+                terms_wifi: "Kostenloses Highspeed-WLAN",
+                terms_parking: "3 private Parkplätze inklusive",
+                terms_kids: "Kinderspielbereich im Garten",
+                
+                // Contact
+                sec_contact: "Kontakt",
+                sec_contact_title: "Informationen Anfordern",
+                sec_contact_desc: "Wir sind hier, um alle Ihre Fragen zu beantworten",
+                lbl_name: "Vorname",
+                lbl_surname: "Nachname",
+                lbl_email: "E-Mail",
+                lbl_message: "Nachricht",
+                btn_submit: "Anfrage Senden",
+                
+                // Footer
+                footer_copy: "&copy; 2026 Villa Gaia Salento Experience. Alle Rechte vorbehalten."
+            }
+        };
+
+        // ============================================
+        // LANGUAGE SYSTEM
+        // ============================================
+        let currentLanguage = 'it';
+
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.documentElement.lang = lang;
+            
+            // Update flag
+            const flags = { it: '🇮🇹', en: '🇬🇧', fr: '🇫🇷', de: '🇩🇪' };
+            document.getElementById('current-flag').textContent = flags[lang];
+            
+            // Translate all data-i18n elements
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            
+            // Translate all data-key elements (dynamic text)
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+            
+            // Close dropdown
+            document.getElementById('langDropdown').classList.remove('active');
+            
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+            
+            showToast(`Language changed to ${lang.toUpperCase()}`, 'success');
+        }
+
+        function toggleDropdown() {
+            document.getElementById('langDropdown').classList.toggle('active');
+        }
+
+        // Load saved language preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && translations[savedLang]) {
+                changeLanguage(savedLang);
+            }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const switcher = document.querySelector('.language-switcher');
+            if (!switcher.contains(event.target)) {
+                document.getElementById('langDropdown').classList.remove('active');
+            }
+        });
+
+        // ============================================
+        // TOAST NOTIFICATIONS
+        // ============================================
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i> ${message}`;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'fadeOut 0.4s ease forwards';
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+
+        // ============================================
+        // NAVIGATION
+        // ============================================
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        function toggleMenu() {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        // ============================================
+        // REVEAL ON SCROLL
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal, .section-header').forEach(el => {
+            observer.observe(el);
+        });
+
+        // ============================================
+        // CALENDAR SYSTEM
+        // ============================================
+        let currentDate = new Date();
+        let selectedCheckin = null;
+        let selectedCheckout = null;
+
+        // Pricing data (€ per night)
+        const pricing = {
+            lowSeason: 150,
+            midSeason: 200,
+            highSeason: 300,
+            cleaning: 80,
+            linenPerPerson: 15
+        };
+
+        function getSeason(date) {
+            const month = date.getMonth();
+            const day = date.getDate();
+            
+            // High season: July 1 - August 31
+            if ((month === 6 && day >= 1) || (month === 7)) {
+                return 'highSeason';
+            }
+            // Mid season: June, September
+            else if (month === 5 || month === 8) {
+                return 'midSeason';
+            }
+            // Low season: rest of the year
+            else {
+                return 'lowSeason';
+            }
+        }
+
+        function renderCalendar() {
+            const calendar = document.getElementById('calendar');
+            const year = currentDate.getFullYear();
+            const month = currentDate.getMonth();
+            
+            // Update month title
+            const monthNames = {
+                it: ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'],
+                en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                fr: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
+                de: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember']
+            };
+            document.getElementById('currentMonth').textContent = `${monthNames[currentLanguage][month]} ${year}`;
+            
+            // Clear calendar
+            calendar.innerHTML = '';
+            
+            // Day headers
+            const dayHeaders = {
+                it: ['Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab', 'Dom'],
+                en: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                fr: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+                de: ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So']
+            };
+            dayHeaders[currentLanguage].forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-day-header';
+                header.textContent = day;
+                calendar.appendChild(header);
+            });
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const today = new Date();
+            today.setHours(0,0,0,0);
+            
+            // Adjust first day (Monday = 0)
+            const adjustedFirstDay = (firstDay === 0) ? 6 : firstDay - 1;
+            
+            // Empty cells before first day
+            for (let i = 0; i < adjustedFirstDay; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'calendar-day disabled';
+                calendar.appendChild(emptyCell);
+            }
+            
+            // Days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const date = new Date(year, month, day);
+                const dayCell = document.createElement('div');
+                dayCell.className = 'calendar-day';
+                
+                // Check if date is in the past
+                if (date < today) {
+                    dayCell.classList.add('disabled');
+                } else {
+                    const season = getSeason(date);
+                    const price = pricing[season];
+                    
+                    dayCell.innerHTML = `
+                        <span class="calendar-day-number">${day}</span>
+                        <span class="calendar-day-price">€${price}</span>
+                    `;
+                    
+                    // Handle selection
+                    if (selectedCheckin && date.getTime() === selectedCheckin.getTime()) {
+                        dayCell.classList.add('checkin');
+                    }
+                    if (selectedCheckout && date.getTime() === selectedCheckout.getTime()) {
+                        dayCell.classList.add('checkout');
+                    }
+                    if (selectedCheckin && selectedCheckout && date > selectedCheckin && date < selectedCheckout) {
+                        dayCell.classList.add('in-range');
+                    }
+                    
+                    dayCell.addEventListener('click', () => selectDate(date));
+                }
+                
+                calendar.appendChild(dayCell);
+            }
+        }
+
+        function selectDate(date) {
+            if (!selectedCheckin || (selectedCheckin && selectedCheckout)) {
+                // Start new selection
+                selectedCheckin = date;
+                selectedCheckout = null;
+            } else if (date > selectedCheckin) {
+                // Set checkout
+                selectedCheckout = date;
+                calculatePrice();
+            } else {
+                // Reset if date is before checkin
+                selectedCheckin = date;
+                selectedCheckout = null;
+            }
+            
+            renderCalendar();
+            
+            // Show/hide selection info
+            const selectionInfo = document.getElementById('selectionInfo');
+            if (selectedCheckin && selectedCheckout) {
+                selectionInfo.style.display = 'block';
+            } else {
+                selectionInfo.style.display = 'none';
+            }
+        }
+
+        function calculatePrice() {
+            if (!selectedCheckin || !selectedCheckout) return;
+            
+            const nights = Math.ceil((selectedCheckout - selectedCheckin) / (1000 * 60 * 60 * 24));
+            let totalAccommodation = 0;
+            
+            // Calculate accommodation cost
+            for (let i = 0; i < nights; i++) {
+                const currentDate = new Date(selectedCheckin);
+                currentDate.setDate(currentDate.getDate() + i);
+                const season = getSeason(currentDate);
+                totalAccommodation += pricing[season];
+            }
+            
+            // Get guest counts
+            const adults = parseInt(document.getElementById('adultsCount').value) || 2;
+            const minors = parseInt(document.getElementById('minorsCount').value) || 0;
+            const totalGuests = adults + minors;
+            
+            // Calculate linen cost
+            const linenCost = totalGuests * pricing.linenPerPerson;
+            
+            // Calculate total
+            const total = totalAccommodation + pricing.cleaning + linenCost;
+            const deposit = Math.round(total * 0.3);
+            
+            // Update UI
+            const monthNames = {
+                it: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
+                en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                fr: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+                de: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez']
+            };
+            
+            document.getElementById('checkinDate').textContent = 
+                `${selectedCheckin.getDate()} ${monthNames[currentLanguage][selectedCheckin.getMonth()]}`;
+            document.getElementById('checkoutDate').textContent = 
+                `${selectedCheckout.getDate()} ${monthNames[currentLanguage][selectedCheckout.getMonth()]}`;
+            
+            const nightsText = {
+                it: nights === 1 ? '1 notte' : `${nights} notti`,
+                en: nights === 1 ? '1 night' : `${nights} nights`,
+                fr: nights === 1 ? '1 nuit' : `${nights} nuits`,
+                de: nights === 1 ? '1 Nacht' : `${nights} Nächte`
+            };
+            document.getElementById('nightsCount').textContent = nightsText[currentLanguage];
+            
+            document.getElementById('stayDetail').textContent = nightsText[currentLanguage];
+            document.getElementById('basePrice').textContent = `€${totalAccommodation}`;
+            document.getElementById('linenPrice').textContent = `€${linenCost}`;
+            document.getElementById('totalPrice').textContent = `€${total}`;
+            document.getElementById('depositAmount').textContent = `€${deposit}`;
+        }
+
+        function changeMonth(direction) {
+            currentDate.setMonth(currentDate.getMonth() + direction);
+            renderCalendar();
+        }
+
+        function resetSelection() {
+            selectedCheckin = null;
+            selectedCheckout = null;
+            document.getElementById('selectionInfo').style.display = 'none';
+            renderCalendar();
+            showToast('Selezione resettata', 'success');
+        }
+
+        function proceedBooking() {
+            if (!selectedCheckin || !selectedCheckout) {
+                showToast('Seleziona le date di check-in e check-out', 'error');
+                return;
+            }
+            
+            const adults = document.getElementById('adultsCount').value;
+            const minors = document.getElementById('minorsCount').value;
+            
+            // In a real application, this would redirect to a booking page or send data to server
+            showToast('Prenotazione avviata! Ti contatteremo presto.', 'success');
+            
+            console.log({
+                checkin: selectedCheckin,
+                checkout: selectedCheckout,
+                adults: adults,
+                minors: minors
+            });
+        }
+
+        // Update price calculation when guest count changes
+        document.getElementById('adultsCount').addEventListener('change', calculatePrice);
+        document.getElementById('minorsCount').addEventListener('change', calculatePrice);
+
+        // ============================================
+        // CONTACT FORM
+        // ============================================
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            // In a real application, send form data to server
+            showToast('Richiesta inviata con successo!', 'success');
+            event.target.reset();
+        }
+
+        // ============================================
+        // INITIALIZE
+        // ============================================
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCalendar();
+        });
+    </script>
+</body>
+</html>
