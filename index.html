@@ -2103,21 +2103,52 @@
         }
 
         // --- GALLERIA CON LIGHTBOX ---
-        const galleryImages = [
-            { src: 'images/villa/soggiorno.jpg', alt: 'Soggiorno', title: 'Living Room' },
-            { src: 'images/villa/camera-matrimoniale.jpg', alt: 'Camera Matrimoniale', title: 'Master Bedroom', tall: true },
-            { src: 'images/villa/camera-letto-francese-1.jpg', alt: 'Camera letto francese 1', title: 'French Bed Room 1' },
-            { src: 'images/villa/bagno.jpg', alt: 'Bagno', title: 'Bathroom' },
-            { src: 'images/villa/giardino-1.jpg', alt: 'Giardino', title: 'Garden', wide: true },
-            { src: 'images/villa/esterno-1.jpg', alt: 'Esterno Villa', title: 'Exterior' },
-            { src: 'images/villa/dettagli.jpg', alt: 'Dettagli', title: 'Details' },
-            { src: 'images/villa/camera-matrimoniale-2.jpg', alt: 'Camera matrimoniale 2', title: 'Bedroom 2' },
-            { src: 'images/villa/camera-matrimoniale-3.jpg', alt: 'Camera matrimoniale 3', title: 'Bedroom 3' },
-            { src: 'images/villa/camera-matrimoniale-4.jpg', alt: 'Camera matrimoniale 4', title: 'Bedroom 4' },
-            { src: 'images/villa/camera-letto-francese.jpg', alt: 'Camera letto francese', title: 'French Bed Room' },
-            { src: 'images/villa/camera-singola.jpg', alt: 'Camera singola', title: 'Single Room' },
-            { src: 'images/villa/bagno-2.jpg', alt: 'Bagno 2', title: 'Bathroom 2' }
-        ];
+        // --- GALLERIA CON LIGHTBOX ---
+const galleryImages = [
+    { src: 'images/villa/soggiorno.jpg', alt: 'Soggiorno', title: 'Living Room' },
+    { src: 'images/villa/camera-matrimoniale.jpg', alt: 'Camera Matrimoniale', title: 'Master Bedroom', tall: true },
+    { src: 'images/villa/camera-letto-francese-1.jpg', alt: 'Camera letto francese 1', title: 'French Bed Room 1' },
+    { src: 'images/villa/bagno.jpg', alt: 'Bagno', title: 'Bathroom' },
+    { src: 'images/villa/giardino-1.jpg', alt: 'Giardino', title: 'Garden', wide: true },
+    { src: 'images/villa/esterno-1.jpg', alt: 'Esterno Villa', title: 'Exterior' },
+    { src: 'images/villa/dettagli.jpg', alt: 'Dettagli', title: 'Details' },
+    { src: 'images/villa/camera-matrimoniale-2.jpg', alt: 'Camera matrimoniale 2', title: 'Bedroom 2' },
+    { src: 'images/villa/camera-matrimoniale-3.jpg', alt: 'Camera matrimoniale 3', title: 'Bedroom 3' },
+    { src: 'images/villa/camera-matrimoniale-4.jpg', alt: 'Camera matrimoniale 4', title: 'Bedroom 4' },
+    { src: 'images/villa/camera-letto-francese.jpg', alt: 'Camera letto francese', title: 'French Bed Room' },
+    { src: 'images/villa/camera-singola.jpg', alt: 'Camera singola', title: 'Single Room' },
+    { src: 'images/villa/bagno-2.jpg', alt: 'Bagno 2', title: 'Bathroom 2' }
+];
+
+let currentLightboxIndex = 0;
+
+function generateGallery() {
+    const grid = document.getElementById('galleryGrid');
+    grid.innerHTML = ''; // Pulisci la griglia prima di rigenerare
+    galleryImages.forEach((img, index) => {
+        const item = document.createElement('div');
+        item.className = `gallery-item ${img.tall ? 'tall' : ''} ${img.wide ? 'wide' : ''}`;
+        item.onclick = () => openLightbox(index);
+        
+        item.innerHTML = `
+            <div class="gallery-placeholder" id="galPlaceholder${index}"></div>
+            <img 
+                src="${img.src}" 
+                alt="${img.alt}" 
+                loading="lazy"
+                width="400"
+                height="400"
+                onload="this.classList.add('loaded'); document.getElementById('galPlaceholder${index}').classList.add('loaded')"
+                onerror="this.style.display='none'; document.getElementById('galPlaceholder${index}').style.display='none';"
+            >
+            <div class="gallery-overlay">
+                <i class="fas fa-expand"></i>
+                <span>${img.title || img.alt || 'Villa Gaia'}</span>
+            </div>
+        `;
+        grid.appendChild(item);
+    });
+}
 
         let currentLightboxIndex = 0;
 
